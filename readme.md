@@ -1,3 +1,25 @@
+
+# ClassLink : Reverse Proxy Administration
+
+## Technology and Tools used :-
+
+#### FrontEnd :-
+	Bootstrap
+	AngularJS
+	Less/Sass CSS framework
+	HTML
+	JavaScript
+	
+#### BackEnd :-
+	PHP (v5.5)
+	Laravel (v4.2)
+	oAuth (v2.0)
+	
+#### Server :-
+	Nginx Reverse Proxy (v1.6)
+	Apache2 Http server (v2.4)
+
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
