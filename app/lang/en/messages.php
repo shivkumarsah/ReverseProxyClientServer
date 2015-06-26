@@ -21,15 +21,16 @@ return array(
         'logout'=>"Logout",
         'dashboard'=>"Dashboard",
         'overview'=>"Overview",
-        'developers'=>"Developers",
-        'import_data'=>"Import Data",
-        'view_data'=>"View Data",
-        'schools'=>"Schools",
-        'teachers'=>"Teachers",
-        'students'=>"Students",
-        'subjects'=>"Subjects",
-        'courses'=>"Courses",
-        'enrollments'=>"Enrollments",
+        'manage_application'=>"Manage Applications",
+        'proxy_setting'=>"Reverse Proxy Settings",
+    ),
+    "settings" => array(
+        'page_title'=>"Settings",
+        
+    ),
+    "applications" => array(
+        'page_title'=>"Application",
+    
     ),
     "login" => array(
         'page_title'=>"Login | OpenRosters",
@@ -56,10 +57,6 @@ return array(
     ),
     "dashboard" => array(
         'page_title'=>"Dashboard",
-        
-    ),    
-    "settings" => array(
-        'page_title'=>"Setting Page",
         
     ),
     "developers" => array(

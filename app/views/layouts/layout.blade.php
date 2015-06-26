@@ -19,7 +19,6 @@
     
   </head>
   <body  ng-app="openrosterApp" ng-controller="openrosterCtrl" >
- 
 
     @include('includes.top-menu')
 

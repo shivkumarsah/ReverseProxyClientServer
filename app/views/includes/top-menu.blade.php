@@ -16,14 +16,11 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-
-                    <li ng-click="-clickSetting();">
+                    <!-- li ng-click="-clickSetting();">
                         {{Form::label('settings', trans('messages.links.settings') , array('class' => 'setting-css'))}}
-                    </li>
+                    </li -->
                     <li>{{link_to_route('logout', trans('messages.links.logout'))}}</li>
-
                 </ul>
-
             </div>
         </div>
     </nav>

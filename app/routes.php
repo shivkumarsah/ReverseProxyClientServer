@@ -27,8 +27,18 @@ Route::any('apiaccess', array('as' => 'apiaccessController', 'uses' => 'Develope
 Route::get('users/processOauth/{token}', array('as'=>'processOauth', 'uses'=>'UsersController@processOauth'));
 
 // Confide routes
-Route::group(array('before' => 'auth'), function()
-{    
+//Route::group(array('before' => 'auth'), function()
+Route::group(array('before' => 'admin-auth'), function()
+{
+    Route::get('users/logout', array('as'=>'logout', 'uses'=>'UsersController@logout'));
+    Route::get('users/dashboard', array('as'=>'dashboard', 'uses'=>'UsersController@dashboard'));
+    Route::get('users/applications', array('as'=>'applications', 'uses'=>'UsersController@dashboard'));
+    Route::get('users/settings', array('as'=>'settings', 'uses'=>'UsersController@dashboard'));
+    
+    Route::get('proxy/settings', array('as'=>'proxysettings', 'uses'=>'ProxyController@settings'));
+    Route::get('proxy/applications', array('as'=>'applications', 'uses'=>'ProxyController@applications'));
+    
+    
     //Route::get('users/create',  'UsersController@create');
     //Route::post('users', 'UsersController@store');
     
@@ -38,8 +48,6 @@ Route::group(array('before' => 'auth'), function()
     Route::get('users/reset_password/{token}', 'UsersController@resetPassword');
     Route::post('users/reset_password', 'UsersController@doResetPassword');
     Route::post('users/changepassword', 'UsersController@changepassword');
-    Route::get('users/logout', array('as'=>'logout', 'uses'=>'UsersController@logout'));
-    Route::get('users/dashboard', array('as'=>'dashboard', 'uses'=>'UsersController@dashboard'));
     Route::get('users/graph', array('as'=>'dashboardgraph', 'uses'=>'UsersController@graph'));
     Route::get('users/settings', array('as'=>'settings', 'uses'=>'UsersController@settings'));
     Route::get('developers', array('as'=>'developers', 'uses'=>'DevelopersController@index'));

@@ -21,7 +21,6 @@ class UsersController extends BaseController {
      * @return  Illuminate\Http\Response
      */
     public function dashboard() {
-        asd("ok here");
         return View::make('users.dashboard');
     }
 
