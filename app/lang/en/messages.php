@@ -51,7 +51,8 @@ return array(
         'password_reset' => 'Your password has been changed successfully.',
         'wrong_password_reset' => 'Invalid password. Try again',
         'wrong_token' => 'The password reset token is not valid.',
-        'duplicated_credentials' => 'The credentials provided have already been used. Try with different credentials.'
+        'duplicated_credentials' => 'The credentials provided have already been used. Try with different credentials.',
+        'invalid_access' => 'Invalid login. Try again'
     ),
     "dashboard" => array(
         'page_title'=>"Dashboard",

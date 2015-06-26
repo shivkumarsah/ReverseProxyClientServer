@@ -47,6 +47,18 @@ $app = require_once __DIR__.'/../bootstrap/start.php';
 |
 */
 
+function asd($data, $die = true) {
+    echo "<pre>";
+    if(is_object($data)) {
+        var_dump($data);
+    } else {
+        print_r($data);
+    }
+    if($die){
+        exit;
+    }
+}
+
 $app->run();
 
 
