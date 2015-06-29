@@ -8,7 +8,11 @@ class ProxyController extends BaseController {
      * @return  Illuminate\Http\Response
      */
     public function settings() {
-        return View::make('proxy.settings');
+        $result = array(
+            "proxy_url" => "",
+            "api_key" => ""
+        );
+        return View::make('proxy.settings')->with('result', $result);
     }
     
 
