@@ -12,7 +12,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                {{ html_entity_decode( HTML::link("/", HTML::image("img/logo.png", trans('messages.logo'), array('style'=>'margin-top: -5px')) , array('class'=>'navbar-brand') )) }}
+                {{ html_entity_decode( HTML::link("/", HTML::image("img/logo.png", trans('messages.logo'), array('style'=>'margin-top: -5px; height:30px;')) , array('class'=>'navbar-brand') )) }}
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">

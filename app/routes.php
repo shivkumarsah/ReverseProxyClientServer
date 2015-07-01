@@ -36,6 +36,7 @@ Route::group(array('before' => 'admin-auth'), function()
     Route::get('users/settings', array('as'=>'settings', 'uses'=>'UsersController@dashboard'));
     
     Route::get('proxy/settings', array('as'=>'proxysettings', 'uses'=>'ProxyController@settings'));
+    Route::post('proxy/settings/save', array('as'=>'proxysettingssave', 'uses'=>'ProxyController@settingsSave'));
     Route::get('proxy/applications', array('as'=>'applications', 'uses'=>'ProxyController@applications'));
     
     

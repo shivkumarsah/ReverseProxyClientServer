@@ -1,8 +1,5 @@
 <?php
 
-use Openroster\Storage\School\SchoolRepository as School;
-use Openroster\Storage\Developer\DeveloperRepository as Developer;
-
 /**
  * UsersController Class
  *
@@ -10,9 +7,9 @@ use Openroster\Storage\Developer\DeveloperRepository as Developer;
  */
 class UsersController extends BaseController {
 
-    public function __construct(School $school, Developer $developer) {
-        $this->school = $school;
-        $this->developer = $developer;
+    public function __construct() {
+        $this->school = new stdClass();
+        $this->developer = new stdClass();
     }
 
     /**
@@ -210,7 +207,7 @@ class UsersController extends BaseController {
                         if (!empty($response['isProxyExist'])) {
                             return Redirect::intended(route('dashboard'));
                         } else {
-                            return Redirect::intended(route('domain'));
+                            return Redirect::intended(route('proxysettings'));
                         }
                     } else {
                         $err_msg = Lang::get('messages.login.invalid_access');

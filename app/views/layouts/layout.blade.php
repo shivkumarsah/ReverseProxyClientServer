@@ -18,13 +18,12 @@
     @include('includes.header-inner')
     
   </head>
-  <body  ng-app="openrosterApp" ng-controller="openrosterCtrl" >
+  <body  ng-app="proxyApp" ng-controller="appCtrl" >
 
     @include('includes.top-menu')
 
     <div class="container-fluid">
       <div class="row">
-          
          @include('includes.side-menu')
          
          @yield('content')

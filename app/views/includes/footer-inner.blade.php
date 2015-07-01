@@ -16,6 +16,12 @@
 {{ HTML::script('js/FileSaver.js') }}
 {{ HTML::script('js/openroster.js') }}
 {{ HTML::script('js/index.js') }}
+{{ HTML::script('js/angular-flash.js') }}
+
+
+<!--link type="text/css" rel="stylesheet" href="css/angular-flash.min.css" />
+// If you are using bootstrap v3 no need to include angular-flash.css
+<script src="angular-flash.min.js"></script-->
 <script>
  $(function () {
     $("#loading").hide();

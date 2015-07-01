@@ -1,27 +1,28 @@
-var openrosterApp = angular.module('openrosterApp', [
+var proxyApp = angular.module('proxyApp', [
     'ui.bootstrap',
     'restangular',
     'ngRoute',
     'angularFileUpload',
-    'ngDialog'
+    'ngDialog',
+    'flash'
 ]);
 
-openrosterApp.config(function($interpolateProvider) {
+proxyApp.config(function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 });
 
-openrosterApp.controller( 'openrosterCtrl', function( $scope, $serverRequest, $clientExportData, ngDialog ) {
+proxyApp.controller( 'appCtrl', function( $scope, $serverRequest, $clientExportData, ngDialog ) {
 
     $scope.isCollapsed = true;
-    $scope.currentRouteVal = document.getElementById('currentRoute').value;
+    /*$scope.currentRouteVal = document.getElementById('currentRoute').value;
     if( $scope.currentRouteVal === 'schools' ||  $scope.currentRouteVal === 'teachers' ||
         $scope.currentRouteVal === 'students' ||  $scope.currentRouteVal === 'courses' ||
         $scope.currentRouteVal === 'enrollments' ){
         $scope.isCollapsed = false;
     } else {
         $scope.isCollapsed = true;
-    }
+    }*/
     window.onkeydown = function( event ) {
         if ( event.keyCode === 27 ) {
             ngDialog.closeAll();
@@ -29,7 +30,7 @@ openrosterApp.controller( 'openrosterCtrl', function( $scope, $serverRequest, $c
     };
 });
 
-openrosterApp.controller("dashboardCtrl", function( $scope, $serverRequest ) {
+proxyApp.controller("dashboardCtrl", function( $scope, $serverRequest ) {
 
     $scope.graphData = [];
     $serverRequest.graphs.pullGraphData();
@@ -73,7 +74,7 @@ openrosterApp.controller("dashboardCtrl", function( $scope, $serverRequest ) {
 
 });
 
-openrosterApp.controller( 'passwordChangeCtrl', function( $scope, ngDialog ) {
+proxyApp.controller( 'passwordChangeCtrl', function( $scope, ngDialog ) {
 
     $scope.clickSetting = function () {
         ngDialog.open({
@@ -84,7 +85,7 @@ openrosterApp.controller( 'passwordChangeCtrl', function( $scope, ngDialog ) {
     };
 });
 
-openrosterApp.controller( 'changePwdController', function( $scope, $element, $serverRequest, $location ){
+proxyApp.controller( 'changePwdController', function( $scope, $element, $serverRequest, $location ){
 
     $scope.message = "";
     $scope.respnseDataMsg = "";
@@ -171,7 +172,7 @@ openrosterApp.controller( 'changePwdController', function( $scope, $element, $se
 
 });
 
-openrosterApp.controller( 'importPanelCtrl', function( $scope, $serverRequest, $sce, ngDialog, $http, $q, $rootScope, $window, $filter ){
+proxyApp.controller( 'importPanelCtrl', function( $scope, $serverRequest, $sce, ngDialog, $http, $q, $rootScope, $window, $filter ){
 
     $('#viewPanel').height( $( window ).height() - ( $('#navbar').height() + 270 ) );
     $("#viewPanel").niceScroll({
@@ -341,7 +342,7 @@ openrosterApp.controller( 'importPanelCtrl', function( $scope, $serverRequest, $
 
 });
 
-openrosterApp.controller('FileUploadCtrl', function ( $scope, ngDialog, FileUploader, $rootScope, $serverRequest ) {
+proxyApp.controller('FileUploadCtrl', function ( $scope, ngDialog, FileUploader, $rootScope, $serverRequest ) {
 
     $scope.validUploadFile = ['schools.csv', 'students.csv', 'teachers.csv', 'courses.csv', 'enrollments.csv'];
     var uploader = $scope.uploader = new FileUploader({
@@ -442,7 +443,7 @@ openrosterApp.controller('FileUploadCtrl', function ( $scope, ngDialog, FileUplo
 
 });
 
-openrosterApp.config(function($routeProvider, RestangularProvider) {
+proxyApp.config(function($routeProvider, RestangularProvider) {
 
     RestangularProvider.setBaseUrl('data');
     RestangularProvider.setRequestInterceptor(function(elem, operation, what) {
@@ -456,7 +457,9 @@ openrosterApp.config(function($routeProvider, RestangularProvider) {
 
 });
 
-openrosterApp.directive('sortBy', function() {
+
+//------------ Directive --------------------//
+proxyApp.directive('sortBy', function() {
     return {
         templateUrl: 'sort-by-html',
         restrict: 'E',
@@ -482,7 +485,7 @@ openrosterApp.directive('sortBy', function() {
     };
 });
 
-openrosterApp.directive('onBlurChange', function($parse) {
+proxyApp.directive('onBlurChange', function($parse) {
     return function(scope, element, attr) {
         var fn = $parse(attr['onBlurChange']);
         var hasChanged = false;
@@ -501,7 +504,7 @@ openrosterApp.directive('onBlurChange', function($parse) {
     };
 });
 
-openrosterApp.directive('onEnterBlur', function() {
+proxyApp.directive('onEnterBlur', function() {
     return function(scope, element, attrs) {
         element.bind("keydown keypress", function(event) {
             if (event.which === 13) {
@@ -511,8 +514,8 @@ openrosterApp.directive('onEnterBlur', function() {
         });
     };
 });
-
-openrosterApp.factory( 'api', function ( Restangular ) {
+//------------ Factories --------------------//
+proxyApp.factory( 'api', function ( Restangular ) {
 
     //prepend /api before making any request with restangular
     // RestangularProvider.setBaseUrl('/data');
@@ -544,8 +547,9 @@ openrosterApp.factory( 'api', function ( Restangular ) {
         }
     };
 });
+
 // School preview data controller.
-openrosterApp.controller('SchoolCtrl', function( $scope, api, $element, $clientExportData ) {
+proxyApp.controller('SchoolCtrl', function( $scope, api, $element, $clientExportData ) {
 
     $('#viewPanel').height( $( window ).height() - ( $('#navbar').height() + 160 ) );
     $("#viewPanel").niceScroll({
@@ -762,7 +766,7 @@ openrosterApp.controller('SchoolCtrl', function( $scope, api, $element, $clientE
 });
 
 //Teacher preview data controller.
-openrosterApp.controller('TeacherCtrl', function( $scope, api, $element, $clientExportData ) {
+proxyApp.controller('TeacherCtrl', function( $scope, api, $element, $clientExportData ) {
 
     $('#viewPanel').height( $( window ).height() - ( $('#navbar').height() + 160 ) );
     $("#viewPanel").niceScroll({
@@ -983,7 +987,7 @@ openrosterApp.controller('TeacherCtrl', function( $scope, api, $element, $client
 });
 
 //Student preview data controller.
-openrosterApp.controller('StudentCtrl', function( $scope, api, $element, $clientExportData ) {
+proxyApp.controller('StudentCtrl', function( $scope, api, $element, $clientExportData ) {
 
     $('#viewPanel').height( $( window ).height() - ( $('#navbar').height() + 160 ) );
     $("#viewPanel").niceScroll({
@@ -1209,7 +1213,7 @@ openrosterApp.controller('StudentCtrl', function( $scope, api, $element, $client
 });
 
 //Course preview data controller.
-openrosterApp.controller('CourseCtrl', function( $scope, api, $filter, $element, $clientExportData ) {
+proxyApp.controller('CourseCtrl', function( $scope, api, $filter, $element, $clientExportData ) {
 
     $('#viewPanel').height( $( window ).height() - ( $('#navbar').height() + 160 ) );
     $("#viewPanel").niceScroll({
@@ -1470,7 +1474,7 @@ openrosterApp.controller('CourseCtrl', function( $scope, api, $filter, $element,
 });
 
 // School preview data controller.
-openrosterApp.controller('EnrollmentsCtrl', function( $scope, api, $element, $clientExportData ) {
+proxyApp.controller('EnrollmentsCtrl', function( $scope, api, $element, $clientExportData ) {
 
     $('#viewPanel').height( $( window ).height() - ( $('#navbar').height() + 160 ) );
     $("#viewPanel").niceScroll({
@@ -1694,7 +1698,7 @@ openrosterApp.controller('EnrollmentsCtrl', function( $scope, api, $element, $cl
  * @param {Object} $rootScope
  * @param {Object} $http
  */
-openrosterApp.service( '$clientExportData', function(){
+proxyApp.service( '$clientExportData', function(){
 
     var $clientExportData = this;
 
@@ -1753,7 +1757,7 @@ openrosterApp.service( '$clientExportData', function(){
  * @param {Object} $rootScope
  * @param {Object} $http
  */
-openrosterApp.service( '$serverRequest', function ( $rootScope, $http, $location ) {
+proxyApp.service( '$serverRequest', function ( $rootScope, $http, $location ) {
 
     var $serverRequest = this;
     //For Import Data
@@ -1962,7 +1966,7 @@ openrosterApp.service( '$serverRequest', function ( $rootScope, $http, $location
 
 });
 
-openrosterApp.controller("DeveloperCtrl", function( $scope, $sce, $element, $serverRequest, ngDialog ) {
+proxyApp.controller("DeveloperCtrl", function( $scope, $sce, $element, $serverRequest, ngDialog ) {
 
     $('#viewPanel').height( $( window ).height() - ( $('#navbar').height() + 125 ) );
     $("#viewPanel").niceScroll({
@@ -2147,7 +2151,7 @@ openrosterApp.controller("DeveloperCtrl", function( $scope, $sce, $element, $ser
 
 });
 
-openrosterApp.controller( "AddEditCtrl", function( $scope, ngDialog, $serverRequest ) {
+proxyApp.controller( "AddEditCtrl", function( $scope, ngDialog, $serverRequest ) {
 
     $scope.element = $scope.$parent.ngDialogData;
     $scope.eventMode = '';
@@ -2297,11 +2301,11 @@ openrosterApp.controller( "AddEditCtrl", function( $scope, ngDialog, $serverRequ
 
 });
 
-openrosterApp.controller( "deleteDeveloperCtrl", function( $scope ) {
+proxyApp.controller( "deleteDeveloperCtrl", function( $scope ) {
     $scope.developerName = $scope.$parent.ngDialogData.developer_name;
 });
 
-openrosterApp.controller( "assignSchoolCtrl", function( $scope, ngDialog, $serverRequest ) {
+proxyApp.controller( "assignSchoolCtrl", function( $scope, ngDialog, $serverRequest ) {
 
     $scope.developerName = $scope.$parent.ngDialogData.developer_name;
     //console.log( $scope, $scope.$parent, $scope.$parent.ngDialogData.developer_id );
@@ -2412,174 +2416,45 @@ openrosterApp.controller( "assignSchoolCtrl", function( $scope, ngDialog, $serve
 
 });
 
-openrosterApp.controller("generateKey", function( $scope, $element, $serverRequest, $sce, $location ) {
+proxyApp.controller("settingsCtrl", function( $scope, $element, $serverRequest, $sce, $location, $http, Flash) {
+    $scope.showErrorMsg = false;
 
-    $scope.getMethodName = [
-        { name:'/v1/LTI/schools', params:'' },
-        { name:'/v1/LTI/schools/{school_ID}/courses', params:[{name:'school id', id:'input1'}] },
-        { name:'/v1/LTI/schools/{school_ID}/teachers', params:[{name:'school id', id:'input1'}] },
-        { name:'/v1/LTI/schools/{school_ID}/students', params:[{name:'school id', id:'input1'}] },
-        { name:'/v1/LTI/schools/{school_ID}/courses/{course_ID}', params:[{name:'school id', id:'input1'},{name:'course id', id:'input2'}] },
-        { name:'/v1/LTI/schools/{school_ID}/courses/{course_ID}/students', params:[{name:'school id', id:'input1'},{name:'course id', id:'input2'}] },
-        { name:'/v1/LTI/schools/{school_ID}/students/{student_ID}/courses', params:[{name:'school id', id:'input1'},{name:'student id', id:'input2'}] },
-        { name:'/v1/LTI/schools/{school_ID}/teachers/{teacher_ID}/courses', params:[{name:'school id', id:'input1'},{name:'teacher id', id:'input2'}] }
-    ];
+    console.log("settingsCtrl called");
+    $scope.settingData = {};
 
-    $scope.inputBox = [];
-    $scope.responseData = '';
-    $scope.enteredHeader = false;
-    $scope.enteredParameters = false;
-    $scope.myMethod = '';
-    $scope.submitted = false;
-    $scope.errorGenerateKey = false;
-    $scope.responseErrorData = '';
-    var counter = 0;
-    $scope.data = {
-        fields: []
-    };
-
-
-    $scope.varProtocol = $location.protocol();
-    $scope.varHost = $location.host();
-
-    $scope.changeMethod = function() {
-        $scope.submitted = false;
-        $scope.responseErrorData = '';
-        if( typeof $scope.myMethod !== "undefined" ){
-            if ( !$scope.myMethod.params ){
-                $scope.inputBox = $scope.myMethod.params;
-            }
-        }
-
-    };
-
-    window.validateDevForm = function () {
-        var x = document.forms["developerForm"]["consumer_key"].value;
-        var y = document.forms["developerForm"]["consumer_secret"].value;
-
-        if ( x === null || x === "" || y === null || y === "" ) {
-            return false;
-        }
-    };
-
-    $scope.redirectToswagger = function(){
-      window.open($scope.varProtocol+'://'+$scope.varHost +'/packages/latrell/swagger/index.html');
-    };
-
-    $scope.addHeader = function(){
-        $scope.enteredHeader = !$scope.enteredHeader;
-    };
-
-    $scope.removeEditField = function(){
-        $scope.enteredHeader = !$scope.enteredHeader;
-    };
-
-    $scope.addParameters = function(){
-        $scope.data.fields=[];
-        $scope.data.fields.push({
-            id: counter++
-        });
-        $scope.enteredParameters = !$scope.enteredParameters;
-    };
-
-    $scope.addBlankParam = function(){
-        $scope.data.fields.push({
-            id: counter++
-        });
-    };
-
-    $scope.removeItem = function(index){
-        $scope.addnew = false;
-        $scope.data.fields.splice(index,1);
-        if ($scope.data.fields.length === 0){
-            $scope.enteredParameters = !$scope.enteredParameters;
-        }
-    };
-
-    $scope.removeEditParameters = function(){
-        $scope.enteredParameters = !$scope.enteredParameters;
-    };
-
-    $element.bind("keydown keypress", function( event ) {
-        $scope.submitted = false;
-        $serverRequest.data.generatedRequestMsg = '';
-        $scope.showStatusMsg = '';
-        $scope.responseData ='';
-        $scope.responseErrorData = '';
-    });
-
-    $scope.getDataFromServer = function( isValid ) {
-
-        $scope.submitted = true;
-        if( $scope.myMethod !== '' && isValid ){
-            $('#inner-loading').show();
-            var splitVal = $scope.myMethod.name.split('/');
-            var tempUrl='';
-            var count=1;
-
-            for( var i=0; i<splitVal.length; i++ ){
-
-                if( splitVal[i].indexOf("{") != '-1' ){
-                    tempUrl = tempUrl + document.getElementById('input'+count).value + '/';
-                    count++;
-                }else {
-                    tempUrl = tempUrl + splitVal[i]+ '/';
-
+    $scope.saveSettings = function (formObj) {
+        console.log("formObj = ", formObj);
+        if (formObj.$valid) {
+            var responseObj = $http({
+                url: '/proxy/settings/save',
+                method: 'post',
+                data: {
+                    proxy_url: $scope.settingData.proxy_url, 
+                    api_key: $scope.settingData.api_key
+                },
+            });
+            responseObj.success(function (data, status, headers, config) {
+                console.log(data);
+                if (data.status) {
+                    var message = 'Reverse proxy details saved successfully.';
+                    Flash.create('success', message, 'custom-class');
                 }
-
-            }
-
-            var url = tempUrl;
-            var json = {
-                'secretkey': document.forms["developerForm"]["consumer_secret"].value,
-                'apikey': document.forms["developerForm"]["consumer_key"].value
-
-            };
-            $serverRequest.data.pullPageData( url, json );
-        }
-
-
-    };
-    $scope.$on ( 'ShowResponseData', function () {
-        $('#inner-loading').hide();
-        if( typeof $serverRequest.data.responseData.data === "undefined" ){
-            console.log( $serverRequest.data.responseData.responseMessage );
-            $scope.responseErrorData = $serverRequest.data.responseData.responseMessage;
-            $scope.responseData ='';
-        }else {
-            console.log( "else" );
-            $scope.responseData = JSON.stringify($serverRequest.data.responseData.data);
-            $scope.responseErrorData = '';
-        }
-
-    });
-
-    $scope.requestGenerateKey = function(){
-        var x = document.forms["developerForm"]["consumer_key"].value;
-        var y = document.forms["developerForm"]["consumer_secret"].value;
-
-        if ( x === null || x === "" || y === null || y === "" ) {
-            $scope.showStatusMsg = $sce.trustAsHtml('Required field is empty!.')
+                else {
+                    Flash.create('danger', data.message, 'custom-class');
+                    $scope.showHeaderErrorMsg = true;
+                }
+            });
+            responseObj.error(function (data, status, headers, config) {
+                alert(data.error);
+            });
         } else {
-            var json = {
-                "apiKey":x,
-                "tokenSecret":$scope.consumer_secret
-            };
-            $serverRequest.data.postPageData( '/api/v1/developers', json);
+            $scope.showErrorMsg = true;
         }
     };
 
-    $scope.$on ( 'UpdateKeyField', function () {
-        if( $serverRequest.data.generatedKey === '' ){
-            $scope.showStatusMsg = $sce.trustAsHtml($serverRequest.data.generatedRequestMsg);
-        } else {
-            $scope.showStatusMsg = $sce.trustAsHtml($serverRequest.data.generatedRequestMsg);
-            $scope.access_token = $serverRequest.data.generatedKey;
-        }
-    });
 });
 
-openrosterApp.directive('placeholder', function($timeout){
+proxyApp.directive('placeholder', function($timeout){
     var i = document.createElement('input');
     if ('placeholder' in i) {
         return {}
@@ -2604,7 +2479,7 @@ openrosterApp.directive('placeholder', function($timeout){
     }
 });
 
-openrosterApp.directive('showFocus', function($timeout) {
+proxyApp.directive('showFocus', function($timeout) {
     return function(scope, element, attrs) {
         scope.$watch(attrs.showFocus,
             function (newValue) {

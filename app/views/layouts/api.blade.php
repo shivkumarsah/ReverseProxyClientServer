@@ -18,7 +18,7 @@
     @include('includes.header-inner')
     
   </head>
-  <body  ng-app="openrosterApp" ng-controller="openrosterCtrl" >
+  <body  ng-app="proxyApp" ng-controller="appCtrl" >
    <div id="loading">
         <img style="margin-left: 38%; margin-top: 10%;" height="250px" width="250px" src='/img/ajax-loader.gif' alt='Loading...' />
     </div>

@@ -14,7 +14,7 @@ return array(
 
     "logo" => "Logo",
     "classic_url_title" =>"ClassLink, Inc.",
-    'project_title' => "OpenRosters",
+    'project_title' => "Reverse Proxy Management",
     'no_record_found' => "No record found.",
     "links" => array(
         'settings'=>"Settings",
@@ -29,11 +29,16 @@ return array(
         
     ),
     "applications" => array(
-        'page_title'=>"Application",
-    
+        'page_title'=>"Applications",
+        'add_application'=> "Create New Application",
+        'head_name'=> "Name",
+        'head_internal_url'=> "Internal URL",
+        'head_external_url'=> "External URL",
+        'head_task'=> "Task",
+        
     ),
     "login" => array(
-        'page_title'=>"Login | OpenRosters",
+        'page_title'=>"Login | Reverse Proxy Management",
         'username' => "Username",
         'password' => "Password",
         'remember_me' => "Remember Me",
@@ -72,73 +77,6 @@ return array(
         'generatekey' => "Generate Key",
         
     ),    
-    "importdata" => array(
-        'page_title'=>"Import Data",
-        'page_header'=>"Import",
-        'name' => "Name",
-        'size' => "Size",
-        'progress' => "Progress",
-        'status' => "Status",
-        'actions' => "Actions",
-        'lastmodified' => "Last Modified",
-        'file_upload' => "File Upload",
-        'verify' => "Verify",
-        'logs' => "logs",
-        'download_templates' => "Download Templates",
-        'select_files' => "Select files",
-        'base_drop_zone1' => "Base drop zone",
-        'base_drop_zone2' => "Another drop zone with its own settings",
-        'multiple' => "Multiple",
-        'single' => "Single",
-        'upload_queue' => "Upload queue",
-        'queue_length' => "Queue length",
-        'upload' => "Upload",
-        'cancel' => "Cancel",
-        'remove' => "Remove",
-        'upload_all' => "Upload all",
-        'cancel_all' => "Cancel all",
-        'remove_all' => "Remove all",
-        'queue_progress' => "Queue progress",
-        'failed_to_import'=>'Record with id :id failed to import due to following reasons: ',
-        'file_name_invalid'=>'This is not the valid name of the file we support.',
-        'file_format_invalid'=>' We support only CSV format to upload.',
-        'file_imported_successfully'=>' File : name imported successfully.',
-        'file_import_comment'=>' File :name with size :size bytes imported successfully.',
-        'file_unable_import'=>' Sorry unable to import :name .',
-        'file_unable_import_missing'=>' Sorry unable to import file :name is missing.',
-        'file_unable_import_inprogress'=>'File :name is already in progress.',
-        'file_unable_import_imported'=>'File :name has already been imported.',
-        'file_import_started'=>'File :name has been started to import.',
-        'file_import_restart'=>'File :name has not been imported due to some technical reason. Please re-try after sometime.',
-        'file_import_log_title'=>'Log Details of File.',
-        'file_last_upload_log'=>'This is the file upload log of last time.',
-        'file_last_import_log'=>'This is the log of file when imported last time.',
-        
-    ),    
-    "schools" => array(
-        'page_title'=>"Schools Data Preview",
-        
-    ),    
-    "teachers" => array(
-        'page_title'=>"Teachers Data Preview",
-        
-    ),    
-    "students" => array(
-        'page_title'=>"Students Data Preview",
-        
-    ),    
-    "subjects" => array(
-        'page_title'=>"Subjects Data Preview",
-        
-    ),    
-    "courses" => array(
-        'page_title'=>"Courses Data Preview",
-        
-    ),    
-    "enrollments" => array(
-        'page_title'=>"Students Enrollment Data Preview",
-        
-    ),
     /*
       |--------------------------------------------------------------------------
       | Custom Validation Language Lines

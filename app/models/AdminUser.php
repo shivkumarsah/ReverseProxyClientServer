@@ -59,6 +59,74 @@ class AdminUser extends Eloquent implements ConfideUserInterface
         }
         return $response;
     }
+    /**
+     * Get reverse proxy details for admin.
+     *
+     * @return  array $user
+     */
+    public function getProxy()
+    {
+        $response = array();
+        $response['status'] = 0;
+        $access_key = Session::get('access_key');
+        $user_id = Session::get('user_id');
+        if (! empty($access_key) && ! empty($user_id)) {
+            try {
+                $user = AdminUser::find($user_id);
+                if (! empty($user)) {
+                    $response['status']         = 1;
+                    $response['proxy_status']   = $user->proxy_status;
+                    $response['proxy_url']      = $user->proxy_url;
+                    $response['api_key']        = $user->api_key;
+                    if(empty($user->api_key)) {
+                        $response['api_key']    = md5(uniqid(mt_rand(), true));
+                        //$response['api_key']    = Hash::make("secret");
+                    }
+                    
+                }
+            } catch (Exception $ex) {
+                $response['message'] = Lang::get('messages.login.invalid_access');
+            }
+        } else {
+            $response['message'] = Lang::get('messages.login.invalid_access');
+        }
+        return $response;
+    }
+    /**
+     * Set reverse proxy details for admin.
+     *
+     * @param  array $input Array containing 'proxy_url' and 'api_key'.
+     *
+     * @return  boolean Success
+     */
+    public function setProxy($input)
+    {
+        $response = array();
+        $response['status'] = 0;
+        $access_key = Session::get('access_key');
+        $user_id = Session::get('user_id');
+        if (! empty($access_key) && ! empty($user_id)) {
+            try {
+                DB::table('admin_users')->where('id', $user_id)->update([
+                    'proxy_status'  => 1,
+                    'proxy_url'     => $input['proxy_url'],
+                    'api_key'       => $input['api_key']
+                ]);
+                $user = AdminUser::find($user_id);
+                if (! empty($user->proxy_url)) {
+                    $response['status'] = 1;
+                    $response['user'] = $user;
+                }
+            } catch (Exception $ex) {
+                $response['message'] = Lang::get('messages.login.invalid_access');
+            }
+        } else {
+            $response['message'] = Lang::get('messages.login.invalid_access');
+        }
+        return $response;
+    }
+    
+    /*** Not in used now ******************************/
     
     public function updateAdminUser($data)
     {

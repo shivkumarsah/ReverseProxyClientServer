@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'proxyadmin',
+			'database'  => 'betaproxyadmin',
 			'username'  => 'root',
 			'password'  => 'root',
 			'charset'   => 'utf8',

@@ -1,6 +1,16 @@
 <?php
+use Illuminate\Http\Request;
 
-class ProxyController extends BaseController {
+class ProxyController extends BaseController
+{
+    
+    public function __construct(AdminUser $admin)
+    {
+        //$request = new Request();
+        //$this->request = $request; 
+        $this->admin = $admin;
+    
+    }
     
     /**
      * Displays the reverse proxy setting page
@@ -8,14 +18,21 @@ class ProxyController extends BaseController {
      * @return  Illuminate\Http\Response
      */
     public function settings() {
-        $result = array(
-            "proxy_url" => "",
-            "api_key" => ""
-        );
-        return View::make('proxy.settings')->with('result', $result);
+        $proxy = $this->admin->getProxy();
+        return View::make('proxy.settings')->with('result', $proxy);
     }
     
-
+    /**
+     * Save reverse proxy setting
+     *
+     * @return  Illuminate\Http\Response
+     */
+    public function settingsSave() {
+        $input = Input::all();
+        $result = $this->admin->setProxy($input);
+        return Response::json($result);
+    }
+    
     /**
      * Displays the application list page
      *
