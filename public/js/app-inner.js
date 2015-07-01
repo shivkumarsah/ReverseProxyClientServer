@@ -1822,7 +1822,7 @@ proxyApp.service( '$serverRequest', function ( $rootScope, $http, $location ) {
         }
     };
 
-    //For Developer Data
+    //For Developers Data
     $serverRequest.developers = {
 
         developerList: {
@@ -1904,6 +1904,62 @@ proxyApp.service( '$serverRequest', function ( $rootScope, $http, $location ) {
                 console.error ( 'error:: push request failed' );
             });
 
+        }      
+
+    };
+
+    //For Applications  Data
+    $serverRequest.application = {
+
+        applicationList: {
+            LocalStorage: []
+        },
+
+        pullApplicatinData: function ( url ) {
+
+            var serviceURL = url;
+            $http.get ( serviceURL )
+                .success ( function ( data, status, headers, config ) {
+                $serverRequest.application.applicationList.LocalStorage = data;
+                $rootScope.$broadcast ( 'DEVELOPER_DATA' );
+
+            }).error ( function ( data, status, headers, config ) {
+                console.error ( 'error:: pull request failed' );
+            });
+
+        },
+
+        saveApplicationData: function( url, json ) {
+            $http ({
+                method:'POST',
+                url:url,
+                data:json.data,
+                headers:{
+                    'Content-Type' : 'application/json'
+                }
+            }).success ( function ( data, status, headers, config ) {
+
+                if( json.type === 'remove'){
+                    $rootScope.$broadcast ( 'APPLICATION_DATA_UPDATED' );
+
+                } else if ( json.type === 'save' ){
+                    $rootScope.$broadcast ( 'APPLICATION_DATA_UPDATED', data );
+
+                } else if ( json.type === 'update' ){
+                    if( data.status === true ){
+                        $serverRequest.developers.developerList.LocalStorage.items[json.index].developer_name = json.data.developer_name;
+                        $serverRequest.developers.developerList.LocalStorage.items[json.index].email = json.data.email;
+                        $serverRequest.developers.developerList.LocalStorage.items[json.index].api_secret = json.data.api_secret;
+                    }
+                    $rootScope.$broadcast ( 'APPLICATION_DATA', data );
+                } else if ( json.type === 'updatekey' ){
+                    $serverRequest.developers.developerList.LocalStorage.items[json.index].api_key = data.api_key;
+                    $rootScope.$broadcast ( 'APPLICATION_DATA' );
+                }
+            }).error ( function ( data, status, headers, config ) {
+                console.error ( 'error:: push request failed' );
+            });
+
         }
 
     };
@@ -1966,340 +2022,7 @@ proxyApp.service( '$serverRequest', function ( $rootScope, $http, $location ) {
 
 });
 
-proxyApp.controller("DeveloperCtrl", function( $scope, $sce, $element, $serverRequest, ngDialog ) {
 
-    $('#viewPanel').height( $( window ).height() - ( $('#navbar').height() + 125 ) );
-    $("#viewPanel").niceScroll({
-        cursorcolor:"#6498c8",
-        autohidemode: false,
-        cursorwidth: '8px',
-        bouncescroll: true,
-        touchbehavior:true,
-        grabcursorenabled: true,
-        cursordragontouch: true
-    });
-    $scope.editing = false;
-    $scope.addnew = false;
-    $scope.totalPages = 0;
-    $scope.developersCount = 0;
-    $scope.itemsPerPage = '10';
-    $scope.changePageIndex = 1;
-    $scope.listNoRecord = [ '10', '20', '50', '100', '150', 'All'  ];
-    $scope.inValidPage = false;
-    $scope.showRecord = 'records';
-    $scope.disabledNavigation = false;
-
-
-    //Pull request to server for getting the developer data.
-    $scope.getDeveloperData = function(){
-        $serverRequest.developers.pullDeveloperData( '/listdevelopers?itemsPerPage='+$scope.itemsPerPage+'&pageNumber='+$scope.changePageIndex );
-    };
-
-    $scope.getDeveloperData();
-
-    $scope.$on ( 'DEVELOPER_DATA', function () {
-        $scope.items = $serverRequest.developers.developerList.LocalStorage.items;
-        $scope.developersCount = $serverRequest.developers.developerList.LocalStorage.totalItems;
-        $scope.totalPages = $serverRequest.developers.developerList.LocalStorage.totalPages;
-        if( $scope.developersCount.toString() > '1' ){
-            $scope.showRecord = 'records';
-        } else {
-            $scope.showRecord = 'record';
-        }
-    });
-
-    $scope.$watch( function(){
-        return $scope.totalPages;
-    }, function( newVal, oldVal ) {
-        if ( newVal !== oldVal) {
-            $('#viewPanel').getNiceScroll().onResize();
-        }
-    });
-
-    $("#viewPanel").mouseover(function() {
-        $('#viewPanel').getNiceScroll().onResize();
-    });
-
-    $scope.getNumberOfRecord = function() {
-        if( $scope.itemsPerPage.toString()  === 'All'){
-            $scope.disabledNavigation = true;
-        } else {
-            $scope.disabledNavigation = false;
-        }
-        $scope.inValidPage = false;
-        $scope.changePageIndex = 1;
-        $scope.getDeveloperData();
-    };
-
-    $scope.addNewData = function () {
-        var item = {
-            action: 'save'
-        };
-        ngDialog.openConfirm({
-            template: 'modalDialogAddEdit',
-            className: 'ngdialog-theme-default',
-            controller: 'AddEditCtrl',
-            data: JSON.stringify( item )
-        }).then( function ( ) {
-
-        }, function () {
-            console.log('Modal promise rejected.');
-        });
-    };
-
-    $scope.apiTokens = function( item ){
-        window.location = '/developers/apitokens/'+item.developer_id;
-    };
-
-    $element.bind("keydown keypress", function( ) {
-        $scope.inValidPage = false;
-        $scope.errorMsgDev = '';
-    });
-
-    $scope.previousPage = function(){
-        $scope.changePageIndex = parseInt($scope.changePageIndex) - 1;
-    };
-
-    $scope.nextPage = function(){
-        $scope.changePageIndex = parseInt($scope.changePageIndex) + 1;
-    };
-
-    $scope.$watch( function() {
-        return $scope.changePageIndex;
-    }, function( newVal, oldVal ) {
-        if ( newVal !== oldVal) {
-            if ( newVal > $scope.totalPages  ||  newVal.toString() < '1'){
-                $scope.itemsPerPage = '10';
-                $scope.changePageIndex = 1;
-                $scope.inValidPage = true;
-
-            } else {
-                $scope.changePageIndex = newVal;
-                $scope.getDeveloperData();
-            }
-        }
-
-    });
-
-    $scope.removeItem = function( item, index ){
-
-        $scope.developername = $scope.items[index].developer_name;
-        ngDialog.openConfirm({
-            template: 'modalDialogId',
-            className: 'ngdialog-theme-default',
-            controller: 'deleteDeveloperCtrl',
-            data: JSON.stringify( item )
-        }).then( function ( ) {
-            var json = {
-                type: 'remove',
-                data: {
-                    developer_id: $scope.items[index].developer_id
-                },
-                index: index
-            };
-            $serverRequest.developers.pushDeveloperData( 'developers/delete', json );
-            $scope.addnew = false;
-        }, function () {
-            console.log('Modal promise rejected.');
-        });
-    };
-
-    $scope.editItem = function( item, index ){
-
-        item.index = index;
-        item.action = 'update';
-        ngDialog.openConfirm({
-            template: 'modalDialogAddEdit',
-            className: 'ngdialog-theme-default',
-            controller: 'AddEditCtrl',
-            data: JSON.stringify( item )
-        }).then( function ( ) {
-
-        }, function () {
-            console.log('Modal promise rejected.');
-        });
-
-    };
-
-    $scope.updateConsumerKey = function ( index ) {
-
-        var json = {
-            type: 'updatekey',
-            data: {
-                developer_id: $scope.items[index].developer_id
-            },
-            index: index
-        };
-        $serverRequest.developers.pushDeveloperData( 'developers/key', json );
-
-    };
-
-    $scope.$on ( 'DEVELOPER_DATA_UPDATED', function ( ) {
-        $scope.itemsPerPage = '10';
-        $scope.changePageIndex = 1;
-        $serverRequest.developers.pullDeveloperData( '/listdevelopers?itemsPerPage=10&pageNumber=1' );
-    });
-
-    $scope.assignSchool = function( item ){
-        ngDialog.open({
-            template: 'assignSchoolDialog',
-            controller: 'assignSchoolCtrl',
-            className: 'ngdialog-theme-default ngdialog-theme-custom ngdialog-import-log',
-            data: JSON.stringify( item )
-        });
-    };
-
-});
-
-proxyApp.controller( "AddEditCtrl", function( $scope, ngDialog, $serverRequest ) {
-
-    $scope.element = $scope.$parent.ngDialogData;
-    $scope.eventMode = '';
-    $scope.showSecret = true;
-    $scope.errorSecret = false;
-    $scope.errorEmail = false;
-    $scope.errorName = false;
-    $scope.errorMsgEmail = '';
-    $scope.consumerSecret = '';
-    $scope.errorMsgName = '';
-    $scope.errorMsgSecret = '';
-    $scope.showUpdateBtn = true;
-
-    if( $scope.element.action === 'update'){
-        $scope.eventMode = 'Edit Developer';
-        $scope.developer_name = $scope.element.developer_name;
-        $scope.email = $scope.element.email;
-        $scope.consumerSecret = $scope.element.api_secret;
-        $scope.showUpdateBtn = false;
-    } else if( $scope.element.action === 'save' ){
-        $scope.eventMode = 'Add New Developer';
-        $scope.showUpdateBtn = true;
-    }
-
-    $scope.update = function (){
-        var isValid = true;
-        var json = {
-            type: 'update',
-            data: {
-                developer_id: $scope.element.developer_id,
-                developer_name: $scope.developer_name ? $scope.developer_name : '',
-                email: $scope.email ? $scope.email : '',
-                api_secret : $scope.consumerSecret ? $scope.consumerSecret : ''
-            },
-            index: $scope.element.index
-        };
-
-        isValid = $scope.checkFieldValidation( json );
-        if( isValid ){
-            $serverRequest.developers.pushDeveloperData( 'developers/edit', json );
-            $scope.$on ( 'DEVELOPER_DATA', function ( event, data ) {
-                if( data.status === true ){
-                    ngDialog.close();
-                } else {
-                    $scope.errorMsgEmail = data.statusMessage;
-                    $scope.errorEmail = true;
-                }
-
-            });
-        }
-
-    };
-
-    $scope.save = function (){
-        var isValid = true;
-        var json = {
-            type: 'save',
-            data: {
-                developer_name: $scope.developer_name ? $scope.developer_name : '',
-                email: $scope.email ? $scope.email : '',
-                api_secret: $scope.consumerSecret ? $scope.consumerSecret : ''
-            }
-        };
-
-        isValid = $scope.checkFieldValidation( json );
-        if( isValid ){
-            $serverRequest.developers.pushDeveloperData( 'developers/add', json );
-            $scope.$on ( 'DEVELOPER_DATA_UPDATED', function ( event, data  ) {
-                if( data.status === true ){
-                    ngDialog.close();
-                } else {
-                    $scope.errorMsgEmail = data.statusMessage;
-                    $scope.errorEmail = true;
-                }
-            });
-        }
-
-    };
-
-    $scope.keydown = function( type ){
-
-        if ( type === 'name' ){
-            $scope.errorName = false;
-            $scope.errorMsgName = '';
-        } else if( type === 'secret' ){
-            $scope.errorSecret = false;
-            $scope.errorMsgSecret = '';
-        } else if( type === 'email') {
-            $scope.errorEmail = false;
-            $scope.errorMsgEmail = '';
-        }
-
-    };
-
-    $scope.checkFieldValidation = function ( json ){
-        var validInput = true;
-
-        if( typeof json.data.developer_name !== "undefined") {
-            if (json.data.developer_name.length < 6) {
-                validInput = false;
-                $scope.errorName = true;
-                $scope.errorMsgName = 'Name should contain at least 6 characters.';
-            } else {
-                var filter = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ";
-                for ( var i = 0; i < json.data.developer_name.length; i++) {
-                    var strChar = json.data.developer_name.charAt(i);
-                    if (filter.indexOf(strChar) === -1) {
-                        validInput = false;
-                        $scope.errorName = true;
-                        $scope.errorMsgName = 'Please enter valid developer name.';
-                    }
-                }
-            }
-        }
-
-        if( typeof json.data.api_secret !== "undefined"){
-            if( json.data.api_secret.length < 6 ){
-                validInput = false;
-                $scope.errorMsgSecret = 'Secret should contain at least 6 characters.';
-                $scope.errorSecret = true;
-            } else {
-                var filter = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ";
-                for ( var i = 0; i < json.data.api_secret.length; i++) {
-                    var strChar = json.data.api_secret.charAt(i);
-                    if (filter.indexOf(strChar) === -1) {
-                        validInput = false;
-                        $scope.errorSecret = true;
-                        $scope.errorMsgSecret = 'Please enter valid secret.';
-                    }
-                }
-            }
-        }
-
-        if( typeof json.data.email !== "undefined"){
-            var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
-            if ( !filter.test( json.data.email )) {
-                validInput = false;
-                $scope.errorEmail = true;
-                $scope.errorMsgEmail = 'Please enter valid email.';
-            }
-        }
-
-        return validInput;
-
-    };
-
-
-});
 
 proxyApp.controller( "deleteDeveloperCtrl", function( $scope ) {
     $scope.developerName = $scope.$parent.ngDialogData.developer_name;
@@ -2416,7 +2139,7 @@ proxyApp.controller( "assignSchoolCtrl", function( $scope, ngDialog, $serverRequ
 
 });
 
-proxyApp.controller("settingsCtrl", function( $scope, $element, $serverRequest, $sce, $location, $http, Flash) {
+proxyApp.controller("settingsCtrl", function( $scope, $http, Flash) {
     $scope.showErrorMsg = false;
 
     console.log("settingsCtrl called");
@@ -2450,6 +2173,324 @@ proxyApp.controller("settingsCtrl", function( $scope, $element, $serverRequest, 
         } else {
             $scope.showErrorMsg = true;
         }
+    };
+
+});
+
+proxyApp.controller("applicationCtrl", function($scope, $http, Flash, $serverRequest, $element, ngDialog) {
+    $('#viewPanel').height( $( window ).height() - ( $('#navbar').height() + 125 ) );
+    $("#viewPanel").niceScroll({
+        cursorcolor:"#6498c8",
+        autohidemode: false,
+        cursorwidth: '8px',
+        bouncescroll: true,
+        touchbehavior:true,
+        grabcursorenabled: true,
+        cursordragontouch: true
+    });
+    $scope.editing = false;
+    $scope.addnew = false;
+    $scope.totalPages = 0;
+    $scope.developersCount = 0;
+    $scope.itemsPerPage = '10';
+    $scope.changePageIndex = 1;
+    $scope.listNoRecord = [ '10', '20', '50', '100', '150', 'All'  ];
+    $scope.inValidPage = false;
+    $scope.showRecord = 'records';
+    $scope.disabledNavigation = false;
+
+
+    //Pull request to server for getting the developer data.
+    $scope.getDeveloperData = function(){
+        //$serverRequest.application.pullApplicatinData( '/listapplication?itemsPerPage='+$scope.itemsPerPage+'&pageNumber='+$scope.changePageIndex );
+        $serverRequest.application.pullApplicatinData( 'applications/list?itemsPerPage='+$scope.itemsPerPage+'&pageNumber='+$scope.changePageIndex );
+    };
+
+    $scope.getDeveloperData();
+
+    $scope.$on ( 'DEVELOPER_DATA', function () {
+        // $scope.items            = $serverRequest.application.applicationList.LocalStorage.items;
+        // $scope.developersCount  = $serverRequest.application.applicationList.LocalStorage.totalItems;
+        // $scope.totalPages       = $serverRequest.application.applicationList.LocalStorage.totalPages;
+
+        console.log("$serverRequest.application.applicationList.LocalStorage");
+        console.log($serverRequest.application.applicationList.LocalStorage);
+
+        $scope.items            = $serverRequest.application.applicationList.LocalStorage;
+        $scope.developersCount  = 100;
+        $scope.totalPages       = 10;
+        if( $scope.developersCount.toString() > '1' ){
+            $scope.showRecord = 'records';
+        } else {
+            $scope.showRecord = 'record';
+        }
+    });
+
+    $scope.$watch( function(){
+        return $scope.totalPages;
+    }, function( newVal, oldVal ) {
+        if ( newVal !== oldVal) {
+            $('#viewPanel').getNiceScroll().onResize();
+        }
+    });
+
+    $("#viewPanel").mouseover(function() {
+        $('#viewPanel').getNiceScroll().onResize();
+    });
+
+    $scope.getNumberOfRecord = function() {
+        if( $scope.itemsPerPage.toString()  === 'All'){
+            $scope.disabledNavigation = true;
+        } else {
+            $scope.disabledNavigation = false;
+        }
+        $scope.inValidPage = false;
+        $scope.changePageIndex = 1;
+        $scope.getDeveloperData();
+    };
+
+    $scope.addNewData = function () {
+        var item = {
+            action: 'save'
+        };
+        ngDialog.openConfirm({
+            template: 'modalDialogAddEdit',
+            className: 'ngdialog-theme-default',
+            controller: 'addEditApplicationCtrl',
+            data: JSON.stringify( item )
+        }).then( function ( ) {
+
+        }, function () {
+            console.log('Modal promise rejected.');
+        });
+    };
+
+    $scope.apiTokens = function( item ){
+        window.location = '/developers/apitokens/'+item.developer_id;
+    };
+
+    $element.bind("keydown keypress", function( ) {
+        $scope.inValidPage = false;
+        $scope.errorMsgDev = '';
+    });
+
+    $scope.previousPage = function(){
+        $scope.changePageIndex = parseInt($scope.changePageIndex) - 1;
+    };
+
+    $scope.nextPage = function(){
+        $scope.changePageIndex = parseInt($scope.changePageIndex) + 1;
+    };
+
+    $scope.$watch( function() {
+        return $scope.changePageIndex;
+    }, function( newVal, oldVal ) {
+        if ( newVal !== oldVal) {
+            if ( newVal > $scope.totalPages  ||  newVal.toString() < '1'){
+                $scope.itemsPerPage = '10';
+                $scope.changePageIndex = 1;
+                $scope.inValidPage = true;
+
+            } else {
+                $scope.changePageIndex = newVal;
+                $scope.getDeveloperData();
+            }
+        }
+
+    });
+
+    $scope.removeItem = function( item, index ){
+
+        $scope.developername = $scope.items[index].developer_name;
+        ngDialog.openConfirm({
+            template: 'modalDialogId',
+            className: 'ngdialog-theme-default',
+            controller: 'deleteDeveloperCtrl',
+            data: JSON.stringify( item )
+        }).then( function ( ) {
+            var json = {
+                type: 'remove',
+                data: {
+                    developer_id: $scope.items[index].developer_id
+                },
+                index: index
+            };
+            $serverRequest.developers.pushDeveloperData( 'developers/delete', json );
+            $scope.addnew = false;
+        }, function () {
+            console.log('Modal promise rejected.');
+        });
+    };
+
+    $scope.editItem = function( item, index ){
+
+        item.index = index;
+        item.action = 'update';
+        ngDialog.openConfirm({
+            template: 'modalDialogAddEdit',
+            className: 'ngdialog-theme-default',
+            controller: 'addEditApplicationCtrl',
+            data: JSON.stringify( item )
+        }).then( function ( ) {
+
+        }, function () {
+            console.log('Modal promise rejected.');
+        });
+
+    };
+
+    $scope.updateConsumerKey = function ( index ) {
+
+        var json = {
+            type: 'updatekey',
+            data: {
+                developer_id: $scope.items[index].developer_id
+            },
+            index: index
+        };
+        $serverRequest.developers.pushDeveloperData( 'developers/key', json );
+
+    };
+
+    $scope.$on ( 'APPLICATION_DATA_UPDATED', function ( ) {
+        console.log("APPLICATION_DATA_UPDATED called - line 2330");
+        $scope.itemsPerPage = '10';
+        $scope.changePageIndex = 1;
+        $serverRequest.developers.pullDeveloperData( '/listdevelopers?itemsPerPage=10&pageNumber=1' );
+    });
+
+    $scope.assignSchool = function( item ){
+        ngDialog.open({
+            template: 'assignSchoolDialog',
+            controller: 'assignSchoolCtrl',
+            className: 'ngdialog-theme-default ngdialog-theme-custom ngdialog-import-log',
+            data: JSON.stringify( item )
+        });
+    };
+
+});
+
+proxyApp.controller( "addEditApplicationCtrl", function( $scope, ngDialog, $serverRequest, Flash) {
+
+    $scope.element = $scope.$parent.ngDialogData;
+    $scope.eventMode = '';
+    $scope.showSecret = true;
+    $scope.errorSecret = false;
+    $scope.errorEmail = false;
+    $scope.errorName = false;
+    $scope.errorMsgEmail = '';
+    $scope.consumerSecret = '';
+    $scope.errorMsgName = '';
+    $scope.errorMsgSecret = '';
+    $scope.showUpdateBtn = true;
+
+    if( $scope.element.action === 'update'){
+        $scope.eventMode = 'Edit Application';
+        $scope.application_name = $scope.element.application_name;
+        $scope.internal_url = $scope.element.internal_url;
+        $scope.showUpdateBtn = false;
+    } else if( $scope.element.action === 'save' ){
+        $scope.eventMode = 'Create New Application';
+        $scope.showUpdateBtn = true;
+    }
+
+    $scope.update = function (){
+        var isValid = true;
+        var json = {
+            type: 'update',
+            data: {
+                developer_id: $scope.element.developer_id,
+                developer_name: $scope.developer_name ? $scope.developer_name : '',
+                email: $scope.email ? $scope.email : '',
+                api_secret : $scope.consumerSecret ? $scope.consumerSecret : ''
+            },
+            index: $scope.element.index
+        };
+
+        isValid = $scope.checkFieldValidation( json );
+        if( isValid ){
+            $serverRequest.application.saveApplicationData( 'applications/edit', json );
+            $scope.$on ( 'DEVELOPER_DATA', function ( event, data ) {
+                if( data.status === true ){
+                    ngDialog.close();
+                    var message = 'Application updated successfully.';
+                    Flash.create('success', message, 'custom-class');
+                } else {
+                    $scope.errorMsgEmail = data.statusMessage;
+                    $scope.errorEmail = true;
+                    Flash.create('danger', data.message, 'custom-class');
+                }
+
+            });
+        }
+    };
+
+    $scope.save = function (){
+        var isValid = true;
+        var json = {
+            type: 'save',
+            data: {
+                application_name: $scope.application_name ? $scope.application_name : '',
+                internal_url: $scope.internal_url ? $scope.internal_url : ''
+            }
+        };
+
+        isValid = $scope.checkFieldValidation( json );
+        if( isValid ){
+            $serverRequest.application.saveApplicationData( 'applications/add', json );
+            $scope.$on ( 'APPLICATION_DATA_UPDATED', function ( event, data  ) {
+                console.log("APPLICATION_DATA_UPDATED called - line 2413");
+                if( data.status ){
+                    ngDialog.close();
+                    var message = 'Application created successfully.';
+                    Flash.create('success', message, 'custom-class');
+                } else {
+                    Flash.create('danger', data.message, 'custom-class');
+                }
+            });
+        }
+
+    };
+
+    $scope.keydown = function( type ){
+        if ( type === 'application_name' ){
+            $scope.errorName = false;
+            $scope.errorMsgName = '';
+        } else if( type === 'internal_url' ){
+            $scope.errorURL = false;
+            $scope.errorMsgURL = '';
+        }
+    };
+
+    $scope.checkFieldValidation = function ( json ){
+        var validInput = true;
+
+        if( typeof json.data.application_name !== "undefined") {
+            if (json.data.application_name.length < 1) {
+                validInput = false;
+                $scope.errorName = true;
+                $scope.errorMsgName = 'Please enter application name.'; //'Name should contain at least 6 characters.';
+            } else {
+                var filter = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ";
+                for ( var i = 0; i < json.data.application_name.length; i++) {
+                    var strChar = json.data.application_name.charAt(i);
+                    if (filter.indexOf(strChar) === -1) {
+                        validInput = false;
+                        $scope.errorName = true;
+                        $scope.errorMsgName = 'Please enter valid application name.';
+                    }
+                }
+            }
+        }
+        if( typeof json.data.internal_url !== "undefined"){
+            var filter = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+            if ( !filter.test( json.data.internal_url )) {
+                validInput = false;
+                $scope.errorURL = true;
+                $scope.errorMsgURL = 'Please enter valid internal URL.';
+            }
+        }
+        return validInput;
     };
 
 });

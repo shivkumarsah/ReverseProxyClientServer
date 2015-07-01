@@ -37,7 +37,12 @@ Route::group(array('before' => 'admin-auth'), function()
     
     Route::get('proxy/settings', array('as'=>'proxysettings', 'uses'=>'ProxyController@settings'));
     Route::post('proxy/settings/save', array('as'=>'proxysettingssave', 'uses'=>'ProxyController@settingsSave'));
+    
     Route::get('proxy/applications', array('as'=>'applications', 'uses'=>'ProxyController@applications'));
+    Route::any('proxy/applications/list', array('as'=>'developerslist', 'uses'=>'ProxyController@applicationList'));
+    Route::any('proxy/applications/add', array('as'=>'applicationsadd', 'uses'=>'ProxyController@applicationAdd'));
+    Route::any('proxy/applications/edit', array('as'=>'applicationsedit', 'uses'=>'ProxyController@applicationEdit'));
+    Route::any('proxy/applications/delete', array('as'=>'applicationsdelete', 'uses'=>'ProxyController@applicationDelete'));
     
     
     //Route::get('users/create',  'UsersController@create');

@@ -41,6 +41,53 @@ class ProxyController extends BaseController
     public function applications() {
         return View::make('proxy.application');
     }
+    
+    public function applicationAdd() {
+        $input = Input::all();
+        try {
+            $application = new Application();
+            
+            $application->tenant_id = Session::get('tenant_id');
+            $application->name = $input['application_name'];
+            $application->internal_url = $input['internal_url'];
+            $application->external_url = $input['internal_url'];
+            
+            $application->save();
+            $id = $application->id;
+            $output = array( 'status' => 1, 'id' => $id);
+        } catch (Exception $ex) {
+            $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured');
+        }
+        return Response::json($output);
+    }
+    
+    public function applicationEdit() {
+        $input = Input::all();
+        $id = $input['id']; 
+        try {
+            DB::table('application')->where('id', $id)->update([
+                'name'          => $input['application_name'],
+                'internal_url'  => $input['internal_url'],
+                'external_url'  => $input['internal_url']
+            ]);
+            $output = array( 'status' => 1, 'id' => $id);
+        } catch (Exception $ex) {
+            $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured');
+        }
+        return Response::json($output);
+    }
+    
+    public function applicationDelete() {
+        $proxy = $this->admin->getProxy();
+        return Response::json($proxy);
+    }
+    
+    public function applicationList() {
+        //$application = new Application();
+        $results = Application::all();
+        return Response::json($results);
+        //return (array) $application->getApplicationList(Input::all());
+    }
 
 	/**
 	 * Display a listing of the resource.
