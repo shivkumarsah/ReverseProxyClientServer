@@ -2202,7 +2202,6 @@ proxyApp.controller("applicationCtrl", function($scope, $http, Flash, $serverReq
 
     //Pull request to server for getting the developer data.
     $scope.getDeveloperData = function(){
-        //$serverRequest.application.pullApplicatinData( '/listapplication?itemsPerPage='+$scope.itemsPerPage+'&pageNumber='+$scope.changePageIndex );
         $serverRequest.application.pullApplicatinData( 'applications/list?itemsPerPage='+$scope.itemsPerPage+'&pageNumber='+$scope.changePageIndex );
     };
 
