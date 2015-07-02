@@ -9,7 +9,7 @@
 {{ HTML::style('css/ngDialog-theme-flat.css') }}
 {{ HTML::style('css/style.css') }}
 
-<link rel="shortcut icon" href="{{ asset('favicon.png') }}">
+<link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 <!-- Bootstrap -->
 
 

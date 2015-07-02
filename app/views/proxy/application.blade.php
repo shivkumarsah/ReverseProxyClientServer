@@ -108,7 +108,7 @@
 	<script type="text/ng-template" id="modalDialogId">
         <div class="ngdialog-message">
             <span style="text-align:center;"><h4>Would you like to delete application?</h4></span>
-            <span style="text-align:center;"class="wrapword"><h5>"[[developerName]]"</h5></span>
+            <span style="text-align:center;"class="wrapword"><h5>"[[applicationName]]"</h5></span>
         </div>
         <div class="ngdialog-buttons" style="padding-right: 138px;">
                 <button tabindex="5" type="button" class="btn btn-default btn-sm" ng-click="closeThisDialog()" style="float: right;margin-right: 5px;" >Cancel</button>

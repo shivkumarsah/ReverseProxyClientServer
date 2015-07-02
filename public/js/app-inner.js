@@ -2024,8 +2024,8 @@ proxyApp.service( '$serverRequest', function ( $rootScope, $http, $location ) {
 
 
 
-proxyApp.controller( "deleteDeveloperCtrl", function( $scope ) {
-    $scope.developerName = $scope.$parent.ngDialogData.developer_name;
+proxyApp.controller( "deleteApplicationCtrl", function( $scope ) {
+    $scope.applicationName = $scope.$parent.ngDialogData.name;
 });
 
 proxyApp.controller( "assignSchoolCtrl", function( $scope, ngDialog, $serverRequest ) {
@@ -2300,21 +2300,21 @@ proxyApp.controller("applicationCtrl", function($scope, $http, Flash, $serverReq
 
     $scope.removeItem = function( item, index ){
 
-        $scope.developername = $scope.items[index].developer_name;
+        $scope.applicationName = $scope.items[index].name;
         ngDialog.openConfirm({
             template: 'modalDialogId',
             className: 'ngdialog-theme-default',
-            controller: 'deleteDeveloperCtrl',
+            controller: 'deleteApplicationCtrl',
             data: JSON.stringify( item )
         }).then( function ( ) {
             var json = {
                 type: 'remove',
                 data: {
-                    developer_id: $scope.items[index].developer_id
+                    id: $scope.items[index].id
                 },
                 index: index
             };
-            $serverRequest.developers.pushDeveloperData( 'developers/delete', json );
+            $serverRequest.application.saveApplicationData( 'applications/delete', json );
             $scope.addnew = false;
         }, function () {
             console.log('Modal promise rejected.');
@@ -2355,7 +2355,7 @@ proxyApp.controller("applicationCtrl", function($scope, $http, Flash, $serverReq
         console.log("APPLICATION_DATA_UPDATED called - line 2330");
         $scope.itemsPerPage = '10';
         $scope.changePageIndex = 1;
-        $serverRequest.developers.pullDeveloperData( '/listdevelopers?itemsPerPage=10&pageNumber=1' );
+        $scope.getDeveloperData();
     });
 
     $scope.assignSchool = function( item ){
@@ -2385,7 +2385,7 @@ proxyApp.controller( "addEditApplicationCtrl", function( $scope, ngDialog, $serv
 
     if( $scope.element.action === 'update'){
         $scope.eventMode = 'Edit Application';
-        $scope.application_name = $scope.element.application_name;
+        $scope.application_name = $scope.element.name;
         $scope.internal_url = $scope.element.internal_url;
         $scope.showUpdateBtn = false;
     } else if( $scope.element.action === 'save' ){
@@ -2398,10 +2398,9 @@ proxyApp.controller( "addEditApplicationCtrl", function( $scope, ngDialog, $serv
         var json = {
             type: 'update',
             data: {
-                developer_id: $scope.element.developer_id,
-                developer_name: $scope.developer_name ? $scope.developer_name : '',
-                email: $scope.email ? $scope.email : '',
-                api_secret : $scope.consumerSecret ? $scope.consumerSecret : ''
+                id: $scope.element.id,
+                application_name: $scope.application_name ? $scope.application_name : '',
+                internal_url: $scope.internal_url ? $scope.internal_url : ''
             },
             index: $scope.element.index
         };
@@ -2409,14 +2408,12 @@ proxyApp.controller( "addEditApplicationCtrl", function( $scope, ngDialog, $serv
         isValid = $scope.checkFieldValidation( json );
         if( isValid ){
             $serverRequest.application.saveApplicationData( 'applications/edit', json );
-            $scope.$on ( 'DEVELOPER_DATA', function ( event, data ) {
-                if( data.status === true ){
+            $scope.$on ( 'APPLICATION_DATA_UPDATED', function ( event, data ) {
+                if( data.status ){
                     ngDialog.close();
                     var message = 'Application updated successfully.';
                     Flash.create('success', message, 'custom-class');
                 } else {
-                    $scope.errorMsgEmail = data.statusMessage;
-                    $scope.errorEmail = true;
                     Flash.create('danger', data.message, 'custom-class');
                 }
 

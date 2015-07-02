@@ -65,21 +65,29 @@ class ProxyController extends BaseController
         $input = Input::all();
         $id = $input['id']; 
         try {
-            DB::table('application')->where('id', $id)->update([
+            DB::table('applications')->where('id', $id)->update([
                 'name'          => $input['application_name'],
                 'internal_url'  => $input['internal_url'],
                 'external_url'  => $input['internal_url']
             ]);
             $output = array( 'status' => 1, 'id' => $id);
         } catch (Exception $ex) {
-            $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured');
+            $output = array( 'status' => 0, 'id' => 0, 'message'=> $ex->getMessage());
         }
         return Response::json($output);
     }
     
     public function applicationDelete() {
-        $proxy = $this->admin->getProxy();
-        return Response::json($proxy);
+        $input = Input::all();
+        $id = $input['id'];
+        try {
+            $application = Application::find($id);
+            $status = $application->delete();
+            $output = array( 'status' => $status, 'id' => $id);
+        } catch (Exception $ex) {
+            $output = array( 'status' => 0, 'id' => 0, 'message'=> $ex->getMessage());
+        }
+        return Response::json($output);
     }
     
     public function applicationList() {

@@ -3,7 +3,7 @@
 {{ HTML::style('css/awesome-bootstrap-checkbox.css') }}
 {{ HTML::style('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css') }}
 {{ HTML::style('//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900') }}
-<link rel="shortcut icon" href="{{ asset('favicon.png') }}">
+<link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 <!-- Bootstrap -->
 
 
