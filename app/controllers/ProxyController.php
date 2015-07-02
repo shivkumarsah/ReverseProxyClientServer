@@ -56,7 +56,7 @@ class ProxyController extends BaseController
             $id = $application->id;
             $output = array( 'status' => 1, 'id' => $id);
         } catch (Exception $ex) {
-            $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured');
+            $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
         }
         return Response::json($output);
     }
@@ -72,7 +72,7 @@ class ProxyController extends BaseController
             ]);
             $output = array( 'status' => 1, 'id' => $id);
         } catch (Exception $ex) {
-            $output = array( 'status' => 0, 'id' => 0, 'message'=> $ex->getMessage());
+            $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
         }
         return Response::json($output);
     }
@@ -85,7 +85,7 @@ class ProxyController extends BaseController
             $status = $application->delete();
             $output = array( 'status' => $status, 'id' => $id);
         } catch (Exception $ex) {
-            $output = array( 'status' => 0, 'id' => 0, 'message'=> $ex->getMessage());
+            $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
         }
         return Response::json($output);
     }
