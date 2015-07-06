@@ -68,20 +68,22 @@ class ProxyController extends BaseController
                 $application->save();
                 $id = $application->id;
             }
-            $admin_api_key = "test_api_key";
-            
+            $admin          = $this->admin->getProxy();
+            $admin_api_key  = $admin['api_key'];
             
             $proxy_base_url     = Config::get('proxy.base_url');
             $proxy_listen_port  = Config::get('proxy.listen_port');
             $proxy_config_path  = Config::get('proxy.config_path');
             $proxy_service_path = Config::get('proxy.nginx_service_path');
             
-            $external_url   = $id.".".$proxy_base_url;
-            $internal_url   = $input['internal_url'];
             $request_uri    = 'gwstoken='.$admin_api_key;
+            $external_ip    = $id.".".$proxy_base_url;
+            $external_url   = $id.".".$proxy_base_url.'?'.$request_uri;
+            $internal_url   = $input['internal_url'];
+            
             
             $strnginx="";
-            $strnginx.='server {listen      '.$proxy_listen_port.'; server_name  '.$external_url.';';
+            $strnginx.='server {listen      '.$proxy_listen_port.'; server_name  '.$external_ip.';';
             $strnginx.='include /etc/nginx/default.d/*.conf;';
             $strnginx.='location / {root   /usr/share/nginx/html;index index.php  index.html index.htm;';
             $strnginx.='auth_basic "closed site";';
@@ -89,7 +91,7 @@ class ProxyController extends BaseController
             $strnginx.='proxy_pass   '.$internal_url.';';
             $strnginx.='}}';
             
-            $filename=$proxy_config_path.'/'.$external_url.'.conf';
+            $filename=$proxy_config_path.'/'.$external_ip.'.conf';
             $fp = fopen($filename,"w");
             fwrite($fp, $strnginx);
             fclose($fp);
@@ -106,7 +108,6 @@ class ProxyController extends BaseController
             $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
         }
         return $output;
-        
     }
     
     
@@ -157,6 +158,12 @@ class ProxyController extends BaseController
         try {
             $application = Application::find($id);
             $status = $application->delete();
+            
+            $config_file        = $id.".".Config::get('proxy.base_url').'.conf';
+            $config_file_path   = Config::get('proxy.config_path').'/'.$config_file;
+            
+            unlink($config_file_path);
+            
             $output = array( 'status' => $status, 'id' => $id);
         } catch (Exception $ex) {
             $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());

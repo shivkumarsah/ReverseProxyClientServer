@@ -1951,7 +1951,7 @@ proxyApp.service( '$serverRequest', function ( $rootScope, $http, $location ) {
                         $serverRequest.developers.developerList.LocalStorage.items[json.index].email = json.data.email;
                         $serverRequest.developers.developerList.LocalStorage.items[json.index].api_secret = json.data.api_secret;
                     }
-                    $rootScope.$broadcast ( 'APPLICATION_DATA', data );
+                    $rootScope.$broadcast ( 'APPLICATION_DATA_UPDATED', data );
                 } else if ( json.type === 'updatekey' ){
                     $serverRequest.developers.developerList.LocalStorage.items[json.index].api_key = data.api_key;
                     $rootScope.$broadcast ( 'APPLICATION_DATA' );
@@ -2264,10 +2264,6 @@ proxyApp.controller("applicationCtrl", function($scope, $http, Flash, $serverReq
         });
     };
 
-    $scope.apiTokens = function( item ){
-        window.location = '/developers/apitokens/'+item.developer_id;
-    };
-
     $element.bind("keydown keypress", function( ) {
         $scope.inValidPage = false;
         $scope.errorMsgDev = '';
@@ -2357,16 +2353,6 @@ proxyApp.controller("applicationCtrl", function($scope, $http, Flash, $serverReq
         $scope.changePageIndex = 1;
         $scope.getDeveloperData();
     });
-
-    $scope.assignSchool = function( item ){
-        ngDialog.open({
-            template: 'assignSchoolDialog',
-            controller: 'assignSchoolCtrl',
-            className: 'ngdialog-theme-default ngdialog-theme-custom ngdialog-import-log',
-            data: JSON.stringify( item )
-        });
-    };
-
 });
 
 proxyApp.controller( "addEditApplicationCtrl", function( $scope, ngDialog, $serverRequest, Flash) {
@@ -2409,6 +2395,8 @@ proxyApp.controller( "addEditApplicationCtrl", function( $scope, ngDialog, $serv
         if( isValid ){
             $serverRequest.application.saveApplicationData( 'applications/edit', json );
             $scope.$on ( 'APPLICATION_DATA_UPDATED', function ( event, data ) {
+                console.log("APPLICATION_DATA_UPDATED called - line 2408");
+                console.log("data = ", data);
                 if( data.status ){
                     ngDialog.close();
                     var message = 'Application updated successfully.';
@@ -2435,7 +2423,7 @@ proxyApp.controller( "addEditApplicationCtrl", function( $scope, ngDialog, $serv
         if( isValid ){
             $serverRequest.application.saveApplicationData( 'applications/add', json );
             $scope.$on ( 'APPLICATION_DATA_UPDATED', function ( event, data  ) {
-                console.log("APPLICATION_DATA_UPDATED called - line 2413");
+                console.log("APPLICATION_DATA_UPDATED called - line 2435");
                 if( data.status ){
                     ngDialog.close();
                     var message = 'Application created successfully.';

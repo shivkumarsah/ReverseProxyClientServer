@@ -72,9 +72,10 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="item in items">
-					<td class="wrapword"><span
-						style="cursor: pointer; text-decoration: underline;"
-						ng-click="apiTokens( item )">[[item.name]]</span>
+					<td class="wrapword">
+                        <span style="cursor: pointer; text-decoration: underline;">
+                            <a href="http://[[item.external_url]]" target="_new">[[item.name]]</a>
+                        </span>
 					<td>
 						<div class="wrapword"
 							style="width: 80%; float: left; overflow-wrap: white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word;">
