@@ -43,35 +43,78 @@ class ProxyController extends BaseController
     }
     
     public function proxySetup($input=array()) {
-        $application = DB::table('applications')->orderBy('id', 'desc')->first();
-        $last_id = (int)$application->id + 1; 
-        
-        asd($last_id);
-        
-        $rand=$nextId.".classlink.icreondemoserver.com";
-        $internal_ip = $input['internal_url'];
-        
-        $strnginx="";
-        $strnginx.='server {listen      443; server_name  '.$rand.';';
-        $strnginx.='include /etc/nginx/default.d/*.conf;';
-        $strnginx.='location / {root   /usr/share/nginx/html;index index.php  index.html index.htm;';
-        $strnginx.='auth_basic "closed site";';
-        $strnginx.='auth_basic_user_file  /etc/nginx/conf.d/classlink/.htpasswd;';
-        $strnginx.='proxy_pass   '.$internal_ip.';';
-        $strnginx.='}}';
-        
-        $filename='/home/classlink/'.$rand.'.conf';
-        $fp = fopen($filename,"w");
-        fwrite($fp, $strnginx);
-        fclose($fp);
-        exec("/var/www/html/php_root");
+        try{
+            if(isset($input['id']) && !empty($input['id'])) {
+                $id = $input['id'];
+                
+                DB::table('applications')->where('id', $id)->update([
+                    'name'          => $input['application_name'],
+                    'internal_url'  => $input['internal_url'],
+                    //'external_url'  => $input['internal_url'],
+                    //'request_uri'   => $input['internal_url']
+                ]);
+            } else {
+                //$application = DB::table('applications')->orderBy('id', 'desc')->first();
+                //$next_id = (int)$application->id + 1;
+                
+                $application = new Application();
+                
+                $application->tenant_id     = Session::get('tenant_id');
+                $application->name          = $input['application_name'];
+                $application->internal_url  = $input['internal_url'];
+                //$application->external_url  = $input['internal_url'];
+                //$application->request_uri   = $request_uri;
+                
+                $application->save();
+                $id = $application->id;
+            }
+            $admin_api_key = "test_api_key";
+            
+            
+            $proxy_base_url     = Config::get('proxy.base_url');
+            $proxy_listen_port  = Config::get('proxy.listen_port');
+            $proxy_config_path  = Config::get('proxy.config_path');
+            $proxy_service_path = Config::get('proxy.nginx_service_path');
+            
+            $external_url   = $id.".".$proxy_base_url;
+            $internal_url   = $input['internal_url'];
+            $request_uri    = 'gwstoken='.$admin_api_key;
+            
+            $strnginx="";
+            $strnginx.='server {listen      '.$proxy_listen_port.'; server_name  '.$external_url.';';
+            $strnginx.='include /etc/nginx/default.d/*.conf;';
+            $strnginx.='location / {root   /usr/share/nginx/html;index index.php  index.html index.htm;';
+            $strnginx.='auth_basic "closed site";';
+            $strnginx.='auth_basic_user_file  /etc/nginx/conf.d/classlink/.htpasswd;';
+            $strnginx.='proxy_pass   '.$internal_url.';';
+            $strnginx.='}}';
+            
+            $filename=$proxy_config_path.'/'.$external_url.'.conf';
+            $fp = fopen($filename,"w");
+            fwrite($fp, $strnginx);
+            fclose($fp);
+            
+            // Update External URL in application table
+            DB::table('applications')->where('id', $id)->update([
+                'external_url'  => $external_url,
+                'request_uri'   => $request_uri
+            ]);
+            $output = array( 'status' => 1, 'id' => $id);
+            
+            exec($proxy_service_path);
+        } catch (Exception $ex) {
+            $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
+        }
+        return $output;
         
     }
     
     
     public function applicationAdd() {
-        $input = Input::all();
         try {
+            $input = Input::all();
+            $output = $this->proxySetup($input);
+            /*
             $application = new Application();
             
             $application->tenant_id = Session::get('tenant_id');
@@ -81,7 +124,7 @@ class ProxyController extends BaseController
             
             $application->save();
             $id = $application->id;
-            $output = array( 'status' => 1, 'id' => $id);
+            $output = array( 'status' => 1, 'id' => $id);*/
         } catch (Exception $ex) {
             $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
         }
@@ -89,19 +132,19 @@ class ProxyController extends BaseController
     }
     
     public function applicationEdit() {
-        $input = Input::all();
-        
-        $this->proxySetup($input);
-        
-        
-        $id = $input['id']; 
+         
         try {
+            $input = Input::all();
+            $output = $this->proxySetup($input);
+            /*
+            $id = $input['id'];
             DB::table('applications')->where('id', $id)->update([
                 'name'          => $input['application_name'],
                 'internal_url'  => $input['internal_url'],
                 'external_url'  => $input['internal_url']
             ]);
             $output = array( 'status' => 1, 'id' => $id);
+            */
         } catch (Exception $ex) {
             $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
         }
