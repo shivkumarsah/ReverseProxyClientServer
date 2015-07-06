@@ -51,13 +51,24 @@ return array(
 			'database' => __DIR__.'/../database/production.sqlite',
 			'prefix'   => '',
 		),
+	    
+	    'mysql' => array(
+	        'driver'    => 'mysql',
+	        'host'      => 'localhost',
+	        'database'  => 'betaproxyadmin',
+	        'username'  => 'root',
+	        'password'  => 'root',
+	        'charset'   => 'utf8',
+	        'collation' => 'utf8_unicode_ci',
+	        'prefix'    => ''
+	    ),
 
-		'mysql' => array(
+		'mysql_SERVER' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
+			'host'      => '23.253.33.146',
 			'database'  => 'betaproxyadmin',
 			'username'  => 'root',
-			'password'  => 'root',
+			'password'  => 'OeR786Ty$*@556',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => ''

@@ -42,6 +42,33 @@ class ProxyController extends BaseController
         return View::make('proxy.application');
     }
     
+    public function proxySetup($input=array()) {
+        $application = DB::table('applications')->orderBy('id', 'desc')->first();
+        $last_id = (int)$application->id + 1; 
+        
+        asd($last_id);
+        
+        $rand=$nextId.".classlink.icreondemoserver.com";
+        $internal_ip = $input['internal_url'];
+        
+        $strnginx="";
+        $strnginx.='server {listen      443; server_name  '.$rand.';';
+        $strnginx.='include /etc/nginx/default.d/*.conf;';
+        $strnginx.='location / {root   /usr/share/nginx/html;index index.php  index.html index.htm;';
+        $strnginx.='auth_basic "closed site";';
+        $strnginx.='auth_basic_user_file  /etc/nginx/conf.d/classlink/.htpasswd;';
+        $strnginx.='proxy_pass   '.$internal_ip.';';
+        $strnginx.='}}';
+        
+        $filename='/home/classlink/'.$rand.'.conf';
+        $fp = fopen($filename,"w");
+        fwrite($fp, $strnginx);
+        fclose($fp);
+        exec("/var/www/html/php_root");
+        
+    }
+    
+    
     public function applicationAdd() {
         $input = Input::all();
         try {
@@ -63,6 +90,10 @@ class ProxyController extends BaseController
     
     public function applicationEdit() {
         $input = Input::all();
+        
+        $this->proxySetup($input);
+        
+        
         $id = $input['id']; 
         try {
             DB::table('applications')->where('id', $id)->update([
