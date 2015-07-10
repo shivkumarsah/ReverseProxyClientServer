@@ -84,10 +84,10 @@ class ProxyController extends BaseController
             
             $strnginx="";
             $strnginx.='server {listen      '.$proxy_listen_port.'; server_name  '.$external_ip.';';
-            $strnginx.='include /etc/nginx/default.d/*.conf;';
+            //$strnginx.='include /etc/nginx/default.d/*.conf;';
             $strnginx.='location / {root   /usr/share/nginx/html;index index.php  index.html index.htm;';
             $strnginx.='auth_basic "closed site";';
-            $strnginx.='auth_basic_user_file  /etc/nginx/conf.d/classlink/.htpasswd;';
+            $strnginx.='auth_basic_user_file '.$proxy_config_path.'/.htpasswd;';
             $strnginx.='proxy_pass   '.$internal_url.';';
             $strnginx.='}}';
             
