@@ -52,7 +52,7 @@
 			</span>
 		</div-->
 	</div>
-	<div id="viewPanel" class="table-responsive">
+	<div id="viewPanel" class="table-responsive" style="height:auto;">
 		<table class="table table-striped">
 			<thead>
 				<tr>

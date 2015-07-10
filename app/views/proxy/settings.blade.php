@@ -18,15 +18,15 @@
 						<td>Reverse Proxy Address</td>
 						<td><input size="60%" name="proxy_url" id="proxy_url"
 							class="input-xxlarge input-box" type="text" data-ng-model="settingData.proxy_url"
-							ng-init="settingData.proxy_url='<?php echo $result['proxy_url'];?>'" placeholder="Please enter reverse proxy address" ng-required="1" />
+							ng-init="settingData.proxy_url='<?php echo @$result['proxy_url'];?>'" placeholder="Please enter reverse proxy address" ng-required="1" />
 							<div ng-show="settingForm.proxy_url.$error.required && showErrorMsg" style="font-size: 12px; ! important; float: left; color: red;">Please enter reverse proxy address.</div>
                         </td>
 					</tr>
 					<tr>
 						<td>API Key</td>
 						<td><input size="60%" name="api_key" id="api_key" type="text"  
-							data-ng-model="settingData.api_key" ng-init="settingData.api_key='<?php echo $result['api_key'];?>'" placeholder="Please enter API key" 
-							class="input-xxlarge input-box" readonly />
+							data-ng-model="settingData.api_key" ng-init="settingData.api_key='<?php echo @$result['api_key'];?>'" placeholder="Please enter API key" 
+							class="input-xxlarge input-box" />
 						</td>
 					</tr>
 					<tr>

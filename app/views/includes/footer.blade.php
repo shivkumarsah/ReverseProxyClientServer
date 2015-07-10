@@ -10,9 +10,11 @@
 </script>
 <script>
     $( "#loginForm" ).submit(function( event ) {
-        var requrl = "https://launchpad.classlink.com/oauth2/auth/?clientid=c1435056532565575a2ef69eaf3a8e637bab5b4bea28bd&scopes=profile&redirecturl=http%3A%2F%2Fbetaproxyadmin.oneroster.com%2Fusers%2Flunchpadtoken";
-        //var requrl = "https://launchpad.classlink.com/oauth2/auth/?clientid=c1435056532565575a2ef69eaf3a8e637bab5b4bea28bd&scopes=profile&redirecturl=http://betaproxyadmin.oneroster.com/users/lunchpadtoken";
-        var childWindow = window.open(requrl, "Launch Paid Login","scrollbars=yes,left=500, width=600, height=600");
+        var requrl = "https://launchpad.classlink.com/oauth2/auth/?clientid=c1435056532565575a2ef69eaf3a8e637bab5b4bea28bd&scopes=profile&redirecturl=http%3A%2F%2Fclasslinkproxy.icreondemoserver.com%3A443%2Fusers%2Flunchpadtoken";
+	//var requrl = "https://launchpad.classlink.com/oauth2/auth/?clientid=c1435056532565575a2ef69eaf3a8e637bab5b4bea28bd&scopes=profile&redirecturl=users%2Flunchpadtoken";
+	//var requrl = "https://launchpad.classlink.com/oauth2/auth/?clientid=c1435056532565575a2ef69eaf3a8e637bab5b4bea28bd&scopes=profile&redirecturl=http://classlinkproxy.icreondemoserver.com:443/users/lunchpadtoken";
+        
+	var childWindow = window.open(requrl, "Launch Paid Login","scrollbars=yes,left=500, width=600, height=600");
         return false;
     });
     function getChildValue(status, access_token)  {
