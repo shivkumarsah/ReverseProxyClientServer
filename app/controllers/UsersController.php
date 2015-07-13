@@ -205,7 +205,7 @@ class UsersController extends BaseController {
                         Session::put(Session::getId(), $token);
                         
                         if (!empty($response['isProxyExist'])) {
-                            return Redirect::intended(route('dashboard'));
+                            return Redirect::intended(route('applications'));
                         } else {
                             return Redirect::intended(route('proxysettings'));
                         }

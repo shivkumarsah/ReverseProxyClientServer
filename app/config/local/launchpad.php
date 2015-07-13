@@ -5,7 +5,7 @@ return array(
     'access_token_url'  => 'https://launchpad.classlink.com/oauth2/token',
     'launcpad_url'      => 'https://launchpad.classlink.com/oauth2/auth/?',
     'scopes'            => 'profile',
-    'redirecturl'       => 'http://classlinkproxy.icreondemoserver.com:443/users/lunchpadtoken',
+    'redirecturl'       => 'http://betaproxyadmin.oneroster.com/users/lunchpadtoken',
     'local_access_token'=> '2a4119b84a4a9ec6d5aa47c14243563995',
     'ignore_oauth2'     => '0' ,
     'user_password'     => 'oroster',
