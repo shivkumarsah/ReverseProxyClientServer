@@ -76,7 +76,7 @@ class ProxyController extends BaseController
             $proxy_config_path  = Config::get('proxy.config_path');
             $proxy_service_path = Config::get('proxy.nginx_service_path');
             
-            $request_uri    = 'gwstoken='.$admin_api_key;
+            $request_uri    = $admin_api_key; //'gwstoken='.$admin_api_key;
             $external_ip    = $id.".".$proxy_base_url;
             $external_url   = $id.".".$proxy_base_url.':443/?'.$request_uri;
             $internal_url   = $input['internal_url'];

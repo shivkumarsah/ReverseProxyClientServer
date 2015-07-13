@@ -12,7 +12,6 @@
         return false;
     });
     function getChildValue(status, access_token)  {
-        //console.log(status+"--"+access_token)
         if( status == "0" ) {
             $('.login-submit').before($('<div class="alert alert-error alert-danger">'+access_token+'</div>'));
         } else {
