@@ -44,6 +44,7 @@ class ProxyController extends BaseController
     
     public function proxySetup($input=array()) {
         try{
+            $tenant_id = Session::get('tenant_id');
             if(isset($input['id']) && !empty($input['id'])) {
                 $id = $input['id'];
                 
@@ -59,7 +60,7 @@ class ProxyController extends BaseController
                 
                 $application = new Application();
                 
-                $application->tenant_id     = Session::get('tenant_id');
+                $application->tenant_id     = $tenant_id;
                 $application->name          = $input['application_name'];
                 $application->internal_url  = $input['internal_url'];
                 //$application->external_url  = $input['internal_url'];
@@ -100,7 +101,7 @@ class ProxyController extends BaseController
             $strnginx.='proxy_pass   '.$internal_url.';';
             $strnginx.='}';
             $strnginx.='location = /check {';
-            $strnginx.='proxy_pass '.$proxy_auth_url.';';
+            $strnginx.='proxy_pass '.$proxy_auth_url.'?tenant_id='.$tenant_id.';';
             $strnginx.='proxy_pass_request_body off;';
             $strnginx.='proxy_set_header Content-length "";';
             $strnginx.='proxy_set_header X-Original-URI $request_uri;';
