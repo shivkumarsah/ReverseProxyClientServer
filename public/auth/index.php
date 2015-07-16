@@ -1,5 +1,5 @@
 <?php
-ini_set("display_errors", 1);
+ini_set("display_errors", 0);
 
 $redis_ttl = 60*60*24;
 
@@ -11,8 +11,8 @@ $redis_ttl = 60*60*24;
 // exit;
 
 //Connecting to Redis server on localhost
-$redis = new Redis();
-$redis->connect('127.0.0.1', 6379);
+////$redis = new Redis();
+////$redis->connect('127.0.0.1', 6379);
 //echo "Connection to server sucessfully";
 
 
@@ -25,7 +25,7 @@ $params = parse_url($query_params);
 parse_str($params['query'], $paramArr);
 
 $token = $paramArr['gwstoken'];
-error_log(date("Y-m-d H:i:s") . " - Request called from => $token \n",3,"/var/www/html/auth/log.txt");
+error_log(date("Y-m-d H:i:s") . " - Request called from => $token \n",3,"log.txt");
 
 if (!empty($token)) {
     $apiurl = "https://api.classlink.com/token/$token";
@@ -42,7 +42,7 @@ if (!empty($token)) {
         curl_close($ch);
         $outputArr = json_decode($output, true);
         if($outputArr['status']) {
-        	$redis->setex($token, $redis_ttl, 1);
+        	///$redis->setex($token, $redis_ttl, 1);
         	header('HTTP/1.0 200 OK');
         	echo "OK";
         	exit;

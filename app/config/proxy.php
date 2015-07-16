@@ -5,5 +5,5 @@ return array(
     'listen_port'       => '443',
     'config_path'       =>'/var/www/html/classlinkproxy/configs',
     'nginx_service_path'=>'/var/www/html/php_root',
-    'auth_url'          => 'http://localhost:80/auth/'
+    'auth_url'          => 'http://localhost:9001/'
 );
