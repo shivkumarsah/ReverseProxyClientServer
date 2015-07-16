@@ -1,5 +1,5 @@
 <?php
-ini_set("display_errors", 0);
+ini_set("display_errors", 1);
 
 $redis_ttl = 60*60*24;
 
@@ -11,8 +11,8 @@ $redis_ttl = 60*60*24;
 // exit;
 
 //Connecting to Redis server on localhost
-////$redis = new Redis();
-////$redis->connect('127.0.0.1', 6379);
+$redis = new Redis();
+$redis->connect('127.0.0.1', 6379);
 
 //------- Get Client Information ---------------------//
 if(isset($_SERVER['HTTP_X_ORIGINAL_URI'])) {
@@ -31,6 +31,7 @@ parse_str($request_params['query'], $requestArr);
 $application_tenant_id = $requestArr['tenant_id']; 
 
 error_log(date("Y-m-d H:i:s") . " - Request called Application Tenant-ID = $application_tenant_id, User Tenant-ID = $tenant_id, gwstoken = $token \n",3,"/var/www/html/auth/log.txt");
+
 
 if (!empty($token)) {
     //$apiurl = "https://api.classlink.com/token/$token";
@@ -58,9 +59,5 @@ if (!empty($token)) {
 header('HTTP/1.0 403 Forbidden');
 echo "Forbidden";
 exit;
-
-
-
-
 
 ?>
