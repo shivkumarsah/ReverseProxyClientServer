@@ -52,18 +52,7 @@ return array(
 			'prefix'   => '',
 		),
 	    
-	    'mysql_LOCAL' => array(
-	        'driver'    => 'mysql',
-	        'host'      => 'localhost',
-	        'database'  => 'betaproxyadmin',
-	        'username'  => 'root',
-	        'password'  => 'root',
-	        'charset'   => 'utf8',
-	        'collation' => 'utf8_unicode_ci',
-	        'prefix'    => ''
-	    ),
-
-		'mysql' => array(
+	    'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'database'  => 'classlinkproxy',

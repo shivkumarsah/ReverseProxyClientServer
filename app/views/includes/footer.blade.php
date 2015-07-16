@@ -8,7 +8,7 @@
     	$("#loading").hide();
     });
     $( "#loginForm" ).submit(function( event ) {
-		var childWindow = window.open("<?=$launchpadurl;?>", "Launch Paid Login","scrollbars=yes,left=500, width=600, height=600");
+		var childWindow = window.open("<?php echo @$launchpadurl;?>", "Launch Paid Login","scrollbars=yes,left=500, width=600, height=600");
         return false;
     });
     function getChildValue(status, access_token)  {

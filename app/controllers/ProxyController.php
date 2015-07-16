@@ -75,20 +75,35 @@ class ProxyController extends BaseController
             $proxy_listen_port  = Config::get('proxy.listen_port');
             $proxy_config_path  = Config::get('proxy.config_path');
             $proxy_service_path = Config::get('proxy.nginx_service_path');
+            $proxy_auth_url     = Config::get('proxy.auth_url');
             
-            $request_uri    = $admin_api_key; //'gwstoken='.$admin_api_key;
+            $request_uri    = 'gwstoken='; //$admin_api_key;
             $external_ip    = $id.".".$proxy_base_url;
-            $external_url   = $id.".".$proxy_base_url.':443/?'.$request_uri;
+            $external_url   = $id.".".$proxy_base_url.':'.$proxy_listen_port.'/?'.$request_uri;
             $internal_url   = $input['internal_url'];
             
-            
-            $strnginx="";
+            /*$strnginx="";
             $strnginx.='server {listen      '.$proxy_listen_port.'; server_name  '.$external_ip.';';
             //$strnginx.='include /etc/nginx/default.d/*.conf;';
             $strnginx.='location / {root   /usr/share/nginx/html;index index.php  index.html index.htm;';
             $strnginx.='auth_basic "closed site";';
             $strnginx.='auth_basic_user_file '.$proxy_config_path.'/.htpasswd;';
             $strnginx.='proxy_pass   '.$internal_url.';';
+            $strnginx.='}}';*/
+            
+            $strnginx="";
+            $strnginx.='server {listen '.$proxy_listen_port.'; server_name '.$external_ip.';';
+            $strnginx.='location / {';
+            $strnginx.='auth_request /check;';
+            $strnginx.='root   /usr/share/nginx/html;';
+            $strnginx.='index index.php  index.html index.htm;';
+            $strnginx.='proxy_pass   '.$internal_url.';';
+            $strnginx.='}';
+            $strnginx.='location = /check {';
+            $strnginx.='proxy_pass '.$proxy_auth_url.';';
+            $strnginx.='proxy_pass_request_body off;';
+            $strnginx.='proxy_set_header Content-length "";';
+            $strnginx.='proxy_set_header X-Original-URI $request_uri;';
             $strnginx.='}}';
             
             $filename=$proxy_config_path.'/'.$external_ip.'.conf';
@@ -172,10 +187,9 @@ class ProxyController extends BaseController
     }
     
     public function applicationList() {
-        //$application = new Application();
-        $results = Application::all();
+        $tenant_id = Session::get('tenant_id');
+        $results = Application::where('tenant_id', '=', $tenant_id)->get();
         return Response::json($results);
-        //return (array) $application->getApplicationList(Input::all());
     }
 
 	/**
