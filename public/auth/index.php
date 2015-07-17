@@ -11,8 +11,8 @@ $redis_ttl = 60*60*24;
 // exit;
 
 //Connecting to Redis server on localhost
-$redis = new Redis();
-$redis->connect('127.0.0.1', 6379);
+//$redis = new Redis();
+//$redis->connect('127.0.0.1', 6379);
 
 //------- Get Client Information ---------------------//
 if(isset($_SERVER['HTTP_X_ORIGINAL_URI'])) {
@@ -30,7 +30,7 @@ $request_params = parse_url($request_params);
 parse_str($request_params['query'], $requestArr);
 $application_tenant_id = $requestArr['tenant_id']; 
 
-error_log(date("Y-m-d H:i:s") . " - Request called Application Tenant-ID = $application_tenant_id, User Tenant-ID = $tenant_id, gwstoken = $token \n",3,"/var/www/html/auth/log.txt");
+error_log(date("Y-m-d H:i:s") . " - Request called Application Tenant-ID = $application_tenant_id, User Tenant-ID = $tenant_id, gwstoken = $token \n",3,"log.txt");
 
 
 if (!empty($token)) {
@@ -49,7 +49,7 @@ if (!empty($token)) {
         curl_close($ch);
         $outputArr = json_decode($output, true);
         if($outputArr['status'] && $outputArr['response']['tenantid']==$application_tenant_id) {
-            $redis->setex($token, $redis_ttl, 1);
+            //$redis->setex($token, $redis_ttl, 1);
             header('HTTP/1.0 200 OK');
             echo "OK";
             exit;
