@@ -74,8 +74,7 @@
 				<tr ng-repeat="item in items">
 					<td class="wrapword">
                         <span style="cursor: pointer; text-decoration: underline;">
-                            <!--a href="http://[[item.external_url]]" target="_new">[[item.name]]</a-->
-			   [[item.name]]
+                            <a href="http://[[item.external_url]]" target="_new">[[item.name]]</a>
                         </span>
 					<td>
 						<div class="wrapword"
