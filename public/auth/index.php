@@ -53,6 +53,7 @@ if (!empty($token)) {
     if (!empty($output)) {
         curl_close($ch);
         $outputArr = json_decode($output, true);
+        error_log(date("Y-m-d H:i:s") . " - outputArr => \n".print_r($outputArr,true),3,"log.txt");
         if($outputArr['status'] && $outputArr['response']['tenantid']==$application_tenant_id) {
             //$redis->setex($token, $redis_ttl, 1);
             $_SESSION["token"] = $token;
