@@ -100,6 +100,8 @@ class ProxyController extends BaseController
             $strnginx.='index index.php  index.html index.htm;';
             $strnginx.='proxy_pass   '.$internal_url.';';
             $strnginx.='}';
+            //$strnginx.='error_page 403 = @error403;';
+            //$strnginx.='location @error403 { return 404; }';
             $strnginx.='location = /check {';
             $strnginx.='proxy_pass '.$proxy_auth_url.'?tenant_id='.$tenant_id.';';
             $strnginx.='proxy_pass_request_body off;';

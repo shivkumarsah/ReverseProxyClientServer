@@ -1,22 +1,23 @@
 <?php
 ini_set("display_errors", 1);
+session_start();
 
 $redis_ttl = 60*60*24;
 
-// error_log('\n\n$_SERVER => '.print_r($_SERVER,true)."==\n\n",3,"/var/www/html/auth/log.txt");
-// header("Auth-Status: OK");
-// // header('HTTP/1.0 403 Forbidden');
-// // header('HTTP/1.0 200 OK');
-// echo "true";
-// exit;
+//----------Connecting to Redis server on localhost------//
+//$redis = new Redis();
+//$redis->connect('127.0.0.1', 6379);
 
-//Connecting to Redis server on localhost
-$redis = new Redis();
-$redis->connect('127.0.0.1', 6379);
 
-//------- Get Client Information ---------------------//
-if(isset($_SERVER['HTTP_X_ORIGINAL_URI'])) {
+//--------- Get Client Information ----------------------//
+if(isset($_SERVER['HTTP_REFERER'])) {
+    $query_params = $_SERVER['HTTP_REFERER'];
+} 
+else if(isset($_SERVER['HTTP_X_ORIGINAL_URI'])) {
     $query_params = $_SERVER['HTTP_X_ORIGINAL_URI'];
+}
+else {
+    $query_params = $_SERVER['REQUEST_URI'];
 }
 $params = parse_url($query_params);
 parse_str($params['query'], $paramArr);
@@ -28,9 +29,13 @@ $tenant_id = 0;
 $request_params = $_SERVER['REQUEST_URI'];
 $request_params = parse_url($request_params);
 parse_str($request_params['query'], $requestArr);
-$application_tenant_id = $requestArr['tenant_id']; 
+$application_tenant_id = (isset($requestArr['tenant_id'])) ? $requestArr['tenant_id'] : 0; 
 
-error_log(date("Y-m-d H:i:s") . " - Request called Application Tenant-ID = $application_tenant_id, User Tenant-ID = $tenant_id, gwstoken = $token \n",3,"/var/www/html/auth/log.txt");
+error_log(date("Y-m-d H:i:s") . " - Request called Application Tenant-ID = $application_tenant_id, User Tenant-ID = $tenant_id, gwstoken = $token \n",3,"log.txt");
+
+//error_log(date("Y-m-d H:i:s") . " - SERVER => \n".print_r($_SERVER,true),3,"log.txt");
+//error_log(date("Y-m-d H:i:s") . " - COOKIE => \n".print_r($_COOKIE,true),3,"log.txt");
+//error_log(date("Y-m-d H:i:s") . " - SESSION => \n".print_r($_SESSION,true),3,"log.txt");
 
 
 if (!empty($token)) {
@@ -49,15 +54,34 @@ if (!empty($token)) {
         curl_close($ch);
         $outputArr = json_decode($output, true);
         if($outputArr['status'] && $outputArr['response']['tenantid']==$application_tenant_id) {
-            $redis->setex($token, $redis_ttl, 1);
+            //$redis->setex($token, $redis_ttl, 1);
+            $_SESSION["token"] = $token;
+            $_SESSION["valid"] = 1;
             header('HTTP/1.0 200 OK');
             echo "OK";
             exit;
         }
+        else if($outputArr['status'] && $outputArr['response']['tenantid']!=$application_tenant_id) {
+            $_SESSION['token'] = $token;
+            $_SESSION['valid'] = 2;
+            header('HTTP/1.0 401 Unauthorized');
+            echo "Unauthorized";
+            exit;
+        }
     }
+} 
+else if(empty($token)) {
+    $_SESSION['token'] = "";
+    $_SESSION['valid'] = 0;
+    header('HTTP/1.0 401 Unauthorized');
+    echo "No Token";
+    exit;
 }
+//header('HTTP/1.0 200 OK');
 header('HTTP/1.0 403 Forbidden');
 echo "Forbidden";
 exit;
+
+
 
 ?>
