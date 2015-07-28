@@ -135,12 +135,21 @@
             </div>
             <div>
                 <span style="display: -webkit-box;">
-                    <label for="email">Internal URL: </label>
+                    <label for="internal_url">Internal Base URL: </label>
                 </span>
                 <span style="display: -webkit-box;">
-                    <input tabindex="7" type="text" ng-model="internal_url" class="add-developer-input" ng-change="keydown('internal_url')"/>
+                    <input tabindex="7" type="text" ng-model="internal_url" class="add-developer-input" ng-change="keydown('internal_url')" id="internal_url" />
                 </span>
                 <span ng-show="errorURL" class="error error-color" style="display: -webkit-box;">[[errorMsgURL]]</span>
+            </div>
+            <div>
+                <span style="display: -webkit-box;">
+                    <label for="internal_uri">Internal URI: </label>
+                </span>
+                <span style="display: -webkit-box;">
+                    <input tabindex="7" type="text" ng-model="internal_uri" class="add-developer-input" ng-change="keydown('internal_uri')" id="internal_uri" />
+                </span>
+                <span ng-show="errorURI" class="error error-color" style="display: -webkit-box;">[[errorMsgURI]]</span>
             </div>
         </div>
         <div class="ngdialog-buttons">
