@@ -1,8 +1,13 @@
 <?php
-ini_set("display_errors", 1);
+date_default_timezone_set('America/Los_Angeles');
+ini_set("display_errors", 0);
 session_start();
 
 $redis_ttl = 60*60*24;
+
+header("SESS: SHIV-TEST".rand(111,999));
+header("x-user: 1");
+header("gwstoken: ".time());
 
 //----------Connecting to Redis server on localhost------//
 //$redis = new Redis();
@@ -31,12 +36,13 @@ $request_params = parse_url($request_params);
 parse_str($request_params['query'], $requestArr);
 $application_tenant_id = (isset($requestArr['tenant_id'])) ? $requestArr['tenant_id'] : 0; 
 
-error_log(date("Y-m-d H:i:s") . " - Request called Application Tenant-ID = $application_tenant_id, User Tenant-ID = $tenant_id, gwstoken = $token \n",3,"log.txt");
+error_log(date("Y-m-d H:i:s") . " - Request called Application Tenant-ID = $application_tenant_id, User Tenant-ID = $tenant_id, gwstoken = $token \n",3,"/var/www/html/classlinkproxy/public/auth/log.txt");
 
-//error_log(date("Y-m-d H:i:s") . " - SERVER => \n".print_r($_SERVER,true),3,"log.txt");
-//error_log(date("Y-m-d H:i:s") . " - COOKIE => \n".print_r($_COOKIE,true),3,"log.txt");
-//error_log(date("Y-m-d H:i:s") . " - SESSION => \n".print_r($_SESSION,true),3,"log.txt");
-
+error_log(date("Y-m-d H:i:s") . " - SERVER => \n".print_r($_SERVER,true),3,"/var/www/html/classlinkproxy/public/auth/log.txt");
+#error_log(date("Y-m-d H:i:s") . " - COOKIE => \n".print_r($_COOKIE,true),3,"/var/www/html/classlinkproxy/public/auth/log.txt");
+#error_log(date("Y-m-d H:i:s") . " - SESSION => \n".print_r($_SESSION,true),3,"/var/www/html/classlinkproxy/public/auth/log.txt");
+//error_log(date("Y-m-d H:i:s") . " - apache_request_headers => \n".print_r(apache_request_headers(),true),3,"/var/www/html/classlinkproxy/public/auth/log.txt");
+//error_log(date("Y-m-d H:i:s") . " - apache_response_headers => \n".print_r(apache_response_headers(),true),3,"/var/www/html/classlinkproxy/public/auth/log.txt");
 
 if (!empty($token)) {
     //$apiurl = "https://api.classlink.com/token/$token";
