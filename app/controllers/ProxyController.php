@@ -81,8 +81,10 @@ class ProxyController extends BaseController
             $request_uri    = $input['internal_uri']; //'gwstoken='; //$admin_api_key;
             $request_params = 'gwstoken='; //$admin_api_key;
             $external_ip    = $id.".".$proxy_base_url;
-            //$external_url   = $id.".".$proxy_base_url.':'.$proxy_listen_port.'/?'.$request_uri;
-            $external_url   = $id.".".$proxy_base_url.':'.$proxy_listen_port.'/'.$request_uri.'?'.$request_params;
+            
+            $external_url   = $id.".".$proxy_base_url.':'.$proxy_listen_port.'/'.$request_uri;
+            $contact_operator = strpos($external_url, '?') ? '&':'?';
+            $external_url   = $external_url.$contact_operator.$request_params;
             $internal_url   = $input['internal_url'];
             
             /*$strnginx="";

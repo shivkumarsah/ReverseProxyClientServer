@@ -2373,7 +2373,7 @@ proxyApp.controller( "addEditApplicationCtrl", function( $scope, ngDialog, $serv
         $scope.eventMode = 'Edit Application';
         $scope.application_name = $scope.element.name;
         $scope.internal_url = $scope.element.internal_url;
-        $scope.internal_uri = $scope.element.internal_uri;
+        $scope.internal_uri = $scope.element.internal_uri || $scope.element.request_uri;
         $scope.showUpdateBtn = false;
     } else if( $scope.element.action === 'save' ){
         $scope.eventMode = 'Create New Application';
