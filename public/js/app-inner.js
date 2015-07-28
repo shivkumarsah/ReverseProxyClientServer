@@ -2373,6 +2373,7 @@ proxyApp.controller( "addEditApplicationCtrl", function( $scope, ngDialog, $serv
         $scope.eventMode = 'Edit Application';
         $scope.application_name = $scope.element.name;
         $scope.internal_url = $scope.element.internal_url;
+        $scope.internal_uri = $scope.element.internal_uri;
         $scope.showUpdateBtn = false;
     } else if( $scope.element.action === 'save' ){
         $scope.eventMode = 'Create New Application';
@@ -2386,7 +2387,8 @@ proxyApp.controller( "addEditApplicationCtrl", function( $scope, ngDialog, $serv
             data: {
                 id: $scope.element.id,
                 application_name: $scope.application_name ? $scope.application_name : '',
-                internal_url: $scope.internal_url ? $scope.internal_url : ''
+                internal_url: $scope.internal_url ? $scope.internal_url : '',
+                internal_uri: $scope.internal_uri ? $scope.internal_uri : ''
             },
             index: $scope.element.index
         };
@@ -2415,7 +2417,8 @@ proxyApp.controller( "addEditApplicationCtrl", function( $scope, ngDialog, $serv
             type: 'save',
             data: {
                 application_name: $scope.application_name ? $scope.application_name : '',
-                internal_url: $scope.internal_url ? $scope.internal_url : ''
+                internal_url: $scope.internal_url ? $scope.internal_url : '',
+                internal_uri: $scope.internal_uri ? $scope.internal_uri : ''
             }
         };
 
@@ -2443,6 +2446,9 @@ proxyApp.controller( "addEditApplicationCtrl", function( $scope, ngDialog, $serv
         } else if( type === 'internal_url' ){
             $scope.errorURL = false;
             $scope.errorMsgURL = '';
+        } else if( type === 'internal_uri' ){
+            $scope.errorURI = false;
+            $scope.errorMsgURI = '';
         }
     };
 
@@ -2472,6 +2478,13 @@ proxyApp.controller( "addEditApplicationCtrl", function( $scope, ngDialog, $serv
                 validInput = false;
                 $scope.errorURL = true;
                 $scope.errorMsgURL = 'Please enter valid internal URL.';
+            }
+        }
+        if( typeof json.data.internal_uri !== "undefined") {
+            if (json.data.internal_uri.length < 1) {
+                validInput = false;
+                $scope.errorURI = true;
+                $scope.errorMsgURI = 'Please enter internal server URL.'; //'Name should contain at least 6 characters.';
             }
         }
         return validInput;

@@ -51,8 +51,8 @@ class ProxyController extends BaseController
                 DB::table('applications')->where('id', $id)->update([
                     'name'          => $input['application_name'],
                     'internal_url'  => $input['internal_url'],
+                    'request_uri'   => $input['internal_uri']
                     //'external_url'  => $input['internal_url'],
-                    //'request_uri'   => $input['internal_url']
                 ]);
             } else {
                 //$application = DB::table('applications')->orderBy('id', 'desc')->first();
@@ -64,7 +64,7 @@ class ProxyController extends BaseController
                 $application->name          = $input['application_name'];
                 $application->internal_url  = $input['internal_url'];
                 //$application->external_url  = $input['internal_url'];
-                //$application->request_uri   = $request_uri;
+                $application->request_uri   = $input['internal_uri'];
                 
                 $application->save();
                 $id = $application->id;
@@ -78,9 +78,11 @@ class ProxyController extends BaseController
             $proxy_service_path = Config::get('proxy.nginx_service_path');
             $proxy_auth_url     = Config::get('proxy.auth_url');
             
-            $request_uri    = 'gwstoken='; //$admin_api_key;
+            $request_uri    = $input['internal_uri']; //'gwstoken='; //$admin_api_key;
+            $request_params = 'gwstoken='; //$admin_api_key;
             $external_ip    = $id.".".$proxy_base_url;
-            $external_url   = $id.".".$proxy_base_url.':'.$proxy_listen_port.'/?'.$request_uri;
+            //$external_url   = $id.".".$proxy_base_url.':'.$proxy_listen_port.'/?'.$request_uri;
+            $external_url   = $id.".".$proxy_base_url.':'.$proxy_listen_port.'/'.$request_uri.'?'.$request_params;
             $internal_url   = $input['internal_url'];
             
             /*$strnginx="";

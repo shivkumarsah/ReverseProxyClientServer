@@ -18481,3 +18481,2119 @@ Array
     [REQUEST_TIME_FLOAT] => 1438091983.0557
     [REQUEST_TIME] => 1438091983
 )
+2015-07-28 09:43:08 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken =  
+2015-07-28 09:43:08 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 47984
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx?gwstoken=
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://classlinkproxy.icreondemoserver.com:443/proxy/applications
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101788.8532
+    [REQUEST_TIME] => 1438101788
+)
+2015-07-28 09:43:09 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken =  
+2015-07-28 09:43:09 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 47986
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /favicon.ico
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101789.1651
+    [REQUEST_TIME] => 1438101789
+)
+2015-07-28 09:43:09 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken =  
+2015-07-28 09:43:09 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 47988
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /favicon.ico
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101789.4055
+    [REQUEST_TIME] => 1438101789
+)
+2015-07-28 09:43:30 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken =  
+2015-07-28 09:43:30 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 47990
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx?gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101810.9797
+    [REQUEST_TIME] => 1438101810
+)
+2015-07-28 09:43:41 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:43:41 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 47992
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101821.8382
+    [REQUEST_TIME] => 1438101821
+)
+2015-07-28 09:43:42 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:43:45 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:43:45 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 47996
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/styles.css
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => text/css,*/*;q=0.1
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 07 Apr 2004 20:02:31 GMT
+    [HTTP_IF_NONE_MATCH] => "6baaa642db1cc41:5897"
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101825.2641
+    [REQUEST_TIME] => 1438101825
+)
+2015-07-28 09:43:45 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:43:45 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:43:45 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48000
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/script.js
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => */*
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Tue, 24 Feb 2004 20:31:38 GMT
+    [HTTP_IF_NONE_MATCH] => "1520383415fbc31:5897"
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101825.5123
+    [REQUEST_TIME] => 1438101825
+)
+2015-07-28 09:43:45 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:43:45 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken =  
+2015-07-28 09:43:45 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48004
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/images/ClassLink-Logo-Huge.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/styles.css
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101825.9887
+    [REQUEST_TIME] => 1438101825
+)
+2015-07-28 09:43:45 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:43:45 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48006
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/images/spacer.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 26 Mar 2003 19:51:42 GMT
+    [HTTP_IF_NONE_MATCH] => "09b611fd1f3c21:5897"
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101825.9956
+    [REQUEST_TIME] => 1438101825
+)
+2015-07-28 09:43:46 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:43:46 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:43:46 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48010
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/images/ClassLink-Text.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 11 Feb 2004 12:53:56 GMT
+    [HTTP_IF_NONE_MATCH] => "bd31191c9ef0c31:5897"
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101826.2224
+    [REQUEST_TIME] => 1438101826
+)
+2015-07-28 09:43:46 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:43:46 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48013
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/Images/spacer.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 26 Mar 2003 19:51:42 GMT
+    [HTTP_IF_NONE_MATCH] => "09b611fd1f3c21:5897"
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101826.2268
+    [REQUEST_TIME] => 1438101826
+)
+2015-07-28 09:43:46 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:43:46 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48016
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/images/bars.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 11 Feb 2004 15:00:34 GMT
+    [HTTP_IF_NONE_MATCH] => "c98c2dcdaff0c31:5897"
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101826.2318
+    [REQUEST_TIME] => 1438101826
+)
+2015-07-28 09:43:46 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:43:46 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:43:46 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:44:13 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:44:13 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48022
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101853.7058
+    [REQUEST_TIME] => 1438101853
+)
+2015-07-28 09:44:13 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:44:14 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:44:14 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48026
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/styles.css
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => text/css,*/*;q=0.1
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 07 Apr 2004 20:02:31 GMT
+    [HTTP_IF_NONE_MATCH] => "6baaa642db1cc41:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101854.2095
+    [REQUEST_TIME] => 1438101854
+)
+2015-07-28 09:44:14 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:44:14 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48028
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/script.js
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => */*
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Tue, 24 Feb 2004 20:31:38 GMT
+    [HTTP_IF_NONE_MATCH] => "1520383415fbc31:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101854.2113
+    [REQUEST_TIME] => 1438101854
+)
+2015-07-28 09:44:14 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:44:14 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:44:14 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken =  
+2015-07-28 09:44:14 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48034
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/images/ClassLink-Logo-Huge.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/styles.css
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101854.7138
+    [REQUEST_TIME] => 1438101854
+)
+2015-07-28 09:44:14 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:44:14 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48036
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/images/spacer.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 26 Mar 2003 19:51:42 GMT
+    [HTTP_IF_NONE_MATCH] => "09b611fd1f3c21:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101854.7193
+    [REQUEST_TIME] => 1438101854
+)
+2015-07-28 09:44:14 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:44:14 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48039
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/images/ClassLink-Text.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 11 Feb 2004 12:53:56 GMT
+    [HTTP_IF_NONE_MATCH] => "bd31191c9ef0c31:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101854.725
+    [REQUEST_TIME] => 1438101854
+)
+2015-07-28 09:44:14 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:44:14 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48041
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/Images/spacer.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 26 Mar 2003 19:51:42 GMT
+    [HTTP_IF_NONE_MATCH] => "09b611fd1f3c21:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101854.7265
+    [REQUEST_TIME] => 1438101854
+)
+2015-07-28 09:44:14 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:44:14 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48045
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/images/bars.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 11 Feb 2004 15:00:34 GMT
+    [HTTP_IF_NONE_MATCH] => "c98c2dcdaff0c31:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101854.7325
+    [REQUEST_TIME] => 1438101854
+)
+2015-07-28 09:44:14 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:44:14 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:44:14 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:44:14 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:44:43 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:44:43 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48052
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101883.342
+    [REQUEST_TIME] => 1438101883
+)
+2015-07-28 09:44:43 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:44:43 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:44:43 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48056
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/styles.css
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => text/css,*/*;q=0.1
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 07 Apr 2004 20:02:31 GMT
+    [HTTP_IF_NONE_MATCH] => "6baaa642db1cc41:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101883.8557
+    [REQUEST_TIME] => 1438101883
+)
+2015-07-28 09:44:43 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:44:43 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48059
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/script.js
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => */*
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Tue, 24 Feb 2004 20:31:38 GMT
+    [HTTP_IF_NONE_MATCH] => "1520383415fbc31:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101883.8586
+    [REQUEST_TIME] => 1438101883
+)
+2015-07-28 09:44:44 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:44:44 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:44:44 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken =  
+2015-07-28 09:44:44 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48064
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/images/ClassLink-Logo-Huge.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/styles.css
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101884.3836
+    [REQUEST_TIME] => 1438101884
+)
+2015-07-28 09:44:44 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:44:44 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48066
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/images/spacer.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 26 Mar 2003 19:51:42 GMT
+    [HTTP_IF_NONE_MATCH] => "09b611fd1f3c21:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101884.3894
+    [REQUEST_TIME] => 1438101884
+)
+2015-07-28 09:44:44 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:44:44 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48067
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/images/ClassLink-Text.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 11 Feb 2004 12:53:56 GMT
+    [HTTP_IF_NONE_MATCH] => "bd31191c9ef0c31:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101884.3905
+    [REQUEST_TIME] => 1438101884
+)
+2015-07-28 09:44:44 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:44:44 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48072
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/Images/spacer.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 26 Mar 2003 19:51:42 GMT
+    [HTTP_IF_NONE_MATCH] => "09b611fd1f3c21:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101884.3965
+    [REQUEST_TIME] => 1438101884
+)
+2015-07-28 09:44:44 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:44:44 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48075
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/images/bars.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 11 Feb 2004 15:00:34 GMT
+    [HTTP_IF_NONE_MATCH] => "c98c2dcdaff0c31:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101884.4118
+    [REQUEST_TIME] => 1438101884
+)
+2015-07-28 09:44:44 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:44:44 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:44:44 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:44:44 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:45:23 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:45:23 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48082
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101923.9717
+    [REQUEST_TIME] => 1438101923
+)
+2015-07-28 09:45:24 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:45:24 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:45:24 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48086
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/styles.css
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => text/css,*/*;q=0.1
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 07 Apr 2004 20:02:31 GMT
+    [HTTP_IF_NONE_MATCH] => "6baaa642db1cc41:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101924.5078
+    [REQUEST_TIME] => 1438101924
+)
+2015-07-28 09:45:24 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:45:24 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48089
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/script.js
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => */*
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Tue, 24 Feb 2004 20:31:38 GMT
+    [HTTP_IF_NONE_MATCH] => "1520383415fbc31:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101924.5113
+    [REQUEST_TIME] => 1438101924
+)
+2015-07-28 09:45:24 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:45:24 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:45:25 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken =  
+2015-07-28 09:45:25 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48094
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/images/ClassLink-Logo-Huge.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/styles.css
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101925.0149
+    [REQUEST_TIME] => 1438101925
+)
+2015-07-28 09:45:25 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:45:25 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48096
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/images/spacer.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 26 Mar 2003 19:51:42 GMT
+    [HTTP_IF_NONE_MATCH] => "09b611fd1f3c21:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101925.0263
+    [REQUEST_TIME] => 1438101925
+)
+2015-07-28 09:45:25 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:45:25 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48099
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/images/ClassLink-Text.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 11 Feb 2004 12:53:56 GMT
+    [HTTP_IF_NONE_MATCH] => "bd31191c9ef0c31:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101925.0311
+    [REQUEST_TIME] => 1438101925
+)
+2015-07-28 09:45:25 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:45:25 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48102
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/Images/spacer.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 26 Mar 2003 19:51:42 GMT
+    [HTTP_IF_NONE_MATCH] => "09b611fd1f3c21:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101925.0352
+    [REQUEST_TIME] => 1438101925
+)
+2015-07-28 09:45:25 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken = ffe91d4d-7533-401e-a62a-2a248e61e0f5 
+2015-07-28 09:45:25 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48105
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /TimeTracker/images/bars.gif
+    [HTTP_HOST] => localhost:9001
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => image/png,image/*;q=0.8,*/*;q=0.5
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_REFERER] => http://4.classlinkproxy.icreondemoserver.com:443/TimeTracker/desktopdefault.aspx?ReturnUrl=%2fTimeTracker%2fdefault.aspx&gwstoken=ffe91d4d-7533-401e-a62a-2a248e61e0f5
+    [HTTP_IF_MODIFIED_SINCE] => Wed, 11 Feb 2004 15:00:34 GMT
+    [HTTP_IF_NONE_MATCH] => "c98c2dcdaff0c31:5897"
+    [HTTP_CACHE_CONTROL] => max-age=0
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438101925.05
+    [REQUEST_TIME] => 1438101925
+)
+2015-07-28 09:45:25 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:45:25 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:45:25 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:45:25 - outputArr => 
+Array
+(
+    [response] => Array
+        (
+            [ProfileId] => 6
+            [ipaddress] => 198.61.169.158
+            [tenantname] => ClassLink Demo
+            [buildingname] => CL Demo Building1
+            [displayname] => demostudent demo
+            [rolelevel] => 4
+            [buildingid] => 1
+            [tenantid] => 2
+            [userid] => 1032188
+            [username] => demostudent
+            [lastaccesstime] => 2015-07-28 15:13:22
+            [email] => demostudent@cldemo.com
+            [imagepath] => 2/1/1032188/My Documents/My Pictures/1429629558.png
+        )
+
+    [message] => Token valid
+    [status] => 1
+)
+2015-07-28 09:49:23 - Request called Application Tenant-ID = 2, User Tenant-ID = 0, gwstoken =  
+2015-07-28 09:49:23 - SERVER => 
+Array
+(
+    [USER] => nginx
+    [HOME] => /var/lib/nginx
+    [FCGI_ROLE] => RESPONDER
+    [PATH_INFO] => 
+    [SCRIPT_FILENAME] => /var/www/html/classlinkproxy/public/auth/index.php
+    [QUERY_STRING] => tenant_id=2
+    [REQUEST_METHOD] => GET
+    [CONTENT_TYPE] => 
+    [CONTENT_LENGTH] => 
+    [SCRIPT_NAME] => /index.php
+    [REQUEST_URI] => /?tenant_id=2
+    [DOCUMENT_URI] => /index.php
+    [DOCUMENT_ROOT] => /var/www/html/classlinkproxy/public/auth
+    [SERVER_PROTOCOL] => HTTP/1.0
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_SOFTWARE] => nginx/1.6.3
+    [REMOTE_ADDR] => 127.0.0.1
+    [REMOTE_PORT] => 48112
+    [SERVER_ADDR] => 127.0.0.1
+    [SERVER_PORT] => 9001
+    [SERVER_NAME] => localhost
+    [REDIRECT_STATUS] => 200
+    [HTTP_X_ORIGINAL_URI] => /
+    [HTTP_HOST] => sso.classlinkproxy.icreondemoserver.com:443
+    [HTTP_X_SHIV] => __utma=141838768.315802917.1438013032.1438013032.1438013032.1; __utmc=141838768; __utmz=141838768.1438013032.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)
+    [HTTP_X_GWSTOKEN] => Shiv default token
+    [HTTP_CONNECTION] => close
+    [HTTP_USER_AGENT] => Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0
+    [HTTP_ACCEPT] => text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    [HTTP_ACCEPT_LANGUAGE] => en-US,en;q=0.5
+    [HTTP_ACCEPT_ENCODING] => gzip, deflate
+    [HTTP_COOKIE] => __utma=141838768.315802917.1438013032.1438013032.1438013032.1; __utmc=141838768; __utmz=141838768.1438013032.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)
+    [HTTP_PRAGMA] => no-cache
+    [HTTP_CACHE_CONTROL] => no-cache
+    [PHP_SELF] => /index.php
+    [REQUEST_TIME_FLOAT] => 1438102163.4358
+    [REQUEST_TIME] => 1438102163
+)
