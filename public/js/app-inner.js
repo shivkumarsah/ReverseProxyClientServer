@@ -2480,13 +2480,13 @@ proxyApp.controller( "addEditApplicationCtrl", function( $scope, ngDialog, $serv
                 $scope.errorMsgURL = 'Please enter valid internal URL.';
             }
         }
-        if( typeof json.data.internal_uri !== "undefined") {
+        /*if( typeof json.data.internal_uri !== "undefined") {
             if (json.data.internal_uri.length < 1) {
                 validInput = false;
                 $scope.errorURI = true;
                 $scope.errorMsgURI = 'Please enter internal server URL.'; //'Name should contain at least 6 characters.';
             }
-        }
+        }*/
         return validInput;
     };
 
