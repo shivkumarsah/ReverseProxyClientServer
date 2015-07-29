@@ -100,8 +100,8 @@ class ProxyController extends BaseController
             $strnginx.='server {listen '.$proxy_listen_port.'; server_name '.$external_ip.';';
             $strnginx.='location / {';
             $strnginx.='auth_request /check;';
-            $strnginx.='root   /usr/share/nginx/html;';
-            $strnginx.='index index.php  index.html index.htm;';
+            $strnginx.='auth_request_set $gws $upstream_http_gwstoken;';
+            $strnginx.='header_filter_by_lua_file /etc/nginx/nginx.lua;';
             $strnginx.='proxy_pass   '.$internal_url.';';
             $strnginx.='}';
             //$strnginx.='error_page 403 = @error403;';
