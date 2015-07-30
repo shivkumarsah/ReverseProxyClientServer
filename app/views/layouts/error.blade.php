@@ -43,6 +43,11 @@
     .cl-footer{
       color:#000000;
     }
+    #robot_holder {
+      padding: 0px;
+      margin: 0px;
+      height: 357px;
+    }
     </style>
   </head>
   <body ng-app="proxyApp" ng-controller="appCtrl" >
