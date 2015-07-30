@@ -20,13 +20,11 @@
 
     {{ HTML::style('css/robot_page.css') }}
     {{ HTML::style('css/robot_styles.css') }}
-    {{ HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:700,300') }}
-    {{ HTML::style('css/style.css') }}
-
     {{ HTML::script('http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js') }}
     {{ HTML::script('js/brokebot.js') }}
     {{ HTML::script('dist/snap.svg-min.js') }}
-
+    {{ HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:700,300') }}
+    
     <!--link rel="stylesheet" type="text/css" href="css/robot_page.css">
     <link rel="stylesheet" type="text/css" href="css/robot_styles.css">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"/></script>
