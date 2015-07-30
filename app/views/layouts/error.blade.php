@@ -17,26 +17,35 @@
         @endif - Error
        
     </title>
-
     {{ HTML::style('css/robot_page.css') }}
     {{ HTML::style('css/robot_styles.css') }}
     {{ HTML::script('http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js') }}
     {{ HTML::script('js/brokebot.js') }}
     {{ HTML::script('dist/snap.svg-min.js') }}
     {{ HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:700,300') }}
-    
-    <!--link rel="stylesheet" type="text/css" href="css/robot_page.css">
-    <link rel="stylesheet" type="text/css" href="css/robot_styles.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"/></script>
-    <script type="text/javascript" src="js/brokebot.js"/></script>
-    <script src="dist/snap.svg-min.js" type="text/javascript"></script>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300' rel='stylesheet' type='text/css'-->
     <script>
       var isHeadless = true;
     </script>
+    <style>
+    .login-footer {
+      background: url("../img/classlink-logo.png") no-repeat scroll 50% 50% transparent;
+      display: block;
+      height: 41px;
+      margin-top: 100px;
+      width: 68px;
+    }
+    .centered {
+      display: block;
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cl-footer{
+      color:#000000;
+    }
+    </style>
   </head>
-  <body  ng-app="proxyApp" ng-controller="appCtrl" >
+  <body ng-app="proxyApp" ng-controller="appCtrl" >
     @yield('content')
-    @include('includes.footer-inner')
   </body>
 </html>

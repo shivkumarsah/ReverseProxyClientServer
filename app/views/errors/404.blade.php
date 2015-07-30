@@ -1,6 +1,5 @@
 @extends('layouts.error')
 @section('content')
-
 <div>
 	<div class="robotpage-top-half">
 		<div id="robot_holder">
@@ -98,7 +97,11 @@
 				<a class="robot-buttons" href="http://www.classlink.com">ClassLink</a>
 			</div>
 		</div>
+		<div class="login-footer centered"></div>
 		<div class="clear"></div>
+		<div class="cl-footer centered" ng-show="pagefooter">
+        	<a target="_blank" href="http://www.classlink.com/" style="color: #ffffff !important; font-weight: bold;text-decoration:none; ">ClassLink, Inc.</a>
+        </div>
 	</div>
 </div>
 
