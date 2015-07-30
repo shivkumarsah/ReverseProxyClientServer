@@ -46,7 +46,7 @@
     #robot_holder {
       padding: 0px;
       margin: 0px;
-      height: 357px;
+      height: 370px;
     }
     </style>
   </head>
