@@ -583,4 +583,17 @@ class UsersController extends BaseController {
         }
     }
 
+    /**
+     * Log the gwstoken from reverse proxy system.
+     *
+     * @return  Illuminate\Http\Response
+     */
+    public function logoutToken($gwstoken) {
+        // Connect to Redis Server
+        // Remove Input:GWSTOKEN from redis key
+        $response = array("status" => true, "gws"=> $gwstoken);
+        echo json_encode($response);
+        exit;
+    }
+
 }
