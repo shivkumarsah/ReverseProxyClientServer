@@ -39,14 +39,15 @@ $application_tenant_id = (isset($requestArr['tenant_id'])) ? $requestArr['tenant
 
 error_log(date("Y-m-d H:i:s") . " - Request called Application Tenant-ID = $application_tenant_id, User Tenant-ID = $tenant_id, gwstoken = $token \n",3,"/var/www/html/classlinkproxy/public/auth/log.txt");
 
-error_log(date("Y-m-d H:i:s") . " - SERVER => \n".print_r($_SERVER,true),3,"/var/www/html/classlinkproxy/public/auth/log.txt");
-error_log(date("Y-m-d H:i:s") . " - COOKIE => \n".print_r($_COOKIE,true),3,"/var/www/html/classlinkproxy/public/auth/log.txt");
+//error_log(date("Y-m-d H:i:s") . " - SERVER => \n".print_r($_SERVER,true),3,"/var/www/html/classlinkproxy/public/auth/log.txt");
+//error_log(date("Y-m-d H:i:s") . " - COOKIE => \n".print_r($_COOKIE,true),3,"/var/www/html/classlinkproxy/public/auth/log.txt");
 #error_log(date("Y-m-d H:i:s") . " - SESSION => \n".print_r($_SESSION,true),3,"/var/www/html/classlinkproxy/public/auth/log.txt");
 //error_log(date("Y-m-d H:i:s") . " - apache_request_headers => \n".print_r(apache_request_headers(),true),3,"/var/www/html/classlinkproxy/public/auth/log.txt");
 //error_log(date("Y-m-d H:i:s") . " - apache_response_headers => \n".print_r(apache_response_headers(),true),3,"/var/www/html/classlinkproxy/public/auth/log.txt");
 
+header("gwstoken: ".$token);
+
 if (!empty($token)) {
-    header("gwstoken: ".$token);
     //$apiurl = "https://api.classlink.com/token/$token";
     $apiurl = "https://api.classlink.com/profile";
     $header = array("gwstoken: $token");
@@ -61,7 +62,7 @@ if (!empty($token)) {
     if (!empty($output)) {
         curl_close($ch);
         $outputArr = json_decode($output, true);
-        error_log(date("Y-m-d H:i:s") . " - outputArr => \n".print_r($outputArr,true),3,"log.txt");
+        //error_log(date("Y-m-d H:i:s") . " - outputArr => \n".print_r($outputArr,true),3,"log.txt");
         if($outputArr['status'] && $outputArr['response']['tenantid']==$application_tenant_id) {
             //$redis->setex($token, $redis_ttl, 1);
             $_SESSION["token"] = $token;
