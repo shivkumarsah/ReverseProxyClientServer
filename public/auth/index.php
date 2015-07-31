@@ -5,9 +5,10 @@ session_start();
 $redis_ttl = 60*60*24;
 
 //----------Connecting to Redis server on localhost------//
-//$redis = new Redis();
-//$redis->connect('127.0.0.1', 6379);
+$redis = new Redis();
+$redis->connect('127.0.0.1', 6379);
 
+var_dump($redis);
 
 //--------- Get Client Information ----------------------//
 if(isset($_SERVER['HTTP_REFERER'])) {
