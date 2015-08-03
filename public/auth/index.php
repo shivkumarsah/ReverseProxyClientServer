@@ -37,16 +37,16 @@ else {
     check_gwstoken:
     echo "in query check<br>";
     //--------- Get Client Information ----------------------//
-    if(isset($_SERVER['HTTP_REFERER'])) {
-        $query_params = $_SERVER['HTTP_REFERER'];
-    } 
-    else if(isset($_SERVER['HTTP_X_ORIGINAL_URI'])) {
+    // if(isset($_SERVER['HTTP_REFERER'])) {
+    //     $query_params = $_SERVER['HTTP_REFERER'];
+    // } 
+    // else 
+    if(isset($_SERVER['HTTP_X_ORIGINAL_URI'])) {
         $query_params = $_SERVER['HTTP_X_ORIGINAL_URI'];
     }
     else {
         $query_params = $_SERVER['REQUEST_URI'];
     }
-    $query_params = $_SERVER['REQUEST_URI'];
     $params = parse_url($query_params);
     parse_str($params['query'], $paramArr);
 
