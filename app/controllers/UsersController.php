@@ -590,8 +590,18 @@ class UsersController extends BaseController {
      */
     public function logoutToken($gwstoken) {
         // Connect to Redis Server
+        $redis = new Redis();
+        $redis->connect('127.0.0.1', 6379);
+
         // Remove Input:GWSTOKEN from redis key
-        $response = array("status" => true, "gws"=> $gwstoken);
+
+        if($redis->exists($gwstoken)) {
+            $redis->del($gwstoken);
+            $response = array("status"=>true, "gws"=>$gwstoken, "message"=>"GWSTOKEN removed");
+        } else {
+            $response = array("status"=>false, "gws"=>$gwstoken, "message"=>"GWSTOKEN not exists");
+        }
+        $redis->close();
         echo json_encode($response);
         exit;
     }
