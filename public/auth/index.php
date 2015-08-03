@@ -54,7 +54,7 @@ else {
 
     $tokenData = validateToken($token);
     if($tokenData){
-        if($tokenData['status'] && $tokenData['response']['tenantid']!=$application_tenant_id) {
+        if($tokenData['status'] && $tokenData['response']['tenantid']==$application_tenant_id) {
             header("gwstoken: ".$token);
             $redis->setex($token, $redis_ttl, 1);
             setcookie("gws", $token, time()+$redis_ttl);
