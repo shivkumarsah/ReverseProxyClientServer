@@ -8093,3 +8093,8 @@ Array
     [s] => k
     [gws] => 614123a1-e5ba-4f9c-afd4-c8441d77348a
 )
+2015-08-03 01:38:19 - Request called Application Tenant-ID = 0, User Tenant-ID = 0, gwstoken =  
+2015-08-03 01:38:19 - COOKIE => 
+Array
+(
+)
