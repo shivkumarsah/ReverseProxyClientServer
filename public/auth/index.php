@@ -21,26 +21,23 @@ $application_tenant_id  = (isset($requestArr['tenant_id'])) ? $requestArr['tenan
 
 ########## Check for existing cookie and validate ##############
 if(isset($_COOKIE['gws']) && !empty($_COOKIE['gws'])) {
-    echo "in cookie check<br>";
     $token      = $_COOKIE['gws'];
     $isValid    = $redis->exists($token);
     if($isValid) {
         header("gwstoken: ".$token);
         responseOK();
     } else {
-        echo "in cookie - query check<br>";
         goto check_gwstoken;
     }
     response403();
 } 
 else {
-    check_gwstoken:
-    echo "in query check<br>";
     //--------- Get Client Information ----------------------//
     // if(isset($_SERVER['HTTP_REFERER'])) {
     //     $query_params = $_SERVER['HTTP_REFERER'];
     // } 
     // else 
+    check_gwstoken:
     if(isset($_SERVER['HTTP_X_ORIGINAL_URI'])) {
         $query_params = $_SERVER['HTTP_X_ORIGINAL_URI'];
     }
