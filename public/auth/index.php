@@ -46,6 +46,7 @@ else {
     else {
         $query_params = $_SERVER['REQUEST_URI'];
     }
+    $query_params = $_SERVER['REQUEST_URI'];
     $params = parse_url($query_params);
     parse_str($params['query'], $paramArr);
 
