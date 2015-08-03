@@ -58,7 +58,7 @@ else {
         if($tokenData['status'] && $tokenData['response']['tenantid']==$application_tenant_id) {
             header("gwstoken: ".$token);
             $redis->setex($token, $redis_ttl, 1);
-            setcookie("sks", $token, time()+$redis_ttl);
+            setcookie("gws", $token, time()+$redis_ttl);
             responseOK();
         }
         else if($tokenData['status'] && $tokenData['response']['tenantid']!=$application_tenant_id) {
