@@ -177,3 +177,8 @@ Array
     [Connection] => keep-alive
     [Cache-Control] => max-age=0
 )
+2015-08-03 01:38:19 - Request called Application Tenant-ID = 0, User Tenant-ID = 0, gwstoken =  
+2015-08-03 01:38:19 - COOKIE => 
+Array
+(
+)
