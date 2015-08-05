@@ -1,21 +1,26 @@
 <div class="form-group">
     <div class="form-group row">
-        <div class="col-xs-6 col-xs-offset-3">
-            <img src="/img/full-logo.png" style="height:100px; width:200px; margin-bottom:5px;margin-left: 8%;" alt="Logo">
-        </div>
+        <div ng-include="'logo.html'"></div>
     </div>
     <div ng-show='smptError' style="text-align: center;">
         <span class="help-inline" style="color: red !important;">Please enter valid information!</span>
     </div>
 </div>
 <div class="form-group">
+    <div class="form-group row">
+        <div class="col-xs-6 col-xs-offset-3" style="font-weight:bold;">
+		Please enter smtp details.
+		</div>
+	</div>
+</div>
+<div class="form-group">
     <label for="name">SMTP Host:</label>
-    <input type="text" class="form-control input-border" name="smptServer" ng-model="formData.smptServer">
+    <input type="text" class="form-control input-border" name="smptServer" ng-init="formData.smptServer='localhost'" ng-model="formData.smptServer">
 </div>
 
 <div class="form-group">
     <label for="name">SMTP Port:</label>
-    <input type="text" class="form-control input-border" name="smptPort" ng-model="formData.smptPort">
+    <input type="text" class="form-control input-border" name="smptPort" ng-init="formData.smptPort='25'" ng-model="formData.smptPort">
 </div>
 
 <div class="form-group">
@@ -37,10 +42,31 @@
     <label for="checkbox" ng-if="!passwordCheckbox">Show password</label>
 </div>
 
+<div class="form-group">
+    <label for="name">From Name:</label>
+    <input type="text" class="form-control input-border" name="smptFromName" ng-model="formData.smptFromName" ng-change="keydown('fromname')">
+    <div style="color:red;font-size: 12px;" ng-show="errorSmptFromName">
+        From name can't left blank.
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="name">From Email:</label>
+    <input type="text" class="form-control input-border" name="smptFromEmail" ng-model="formData.smptFromEmail" ng-change="keydown('fromemail')">
+    <div style="color:red;font-size: 12px;" ng-show="errorSmptFromEmail">
+        Please enter valid email.
+    </div>
+</div>
+
 <div class="form-group row">
-	<div class="col-xs-6 col-xs-offset-3">
-	    <a ng-click="goToNextSection()" class="btn btn-block btn-info btn-padding-css">
+	<div class="col-xs-5" style="margin-left: 5%;">
+	    <a ng-click="goToNextSection(false)" class="btn btn-block btn-info btn-padding-css">
 	    Next&nbsp;<span class="glyphicon glyphicon-circle-arrow-right"></span>
+	    </a>
+	</div>
+        <div class="col-xs-5" style="margin-left: 5%;">
+	    <a ng-click="goToNextSection(true)" class="btn btn-block btn-info btn-padding-css">
+	    Skip&nbsp;<span class="glyphicon glyphicon-circle-arrow-right"></span>
 	    </a>
 	</div>
 </div>

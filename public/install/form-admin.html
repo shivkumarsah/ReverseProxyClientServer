@@ -1,8 +1,9 @@
+<div id="loading">
+    <img style="margin-left: 46%; margin-top: 15%;" height="100px" width="100px" src='/img/ajax-loader.gif' alt='Loading...' />
+</div>
 <div class="form-group">
     <div class="form-group row">
-        <div class="col-xs-6 col-xs-offset-3">
-            <img src="/img/full-logo.png" style="height:100px; width:200px; margin-bottom:5px;margin-left: 8%;" alt="Logo">
-        </div>
+        <div ng-include="'logo.html'"></div>
     </div>
 
     <div ng-show='adminError' style="text-align: center;">
@@ -10,6 +11,13 @@
     </div>
 </div>
 <div class="form-group">
+    <label for="domainapikey">School Domain Api Key:</label>
+    <input type="text" class="form-control input-border" name="domainApiKey" ng-model="formData.domainApiKey" ng-change="keydown('domainapikey')">
+    <div style="color:red;font-size: 12px;" ng-show="errorDomainApiKey">
+        School Domain Api key should contain at least 8 characters.
+    </div>
+</div>
+<!--<div class="form-group">
     <label for="name">Admin Name:</label>
     <input type="text" class="form-control input-border" name="adminName" ng-model="formData.adminName" ng-change="keydown('username')">
     <div style="color:red;font-size: 12px;" ng-show="errorUserName">
@@ -34,11 +42,11 @@
     <div style="color:red;font-size: 12px;" ng-show="errorEmail">
         Please enter valid email.
     </div>
-</div>
+</div>-->
 
 <div class="form-group row">
 	<div class="col-xs-6 col-xs-offset-3">
-	    <a ng-click="goToNextSection()" class="btn btn-block btn-info btn-padding-css">
+	    <a ng-click="goToNextSection(false)" class="btn btn-block btn-info btn-padding-css">
 	    Next&nbsp;<span class="glyphicon glyphicon-circle-arrow-right"></span>
 	    </a>
 	</div>

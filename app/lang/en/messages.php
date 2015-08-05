@@ -13,44 +13,44 @@ return array(
      */
 
     "logo" => "Logo",
-    "classic_url_title" =>"ClassLink, Inc.",
+    "classic_url_title" => "ClassLink, Inc.",
     'project_title' => "Reverse Proxy Management",
     'no_record_found' => "No record found.",
     "links" => array(
-        'settings'=>"Settings",
-        'logout'=>"Logout",
-        'dashboard'=>"Dashboard",
-        'overview'=>"Overview",
-        'manage_application'=>"Manage Applications",
-        'proxy_setting'=>"Reverse Proxy Settings",
+        'settings' => "Settings",
+        'logout' => "Logout",
+        'dashboard' => "Dashboard",
+        'overview' => "Overview",
+        'manage_application' => "Manage Applications",
+        'proxy_setting' => "Reverse Proxy Settings",
     ),
     "settings" => array(
-        'page_title'=>"Settings",
-        
+        'page_title' => "Settings",
+
     ),
     "applications" => array(
-        'page_title'=>"Applications",
-        'add_application'=> "Create New Application",
-        'head_name'=> "Name",
-        'head_internal_url'=> "Internal URL",
-        'head_external_url'=> "External URL",
-        'head_task'=> "Task",
-        
+        'page_title' => "Applications",
+        'add_application' => "Create New Application",
+        'head_name' => "Name",
+        'head_internal_url' => "Internal URL",
+        'head_external_url' => "External URL",
+        'head_task' => "Task",
+
     ),
     "login" => array(
-        'page_title'=>"Login | Reverse Proxy Management",
+        'page_title' => "Login | Reverse Proxy Management",
         'username' => "Username",
         'password' => "Password",
         'remember_me' => "Remember Me",
         'sign_in' => "Sign In",
         'login' => "Login",
         'account_created' => 'Your account has been successfully created.',
-        'instructions_sent'       => 'Please check your email for the instructions on how to confirm your account.',
+        'instructions_sent' => 'Please check your email for the instructions on how to confirm your account.',
         'too_many_attempts' => 'Too many attempts. Try again in few minutes.',
         'wrong_credentials' => 'Incorrect username or password.',
         'not_confirmed' => 'Your account may not be confirmed. Check your email for the confirmation link',
         'confirmation' => 'Your account has been confirmed! You may now login.',
-        'password_confirmation' => 'The passwords did not match.', 
+        'password_confirmation' => 'The passwords did not match.',
         'wrong_confirmation' => 'Wrong confirmation code.',
         'password_forgot' => 'The information regarding password reset was sent to your email.',
         'wrong_password_forgot' => 'User not found.',
@@ -61,12 +61,12 @@ return array(
         'invalid_access' => 'Invalid login. Try again'
     ),
     "dashboard" => array(
-        'page_title'=>"Dashboard",
-        
+        'page_title' => "Dashboard",
+
     ),
     "developers" => array(
-        'page_title'=>"Developer Management",
-        'page_header'=>"Developers",
+        'page_title' => "Developer Management",
+        'page_header' => "Developers",
         'name' => "Name",
         'api' => "Consumer Key",
         'actions' => "Actions",
@@ -75,8 +75,8 @@ return array(
         'save' => "Save",
         'delete' => "Delete",
         'generatekey' => "Generate Key",
-        
-    ),    
+
+    ),
     /*
       |--------------------------------------------------------------------------
       | Custom Validation Language Lines

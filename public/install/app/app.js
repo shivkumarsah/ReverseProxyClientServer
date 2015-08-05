@@ -10,9 +10,7 @@ var app = angular.module('formApp', [
 // configuring our routes
 // =============================================================================
 app.config( function ( $stateProvider, $urlRouterProvider ) {
-
     $stateProvider
-
         // route to show our basic form (/form)
         .state('form', {
             url: '/form',
@@ -49,6 +47,12 @@ app.config( function ( $stateProvider, $urlRouterProvider ) {
         .state('form.install', {
             url: '/install',
             templateUrl: 'form-install.html'
+        })
+        
+         // url will be /form/success
+        .state('form.success', {
+            url: '/success',
+            templateUrl: 'form-success.html'
         });
 
     // catch all route
@@ -61,15 +65,13 @@ app.value('formSteps', [
     {uiSref: 'form.database', valid: false},
     {uiSref: 'form.admin', valid: false},
     {uiSref: 'form.smpt', valid: false},
-    {uiSref: 'form.install', valid: false}
-
+    {uiSref: 'form.install', valid: false},
+    {uiSref: 'form.success', valid: false}
 ]);
 
 app.run( ['$rootScope', '$state', 'formSteps', function($rootScope, $state, formSteps) {
-
     // Register listener to watch route changes
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-
             var canGoToStep = false;
             // only go to next if previous is valid
             var stateName = '';
@@ -78,13 +80,16 @@ app.run( ['$rootScope', '$state', 'formSteps', function($rootScope, $state, form
 
             });
 
-            console.log('toStateIndex',toStateIndex);
+            //console.log('toStateIndex',toStateIndex);
             if(toStateIndex === 0) {
                 canGoToStep = true;
             } else {
                 canGoToStep = formSteps[toStateIndex - 1].valid;
+                if( fromState.name == 'form.success' ) {
+                    canGoToStep = false;
+                }
             }
-            console.log('canGoToStep', toState.name, canGoToStep);
+            //console.log('canGoToStep', toState.name, canGoToStep);
 
             // Stop state changing if the previous state is invalid
             if(!canGoToStep && ( fromState.name !== '' && fromState.name !== 'form.welcome' )) {
@@ -105,10 +110,12 @@ app.service ( '$serverRequest', function ( $rootScope, $http ) {
     $serverRequest.install = {
 
         dbStatus: false,
+        dbresponse: false,
         adminStatus: false,
         smptStatus: false,
         installStatus: false,
         installingStatus: false,
+        installationState: false,
 
         checkCredential: function ( url, json ) {
             $http ({
@@ -121,6 +128,7 @@ app.service ( '$serverRequest', function ( $rootScope, $http ) {
             }).success ( function ( data, status, headers, config ) {
                 if( json.submitedtype === 'dbsetting' ){
                     $serverRequest.install.dbStatus= data.error ;
+                    $serverRequest.install.dbresponse= data.responseMessage ;
                     $rootScope.$broadcast ( 'DB_STATUS' );
 
                 } else if( json.submitedtype === 'adminsetting' ){
@@ -138,6 +146,9 @@ app.service ( '$serverRequest', function ( $rootScope, $http ) {
                 } else if( json.submitedtype === 'installsetting' ) {
                     $serverRequest.install.installingStatus= data ;
                     $rootScope.$broadcast ( 'INSTALLING_STATUS' );
+                } else if( json.submitedtype === 'checkstate' ) {
+                    $serverRequest.install.installationState= data.state ;
+                    $rootScope.$broadcast ( 'CHECK_INSTALLATION_STATE' );
                 }
 
             }).error ( function ( data, status, headers, config ) {
@@ -147,7 +158,6 @@ app.service ( '$serverRequest', function ( $rootScope, $http ) {
         },
 
         redirectToLogin: function ( url, json ) {
-
             $http ({
                 method: 'POST',
                 url: url,

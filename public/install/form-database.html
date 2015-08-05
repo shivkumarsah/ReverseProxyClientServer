@@ -1,20 +1,33 @@
+<div id="loading">
+    <img style="margin-left: 46%; margin-top: 15%;" height="100px" width="100px" src='/img/ajax-loader.gif' alt='Loading...' />
+</div>
 <div class="form-group">
     <div class="form-group row">
-        <div class="col-xs-6 col-xs-offset-3">
-            <img src="/img/full-logo.png" style="height:100px; width:200px; margin-bottom:5px;margin-left: 8%;" alt="Logo">
+        <div class="form-group row">
+            <div ng-include="'logo.html'"></div>
         </div>
     </div>
-    <div ng-show='databaseError' style="text-align: center;">
-        <span class="help-inline" style="color: #ff0000 !important;">Please enter valid information!</span>
+    <div ng-show='databaseError' style="text-align: left;">
+        <span class="help-inline" style="color: #ff0000 !important;">
+            Please enter valid information!<br />
+            <small>{{databaseErrorElement}}</small>
+        </span>
     </div>
+</div>
+<div class="form-group">
+    <div class="form-group row">
+        <div class="col-xs-6 col-xs-offset-3" style="font-weight:bold;">
+		Please enter database details.
+		</div>
+	</div>
 </div>
 <div class="form-group">
     <label for="name">Host:</label>
-    <input type="text" class="form-control input-border" name="dbHost" ng-model="formData.dbHost">
+    <input type="text" class="form-control input-border" ng-init="formData.dbHost='localhost'" name="dbHost" ng-model="formData.dbHost">
 </div>
 <div class="form-group">
     <label for="name">Port:</label>
-    <input type="text" class="form-control input-border" name="dbPort" ng-model="formData.dbPort">
+    <input type="text" class="form-control input-border" ng-init="formData.dbPort='3306'" name="dbPort" ng-model="formData.dbPort">
 </div>
 
 <div class="form-group">
@@ -24,7 +37,7 @@
 
 <div class="form-group">
     <label for="name">User Name:</label>
-    <input type="text" class="form-control input-border" name="dbUserName" ng-model="formData.dbUserName" ng-change="keydown('username')">
+    <input type="text" class="form-control input-border" ng-init="formData.dbUserName='root'" name="dbUserName" ng-model="formData.dbUserName" ng-change="keydown('username')">
     <div style="color:red;font-size: 12px;" ng-show="errorUserName">
         User Name should contain at least 6 characters.
     </div>
@@ -43,7 +56,7 @@
 
 <div class="form-group row">
 	<div class="col-xs-6 col-xs-offset-3">
-	    <a ng-click="goToNextSection()" class="btn btn-block btn-info btn-padding-css">
+	    <a ng-click="goToNextSection(false)" class="btn btn-block btn-info btn-padding-css">
 	    Next&nbsp;<span class="glyphicon glyphicon-circle-arrow-right"></span>
 	    </a>
 	</div>

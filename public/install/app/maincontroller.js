@@ -1,10 +1,10 @@
 // our controller for the form
 // =============================================================================
 app.controller('formController', function( $scope, $serverRequest, $state, formSteps, $location ) {
-
     // we will store all of our form data in this object
     $scope.formData = {};
     $scope.databaseError = false;
+    $scope.databaseErrorElement = '';
     $scope.adminError = false;
     $scope.smptError = false;
     $scope.installError = false;
@@ -13,12 +13,16 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
     $scope.passwordCheckbox = false;
     $scope.inputType = 'password';
     $scope.errorUserName = false;
+    $scope.errorDomainApiKey = false;
     $scope.errorPassword = false;
     $scope.errorEmail = false;
+    $scope.errorSmptFromEmail = false;
+    $scope.errorSmptFromName = false;
     $scope.errorCSVpath = false;
+    $scope.errorInstallation = '';
+    $scope.adminurl = 'http://openrosters2.icreondemoserver.com/';
 
     $scope.keydown = function( type ){
-
         if ( type === 'password' ){
             $scope.errorPassword = false;
         } else if( type === 'username' ){
@@ -27,8 +31,13 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
             $scope.errorEmail = false;
         } else if ( type === 'csvpath' ) {
             $scope.errorCSVpath = false;
+        } else if ( type === 'domainapikey' ) {
+            $scope.errorDomainApiKey = false;
+        } else if ( type === 'fromname' ) {
+            $scope.errorSmptFromName = false;
+        } else if ( type === 'fromemail' ) {
+            $scope.errorSmptFromEmail = false;
         }
-
     };
 
     var nextState=function(currentState) {
@@ -44,6 +53,9 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
                 break;
             case 'form.smpt':
                 return 'form.install';
+                break;
+            case 'form.install':
+                return 'form.success';
                 break;
             default:
                 alert('Did not match any switch');
@@ -72,17 +84,27 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
 
     $scope.checkFieldValidation = function ( json ){
         var validInput = true;
-
-        if( json.username.length < 6 ){
-            validInput = false;
-            $scope.errorUserName = true;
+        
+        if( typeof json.username !== "undefined") {
+            if( json.username.length < 6 ){
+                validInput = false;
+                $scope.errorUserName = true;
+            }
         }
-
-        if( json.password.length < 6 ){
-            validInput = false;
-            $scope.errorPassword = true;
+        
+        if( typeof json.domainapikey !== "undefined") {
+            if( json.domainapikey.length < 8 ){
+                validInput = false;
+                $scope.errorDomainApiKey = true;
+            }
         }
-
+        if( typeof json.password !== "undefined") {
+            if( json.password.length < 6 ){
+                validInput = false;
+                $scope.errorPassword = true;
+            }
+        }
+        
         if( typeof json.email !== "undefined"){
             var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
             if ( !filter.test( json.email )) {
@@ -90,23 +112,33 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
                 $scope.errorEmail = true;
             }
         }
+		
+	if( typeof json.fromemail !== "undefined"){
+            var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+            if ( !filter.test( json.fromemail )) {
+                validInput = false;
+                $scope.errorSmptFromEmail = true;
+            }
+        }
+		
+	if( typeof json.fromname !== "undefined"){
+            if( json.fromname.length <= 0 ){
+                validInput = false;
+                $scope.errorSmptFromName = true;
+            }
+        }
+
 
         return validInput;
 
     };
 
-    $scope.goToNextSection=function() {
+    $scope.goToNextSection=function(isSkipped) {
 
         var currentUrl = $state.current.name ;
-
         if ( currentUrl.toString() === 'form.database' ){
             var isValid = true;
-            /*var json = {
-                'username' : $scope.formData.dbUserName ? $scope.formData.dbUserName : '',
-                'password' : $scope.formData.dbPassword ? $scope.formData.dbPassword : ''
-            };
-            isValid = $scope.checkFieldValidation( json );*/
-
+            document.getElementById('loading').style.display = 'block';
             if( isValid ){
                 var jsonObj = {
                     'dbhost' : $scope.formData.dbHost ? $scope.formData.dbHost : '',
@@ -119,27 +151,24 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
 
                 $serverRequest.install.checkCredential( 'installation.php', jsonObj );
                 $scope.$on ( 'DB_STATUS', function () {
+                    document.getElementById('loading').style.display = 'none';
                     $scope.databaseError = $serverRequest.install.dbStatus;
+                    $scope.databaseErrorElement = $serverRequest.install.dbresponse;
                     $scope.callAfterSuccess( !$serverRequest.install.dbStatus );
                 });
             }
-
         } else if ( currentUrl.toString() === 'form.admin' ) {
-
+            
             var isValid = true;
             var json = {
-                'username' : $scope.formData.adminName ? $scope.formData.adminName : '',
-                'password' : $scope.formData.adminPassword ? $scope.formData.adminPassword : '',
-                'email' : $scope.formData.adminEmail ? $scope.formData.adminEmail : ''
+                'domainapikey' : $scope.formData.domainApiKey ? $scope.formData.domainApiKey : ''
             };
 
             isValid = $scope.checkFieldValidation( json );
-
+            
             if( isValid ) {
                 var jsonObj = {
-                    'adminusername': $scope.formData.adminName ? $scope.formData.adminName : '',
-                    'adminpassword': $scope.formData.adminPassword ? $scope.formData.adminPassword : '',
-                    'adminemail': $scope.formData.adminEmail ? $scope.formData.adminEmail : '',
+                    'schooldomainapikey' : $scope.formData.domainApiKey ? $scope.formData.domainApiKey : '',
                     'submitedtype': 'adminsetting'
                 };
 
@@ -155,17 +184,23 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
             var isValid = true;
             var json = {
                 'username' : $scope.formData.smptName ? $scope.formData.smptName : '',
-                'password' : $scope.formData.smptPassword ? $scope.formData.smptPassword : ''
+                'password' : $scope.formData.smptPassword ? $scope.formData.smptPassword : '',
+                'fromname': $scope.formData.smptFromName ? $scope.formData.smptFromName : '',
+                'fromemail': $scope.formData.smptFromEmail ? $scope.formData.smptFromEmail : ''
             }
-
-            isValid = $scope.checkFieldValidation( json );
-
+            if(!isSkipped) {
+                isValid = $scope.checkFieldValidation( json );
+            }
+            
             if( isValid ) {
                 var jsonObj = {
                     'emailhost': $scope.formData.smptServer ? $scope.formData.smptServer : '',
                     'emailport': $scope.formData.smptPort ? $scope.formData.smptPort : '',
                     'emailusername': $scope.formData.smptName ? $scope.formData.smptName : '',
                     'emailpassword': $scope.formData.smptPassword ? $scope.formData.smptPassword : '',
+                    'fromname': $scope.formData.smptFromName ? $scope.formData.smptFromName : '',
+                    'fromemail': $scope.formData.smptFromEmail ? $scope.formData.smptFromEmail : '',
+                    'smtpskipped':isSkipped ? 'yes' : 'no',
                     'submitedtype': 'emailsetting'
                 };
 
@@ -188,7 +223,7 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
                 $scope.$on ( 'INSTALL_STATUS', function () {
                     $scope.installError = $serverRequest.install.installStatus;
                     if ( !$serverRequest.install.installStatus ) {
-                        $scope.processForm( );
+                        $scope.processForm($scope);
                     }
                 });
             } else {
@@ -215,40 +250,37 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
             updateValidityOfCurrentStep(false /*not valid */);
         }
     };
-
+    
     // function to process the form
-    $scope.processForm = function() {
+    $scope.processForm = function($scope) {
         var jsonObj = {
           'submitedtype' : 'installsetting'
         };
-
         $serverRequest.install.checkCredential( 'installation.php', jsonObj );
         $scope.$on ( 'INSTALLING_STATUS', function () {
+            document.getElementById('loading').style.display = 'none';
             if ( $serverRequest.install.installingStatus.error ) {
-                alert('Error on installation!');
+                $scope.installError = $serverRequest.install.installingStatus.error;
+                $scope.errorInstallation = $serverRequest.install.installingStatus.responseMessage;
             } else {
-                $scope.varProtocol = $location.protocol();
-                $scope.varHost = $location.host();
-                var rData = $serverRequest.install.installingStatus;
-                var jsonObj = {
-                    'email' : rData.email,
-                    'password_confirmation' : rData.password_confirmation,
-                    'username' : rData.username,
-                    'password' : rData.password
-                };
-
-                var redirectUrl = $scope.varProtocol+'://'+$scope.varHost+'/users/signup';
-                $serverRequest.install.redirectToLogin( redirectUrl, jsonObj );
-
+                updateValidityOfCurrentStep(true);
+                $state.go(nextState($state.current.name));
             }
-
         });
     };
-
-    $scope.$on ( 'REDIRECT_TO_LOGIN', function () {
-        $scope.vProtocol = $location.protocol();
-        $scope.vHost = $location.host();
-        window.location.href = $scope.vProtocol+'://'+$scope.vHost;
-    });
-
+    
+    $scope.checkState = function() {
+        var jsonObj = {
+          'submitedtype' : 'checkstate'
+        };
+        $serverRequest.install.checkCredential( 'installation.php', jsonObj );
+        $scope.$on ( 'CHECK_INSTALLATION_STATE', function () {
+            if( $serverRequest.install.installationState != $state.current.name ) {
+                $state.current.name = $serverRequest.install.installationState;
+                updateValidityOfCurrentStep(true);
+                $state.go(nextState($state.current.name));
+            }
+        });
+    }
+    $scope.checkState();
 });

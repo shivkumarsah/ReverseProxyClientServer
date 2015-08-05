@@ -3,18 +3,24 @@
 </div>
 <div class="form-group">
     <div class="form-group row">
-        <div class="col-xs-6 col-xs-offset-3">
-            <img src="/img/full-logo.png" style="height:100px; width:200px; margin-bottom:5px;margin-left: 8%;" alt="Logo">
+        <div class="form-group row">
+            <div ng-include="'logo.html'"></div>
         </div>
     </div>
-    <div ng-show='installError' style="text-align: center;">
-        <span class="help-inline" style="color: #ff0000 !important;">Please enter valid information!</span>
+    <div ng-show='installError' style="text-align: left;">
+        <span class="help-inline" style="color: #ff0000 !important;">
+            Please check errors!<br />
+            <small>{{errorInstallation}}</small>
+        </span>
     </div>
 </div>
 <div class="form-group">
     <div style="width:80% !important;display: inline-block;">
          <label for="name">Please enter the upload path for the CSV files</label>
-        <input type="text" class="form-control input-border" name="folderPath" ng-change="keydown('csvpath')" ng-model="formData.folderPath">
+         <div>
+             <span style="width:20%; float:left; font-weight: bold;">app/storage/</span>
+             <span style="width:70%; float:left; margin-left: 4%;"><input type="text" class="form-control input-border" name="folderPath" ng-change="keydown('csvpath')" ng-model="formData.folderPath"></span>
+         </div>
     </div>
     <div style="color:red;font-size: 12px;" ng-show="errorCSVpath">
         Please enter CSV files upload path.
@@ -27,7 +33,7 @@
 <!--<button type="submit" class="btn btn-danger">Install</button>-->
 <div class="form-group row">
     <div class="col-xs-4 col-xs-offset-4">
-        <a ng-click="goToNextSection()" class="btn btn-block btn-info btn-padding-css">
+        <a ng-click="goToNextSection(false)" class="btn btn-block btn-info btn-padding-css">
             INSTALL&nbsp;<span class="glyphicon glyphicon-circle-arrow-right"></span>
         </a>
     </div>

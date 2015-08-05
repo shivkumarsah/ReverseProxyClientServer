@@ -9,7 +9,7 @@ switch($inputs['submitedtype']){
             $resArray[]="DB host missing";
         }
         if(empty($inputs['dbport'])){
-            $resArray[]="DB prot missing";
+            $resArray[]="DB port missing";
         }
         if(empty($inputs['dbname'])){
             $resArray[]="DB name missing";
@@ -20,69 +20,80 @@ switch($inputs['submitedtype']){
             break;
         }
         $settingObj = new setting();
-        $status=$settingObj ->checkDatabase($inputs);
-        if($status){
-            file_put_contents('config.ini',"");
-            $handdler=fopen("config.ini","a+");
-            fwrite($handdler,"dbhost = '".$inputs['dbhost']."';\n");
-            fwrite($handdler,"dbport = '".$inputs['dbport']."';\n");
-            fwrite($handdler,"dbusername = '".$inputs['dbusername']."';\n");
-            fwrite($handdler,"dbpassword = '".$inputs['dbpassword']."';\n");
-            fwrite($handdler,"dbname = '".$inputs['dbname']."';\n");
-            $configItems = parse_ini_file("config.ini");
-            $responseArray = array("error"=>false,"responseMessage"=>"success");
+        $dbresponse = $settingObj->installDatabase($inputs);
+        if( !$dbresponse['error'] ){
+            $configrespons = $settingObj->checkConfig($inputs);
+            if( $configrespons ) {
+                $settingObj->updateState('form.database');
+                $responseArray = array("error"=>false,"responseMessage"=>"success");
+            } else {
+                $responseArray = array("error"=>true,"responseMessage"=>"fail");
+            }
             echo  json_encode($responseArray);exit;
             break;
         }else{
-            $responseArray = array("error"=>true,"responseMessage"=>"DB connection error");
+            // update state.ini
+            $responseArray = array("error"=>true, "responseMessage"=>$response['responseMessage']);
             echo  json_encode($responseArray);exit;
             break;
         }
         break;
     case "adminsetting":
-        $resArray = array();    
-        if(empty($inputs['adminusername'])){
-            $resArray[]="Admin user name missing";
-        }
-        if(empty($inputs['adminpassword'])){
-            $resArray[]="Admin password missing";
-        }
-        if(empty($inputs['adminemail'])){
-            $resArray[]="Admin email missing";
+        $resArray = array();   
+        if(empty($inputs['schooldomainapikey'])){
+            $resArray[]="School Domain api key missing";
         }
         if(!empty($resArray)){
             $responseArray = array("error"=>true,"responseMessage"=>"Missing fields","filedlist"=>$resArray);
             echo  json_encode($responseArray);exit;
             break;
         }
-        $handdler=fopen("config.ini","a+");
-        fwrite($handdler,"adminusername = '".$inputs['adminusername']."';\n");
-        fwrite($handdler,"adminpassword = '".$inputs['adminpassword']."';\n");
-        fwrite($handdler,"adminemail = '".$inputs['adminemail']."';\n");
-        $configItems = parse_ini_file("config.ini");
-        $responseArray = array("error"=>false,"responseMessage"=>"success");
+        $settingObj = new setting();
+        $configrespons = $settingObj->checkConfig($inputs);
+        if( $configrespons ) {
+            $settingObj->updateState('form.admin');
+            $responseArray = array("error"=>false,"responseMessage"=>"success");
+        } else {
+            $responseArray = array("error"=>true,"responseMessage"=>"fail");
+        }
         echo  json_encode($responseArray);exit;
         break;
     case "emailsetting":
         $resArray = array();    
-        if(empty($inputs['emailhost'])){
-            $resArray[]="Email host missing";
+        if( !$inputs['smtpskipped'] ) {
+            if(empty($inputs['emailhost'])){
+                $resArray[]="Email host missing";
+            }
+            if(empty($inputs['emailport'])){
+                $resArray[]="Email port missing";
+            }
+            if(empty($inputs['emailusername'])){
+                $resArray[]="Username missing";
+            }
+            if(empty($inputs['emailpassword'])){
+                $resArray[]="Password missing";
+            }
+            if(empty($inputs['fromname'])){
+                $resArray[]="From name missing";
+            }
+            if(empty($inputs['fromemail'])){
+                $resArray[]="From Email missing";
+            }
         }
-        if(empty($inputs['emailport'])){
-            $resArray[]="Email port missing";
-        }
+        
         if(!empty($resArray)){
             $responseArray = array("error"=>true,"responseMessage"=>"Missing fields","filedlist"=>$resArray);
             echo  json_encode($responseArray);exit;
             break;
         }
-        $handdler=fopen("config.ini","a+");
-        fwrite($handdler,"emailhost = '".$inputs['emailhost']."';\n");
-        fwrite($handdler,"emailport = '".$inputs['emailport']."';\n");
-        fwrite($handdler,"emailusername = '".$inputs['emailusername']."';\n");
-        fwrite($handdler,"emailpassword = '".$inputs['emailpassword']."';\n");
-        $configItems = parse_ini_file("config.ini");
-        $responseArray = array("error"=>false,"responseMessage"=>"success");
+        $settingObj = new setting();
+        $configrespons = $settingObj->checkConfig($inputs);
+        if( $configrespons ) {
+            $settingObj->updateState('form.smpt');
+            $responseArray = array("error"=>false,"responseMessage"=>"success");
+        } else {
+            $responseArray = array("error"=>true,"responseMessage"=>"fail");
+        }
         echo  json_encode($responseArray);exit;
         break;
     case "uploadsetting":
@@ -95,15 +106,25 @@ switch($inputs['submitedtype']){
             echo  json_encode($responseArray);exit;
             break;
         }
-        $handdler=fopen("config.ini","a+");
-        fwrite($handdler,"uploadpath = '".$inputs['uploadpath']."';\n");
-        $configItems = parse_ini_file("config.ini");
-        $responseArray = array("error"=>false,"responseMessage"=>"success");
+        $settingObj = new setting();
+        $configrespons = $settingObj->checkConfig($inputs);
+        if( $configrespons ) {
+            $responseArray = array("error"=>false,"responseMessage"=>"success");
+        } else {
+            $responseArray = array("error"=>true,"responseMessage"=>"fail");
+        }
         echo  json_encode($responseArray);exit;
         break;
     case "installsetting":
         $settingObj = new setting();
-        $responseArray = $status=$settingObj ->installProcess($inputs);
+        $responseArray = $settingObj->installProcess();
+        $settingObj->updateState('form.install');
+        $settingObj->installationComplete();
+        echo  json_encode($responseArray);exit;
+        break;
+    case "checkstate":
+        $settingObj = new setting();
+        $responseArray = $settingObj->getState();
         echo  json_encode($responseArray);exit;
         break;
     default :
