@@ -1,0 +1,49 @@
+<div id="loading">
+    <img style="margin-left: 46%; margin-top: 15%;" height="100px" width="100px" src='/img/ajax-loader.gif' alt='Loading...' />
+</div>
+<div class="form-group">
+    <div class="form-group row">
+        <div class="form-group row">
+            <div ng-include="'logo.html'"></div>
+        </div>
+    </div>
+    <div ng-show='databaseError' style="text-align: left;">
+        <span class="help-inline" style="color: #ff0000 !important;">
+            Please enter valid information!<br />
+            <small>{{proxyErrorElement}}</small>
+        </span>
+    </div>
+</div>
+<div class="form-group">
+    <div class="form-group row">
+        <div class="col-xs-6 col-xs-offset-3" style="font-weight:bold;">
+		Please enter proxy server details.
+		</div>
+	</div>
+</div>
+<div class="form-group">
+    <label for="baseUrl">Base Url:</label>
+    <input type="text" class="form-control input-border" name="baseUrl" ng-model="formData.baseUrl" id="baseUrl" />
+</div>
+<div class="form-group">
+    <label for="baseUrlPort">Port:</label>
+    <input type="text" class="form-control input-border" name="baseUrlPort" ng-model="formData.baseUrlPort" id="baseUrlPort" />
+</div>
+
+<div class="form-group">
+    <label for="confPath">Configuration Path:</label>
+    <input type="text" class="form-control input-border" name="confPath" ng-model="formData.confPath" id="confPath" />
+</div>
+
+<div class="form-group">
+    <label for="nginxPath">Nginx Service Path:</label>
+    <input type="text" class="form-control input-border" name="nginxPath" ng-model="formData.nginxPath" id="nginxPath" />
+</div>
+
+<div class="form-group row">
+	<div class="col-xs-6 col-xs-offset-3">
+	    <a ng-click="goToNextSection(false)" class="btn btn-block btn-info btn-padding-css">
+	    Next&nbsp;<span class="glyphicon glyphicon-circle-arrow-right"></span>
+	    </a>
+	</div>
+</div>

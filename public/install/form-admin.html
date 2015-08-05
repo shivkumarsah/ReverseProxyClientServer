@@ -11,8 +11,8 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="domainapikey">School Domain Api Key:</label>
-    <input type="text" class="form-control input-border" name="domainApiKey" ng-model="formData.domainApiKey" ng-change="keydown('domainapikey')">
+    <label for="domainApiKey">Api Key:</label>
+    <input type="text" class="form-control input-border" name="domainApiKey" ng-model="formData.domainApiKey" ng-change="keydown('domainapikey')" id="domainApiKey" />
     <div style="color:red;font-size: 12px;" ng-show="errorDomainApiKey">
         School Domain Api key should contain at least 8 characters.
     </div>

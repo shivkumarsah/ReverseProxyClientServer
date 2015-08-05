@@ -38,6 +38,32 @@ switch($inputs['submitedtype']){
             break;
         }
         break;
+    case "proxysetting":
+        $resArray = array();
+        if(empty($inputs['baseUrl'])){
+            $resArray[]="Base Url missing";
+        }
+        if(empty($inputs['confPath'])){
+            $resArray[]="Configuration path missing";
+        }
+        if(empty($inputs['nginxPath'])){
+            $resArray[]="Nginx service path missing";
+        }
+        if(!empty($resArray)){
+            $responseArray = array("error"=>true,"responseMessage"=>"Missing fields","filedlist"=>$resArray);
+            echo  json_encode($responseArray);exit;
+            break;
+        }
+        $settingObj = new setting();
+        $configresponse = $settingObj->checkConfig($inputs);
+        if( $configresponse ) {
+            $settingObj->updateState('form.proxy');
+            $responseArray = array("error"=>false,"responseMessage"=>"success");
+        } else {
+            $responseArray = array("error"=>true,"responseMessage"=>"fail");
+        }
+        echo  json_encode($responseArray);exit;
+        break;
     case "adminsetting":
         $resArray = array();   
         if(empty($inputs['schooldomainapikey'])){

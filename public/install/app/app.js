@@ -32,6 +32,12 @@ app.config( function ( $stateProvider, $urlRouterProvider ) {
             url: '/database',
             templateUrl: 'form-database.html'
         })
+
+        .state('form.proxy', {
+            url: '/proxy',
+            templateUrl: 'form-proxy.html'
+        })
+
         // url will be nested (/form/admin)
         .state('form.admin', {
             url: '/admin',
@@ -63,9 +69,10 @@ app.config( function ( $stateProvider, $urlRouterProvider ) {
 app.value('formSteps', [
     {uiSref: 'form.welcome', valid: false},
     {uiSref: 'form.database', valid: false},
+    {uiSref: 'form.proxy', valid: false},
     {uiSref: 'form.admin', valid: false},
     {uiSref: 'form.smpt', valid: false},
-    {uiSref: 'form.install', valid: false},
+    {uiSref: 'form.install', valid: true},
     {uiSref: 'form.success', valid: false}
 ]);
 
@@ -111,6 +118,8 @@ app.service ( '$serverRequest', function ( $rootScope, $http ) {
 
         dbStatus: false,
         dbresponse: false,
+        proxyStatus: false,
+        proxyresponse: false,
         adminStatus: false,
         smptStatus: false,
         installStatus: false,
@@ -126,11 +135,14 @@ app.service ( '$serverRequest', function ( $rootScope, $http ) {
                     'Content-Type': 'application/json'
                 }
             }).success ( function ( data, status, headers, config ) {
-                if( json.submitedtype === 'dbsetting' ){
-                    $serverRequest.install.dbStatus= data.error ;
-                    $serverRequest.install.dbresponse= data.responseMessage ;
-                    $rootScope.$broadcast ( 'DB_STATUS' );
-
+                if( json.submitedtype === 'dbsetting' ) {
+                    $serverRequest.install.dbStatus = data.error;
+                    $serverRequest.install.dbresponse = data.responseMessage;
+                    $rootScope.$broadcast('DB_STATUS');
+                } else if( json.submitedtype === 'proxysetting' ){
+                        $serverRequest.install.proxyStatus= data.error ;
+                        $serverRequest.install.proxyresponse= data.responseMessage ;
+                        $rootScope.$broadcast ( 'PROXY_STATUS' );
                 } else if( json.submitedtype === 'adminsetting' ){
                     $serverRequest.install.adminStatus= data.error ;
                     $rootScope.$broadcast ( 'ADMIN_STATUS' );

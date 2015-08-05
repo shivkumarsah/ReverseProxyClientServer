@@ -22,6 +22,12 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
     $scope.errorInstallation = '';
     $scope.adminurl = 'http://openrosters2.icreondemoserver.com/';
 
+    $scope.formData.baseUrl = "http://";
+    $scope.formData.baseUrlPort = '80';
+    $scope.formData.confPath = '/var/www/html/classlinkproxy/configs';
+    $scope.formData.nginxPath = '/var/www/html/php_root';
+    $scope.dbProcessing = false;
+
     $scope.keydown = function( type ){
         if ( type === 'password' ){
             $scope.errorPassword = false;
@@ -46,6 +52,9 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
                 return 'form.database';
                 break;
             case 'form.database':
+                return 'form.proxy';
+                break;
+            case 'form.proxy':
                 return 'form.admin';
                 break;
             case 'form.admin':
@@ -76,10 +85,11 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
     };
 
     $scope.hideShowPassword = function(){
-        if ($scope.inputType == 'password')
+        if ($scope.inputType == 'password') {
             $scope.inputType = 'text';
-        else
+        } else {
             $scope.inputType = 'password';
+        }
     };
 
     $scope.checkFieldValidation = function ( json ){
@@ -136,10 +146,13 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
     $scope.goToNextSection=function(isSkipped) {
 
         var currentUrl = $state.current.name ;
+        console.log(currentUrl.toString());
+
         if ( currentUrl.toString() === 'form.database' ){
             var isValid = true;
             document.getElementById('loading').style.display = 'block';
             if( isValid ){
+                $scope.dbProcessing = true;
                 var jsonObj = {
                     'dbhost' : $scope.formData.dbHost ? $scope.formData.dbHost : '',
                     'dbport' : $scope.formData.dbPort ? $scope.formData.dbPort : '',
@@ -155,6 +168,25 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
                     $scope.databaseError = $serverRequest.install.dbStatus;
                     $scope.databaseErrorElement = $serverRequest.install.dbresponse;
                     $scope.callAfterSuccess( !$serverRequest.install.dbStatus );
+                });
+            }
+        } else if ( currentUrl.toString() === 'form.proxy' ){
+            var isValid = true;
+            document.getElementById('loading').style.display = 'block';
+            if( isValid ){
+                var jsonObj = {
+                    'baseUrl' : $scope.formData.baseUrl ? $scope.formData.baseUrl : '',
+                    'baseUrlPort' : $scope.formData.baseUrlPort ? $scope.formData.baseUrlPort : '',
+                    'confPath' : $scope.formData.confPath ? $scope.formData.confPath : '',
+                    'nginxPath' : $scope.formData.nginxPath ? $scope.formData.nginxPath : '',
+                    'submitedtype' : 'proxysetting'
+                };
+                $serverRequest.install.checkCredential( 'installation.php', jsonObj );
+                $scope.$on ( 'PROXY_STATUS', function () {
+                    document.getElementById('loading').style.display = 'none';
+                    $scope.proxyError = $serverRequest.install.proxyStatus;
+                    $scope.proxyErrorElement = $serverRequest.install.proxyresponse;
+                    $scope.callAfterSuccess( !$serverRequest.install.proxyStatus );
                 });
             }
         } else if ( currentUrl.toString() === 'form.admin' ) {

@@ -9,6 +9,7 @@ class setting {
     }
 
     public function installDatabase($params) {
+
         try {
             $response['error'] = true;
             $mysqli = new mysqli($params['dbhost'], $params['dbusername'], $params['dbpassword']);
@@ -54,6 +55,9 @@ class setting {
                 case "dbsetting":
                     $this->updateConfig($inputs['submitedtype'], $inputs);
                     break;
+                case "proxysetting":
+                    $this->updateConfig($inputs['submitedtype'], $inputs);
+                    break;
                 case "adminsetting":
                     $this->updateConfig($inputs['submitedtype'], $inputs);
                     break;
@@ -86,7 +90,7 @@ class setting {
                 fwrite($handdler, $configkey . " = '" . $configval . "';\n");
             }
         }
-        fclose($handle);
+        fclose($handdler);
         return true;
     }
 
@@ -95,7 +99,7 @@ class setting {
             file_put_contents('state.txt', "");
             $handdler = fopen("state.txt", "a+");
             fwrite($handdler, $state);
-            fclose($handle);
+            fclose($handdler);
             return true;
         } catch (Exception $e) {
             return false;
