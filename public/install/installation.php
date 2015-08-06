@@ -136,8 +136,8 @@ switch($inputs['submitedtype']){
     case "installsetting":
         $settingObj = new setting();
         $responseArray = $settingObj->installProcess();
-        $settingObj->updateState('form.install');
         $settingObj->installationComplete();
+        $settingObj->updateState('');
         echo  json_encode($responseArray);exit;
         break;
     case "checkstate":
