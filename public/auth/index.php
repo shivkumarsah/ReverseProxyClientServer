@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('America/Los_Angeles');
-ini_set("display_errors", 1);
+ini_set("display_errors", 0);
 session_start();
 
 $redis_ttl = 60*60*24;
