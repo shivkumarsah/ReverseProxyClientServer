@@ -123,16 +123,8 @@ switch($inputs['submitedtype']){
         echo  json_encode($responseArray);exit;
         break;
     case "uploadsetting":
-        $resArray = array();    
-        if(empty($inputs['uploadpath'])){
-            $resArray[]="upload missing";
-        }
-        if(!empty($resArray)){
-            $responseArray = array("error"=>true,"responseMessage"=>"Missing fields","filedlist"=>$resArray);
-            echo  json_encode($responseArray);exit;
-            break;
-        }
         $settingObj = new setting();
+        $settingObj->updateState('form.install');
         $configrespons = $settingObj->checkConfig($inputs);
         if( $configrespons ) {
             $responseArray = array("error"=>false,"responseMessage"=>"success");

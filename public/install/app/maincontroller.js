@@ -240,16 +240,19 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
                 $scope.$on('SMPT_STATUS', function () {
                     $scope.smptError = $serverRequest.install.smptStatus;
                     $scope.callAfterSuccess(!$serverRequest.install.smptStatus);
+
+                    //if ( !$serverRequest.install.smptStatus ) {
+                    //    $scope.processForm($scope);
+                    //}
                 });
             }
         } else if ( currentUrl.toString() === 'form.install' ) {
 
             var jsonObj = {
-                'uploadpath' : $scope.formData.folderPath ? $scope.formData.folderPath : '',
                 'submitedtype' : 'uploadsetting'
             };
 
-            if( jsonObj.uploadpath !== '' ){
+            if( jsonObj.submitedtype !== '' ){
                 document.getElementById('loading').style.display = 'block';
                 $serverRequest.install.checkCredential( 'installation.php', jsonObj );
                 $scope.$on ( 'INSTALL_STATUS', function () {

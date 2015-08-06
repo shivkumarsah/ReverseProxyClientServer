@@ -142,21 +142,25 @@ class setting {
         try {
             $configItems = parse_ini_file("config.ini");
 
+            $dir_path = '../../app/config/';
+            $dir_path = '../../app/config/install/';
+
             // change db settings
-            $fileContent = file_get_contents('../../app/config/database.php');
-            $fileContent = str_replace("{{mysql-host}}", $configItems['dbhost'], $fileContent);
-            $fileContent = str_replace("{{mysql-database}}", $configItems['dbname'], $fileContent);
-            $fileContent = str_replace("{{mysql-username}}", $configItems['dbusername'], $fileContent);
-            $fileContent = str_replace("{{mysql-password}}", $configItems['dbpassword'], $fileContent);
-            $dbr = file_put_contents('../../app/config/database.php', $fileContent);
+            $fileContent = file_get_contents($dir_path . 'database.php');
+            $fileContent = str_replace("{{mysql-host}}",        $configItems['dbhost'], $fileContent);
+            $fileContent = str_replace("{{mysql-database}}",    $configItems['dbname'], $fileContent);
+            $fileContent = str_replace("{{mysql-username}}",    $configItems['dbusername'], $fileContent);
+            $fileContent = str_replace("{{mysql-password}}",    $configItems['dbpassword'], $fileContent);
+            $dbr = file_put_contents($dir_path . 'database.php', $fileContent);
             if ($dbr == "" || $dbr == false) {
                 throw new Exception("Permissions required to  '/app/config/database.php'");
             }
             // db setting  complete
-            // school domain api key in the config file 
+            // proxy server api key in the config file
             $schooldomainapikey = $configItems["schooldomainapikey"];
             $domainapikeycontent = '<?php return array( "domain_api_key" => ' . "'" . $schooldomainapikey . "'" . ');';
-            $dmr = file_put_contents('../../app/config/domainapikey.php', $domainapikeycontent);
+
+            $dmr = file_put_contents($dir_path . 'domainapikey.php', $domainapikeycontent);
             if ($dmr == "" || $dmr == false) {
                 throw new Exception("Permissions required to '/app/config/domainapikey.php'");
             }
@@ -164,29 +168,36 @@ class setting {
             
             // create email settings and upload settings
             if ($configItems['smtpskipped'] == 'no') {
-                $emailfileContentSetting = file_get_contents('../../app/config/mail.php');
-                $emailfileContentSetting = str_replace("{{emailhost}}", $configItems['emailhost'], $emailfileContentSetting);
-                $emailfileContentSetting = str_replace("'{{emailport}}'", $configItems['emailport'], $emailfileContentSetting);
-                $emailfileContentSetting = str_replace("{{emailusername}}", $configItems['emailusername'], $emailfileContentSetting);
-                $emailfileContentSetting = str_replace("{{emailpassword}}", $configItems['emailpassword'], $emailfileContentSetting);
-                $emailfileContentSetting = str_replace("{{fromname}}", $configItems['fromname'], $emailfileContentSetting);
-                $emailfileContentSetting = str_replace("{{fromemail}}", $configItems['fromemail'], $emailfileContentSetting);
-                $emr = file_put_contents('../../app/config/mail.php', $emailfileContentSetting);
+                $emailfileContentSetting = file_get_contents($dir_path . 'mail.php');
+
+                $emailfileContentSetting = str_replace("{{emailhost}}",         $configItems['emailhost'], $emailfileContentSetting);
+                $emailfileContentSetting = str_replace("'{{emailport}}'",       $configItems['emailport'], $emailfileContentSetting);
+                $emailfileContentSetting = str_replace("{{emailusername}}",     $configItems['emailusername'], $emailfileContentSetting);
+                $emailfileContentSetting = str_replace("{{emailpassword}}",     $configItems['emailpassword'], $emailfileContentSetting);
+                $emailfileContentSetting = str_replace("{{fromname}}",          $configItems['fromname'], $emailfileContentSetting);
+                $emailfileContentSetting = str_replace("{{fromemail}}",         $configItems['fromemail'], $emailfileContentSetting);
+
+                $emr = file_put_contents($dir_path . 'mail.php', $emailfileContentSetting);
                 if ($emr == "" || $emr == false) {
                     throw new Exception("Permissions required to '/app/config/mail.php'");
                 }
             }
 
             // create csv import storage folder
-            $importfileContentSetting = file_get_contents('../../app/config/appvals.php');
-            $importfileContentSetting = str_replace("{{file_import_path}}", $configItems['uploadpath'] . "/", $importfileContentSetting);
-            $importfileContentSetting = str_replace("{{file_import_dir_name}}", basename($configItems['uploadpath']), $importfileContentSetting);
-            $amr = file_put_contents('../../app/config/appvals.php', $importfileContentSetting);
+            $proxyContentSetting = file_get_contents($dir_path . 'proxy.php');
+
+            $proxyContentSetting = str_replace("{{baseUrl}}",       $configItems['baseUrl'], $proxyContentSetting);
+            $proxyContentSetting = str_replace("{{baseUrlPort}}",   $configItems['baseUrlPort'], $proxyContentSetting);
+            $proxyContentSetting = str_replace("{{listenPort}}",    $configItems['baseUrlPort'], $proxyContentSetting);
+            $proxyContentSetting = str_replace("{{confPath}}",      $configItems['confPath'], $proxyContentSetting);
+            $proxyContentSetting = str_replace("{{nginxPath}}",     $configItems['nginxPath'], $proxyContentSetting);
+
+            $amr = file_put_contents($dir_path . 'proxy.php', $proxyContentSetting);
             if ($amr == "" || $amr == false) {
-                throw new Exception("Permissions required to '/app/config/appvals.php'");
+                throw new Exception("Permissions required to '/app/config/proxy.php'");
             }
-            // create import file
-            mkdir("../../app/storage/" . $configItems["uploadpath"], 0777, true);
+            // create proxy server configuration directory
+            mkdir($configItems["confPath"], 0777, true);
 
             // upload and email setting  is complete  
             $responseArray = array("error" => false, "responseMessage" => "success");
