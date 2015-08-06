@@ -22,7 +22,7 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
     $scope.errorInstallation = '';
     $scope.adminurl = 'http://openrosters2.icreondemoserver.com/';
 
-    $scope.formData.baseUrl = "http://";
+    $scope.formData.baseUrl = "";
     $scope.formData.baseUrlPort = '80';
     $scope.formData.confPath = '/var/www/html/classlinkproxy/configs';
     $scope.formData.nginxPath = '/var/www/html/php_root';
