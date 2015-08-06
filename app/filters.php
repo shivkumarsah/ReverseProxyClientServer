@@ -10,9 +10,22 @@
  * | application. Here you may also register your custom route filters.
  * |
  */
-App::before(function ($request) {
+
+App::before(function($request) {
     if (Session::has('access_token')) {
         $request->headers->set('access_token', Session::get('access_token'));
+    }
+    $data = file_get_contents ("../public/install/installationStatus.json");
+    $json = json_decode($data, true);
+    if(isset($json)){
+        if($json['Installation']['status']==0){
+
+            if( file_exists ( "../public/install/install.php" ) ) {//die('file exist');
+                header('Location: /install/install.php');
+                exit;
+            }
+
+        }
     }
 });
 
