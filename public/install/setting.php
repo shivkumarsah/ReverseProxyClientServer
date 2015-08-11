@@ -158,7 +158,7 @@ class setting {
             // db setting  complete
             // proxy server api key in the config file
             $schooldomainapikey = $configItems["schooldomainapikey"];
-            $domainapikeycontent = '<?php return array( "domain_api_key" => ' . "'" . $schooldomainapikey . "'" . ');';
+            $domainapikeycontent = '<?php return array( "api_key" => ' . "'" . $schooldomainapikey . "'" . ');';
 
             $dmr = file_put_contents($dir_path . 'domainapikey.php', $domainapikeycontent);
             if ($dmr == "" || $dmr == false) {

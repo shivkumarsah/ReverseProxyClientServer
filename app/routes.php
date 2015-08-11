@@ -25,6 +25,7 @@ Route::get('users/lunchpadtoken', array('as'=>'lunchpadtoken', 'uses'=>'UsersCon
 Route::any('api/v1/developers', array('as' => 'ApiDevelopersController', 'uses' => 'ApiDevelopersController@index'));
 Route::any('apiaccess', array('as' => 'apiaccessController', 'uses' => 'DevelopersController@apiaccess'));
 Route::get('users/processOauth/{token}', array('as'=>'processOauth', 'uses'=>'UsersController@processOauth'));
+Route::get('users/autologin', array('as'=>'autoLogin', 'uses'=>'UsersController@autoLogin'));
 Route::get('logout/{gwstoken}', array('as'=>'logoutToken', 'uses'=>'UsersController@logoutToken'));
 
 // Confide routes

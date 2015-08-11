@@ -104,6 +104,11 @@ class UsersController extends BaseController {
                 $launchpadurl .= Config::get('launchpad.launcpad_url');
                 $query_string = http_build_query($launcpad);
                 $launchpadurl .= $query_string;
+
+                $login = Config::get('launchpad.login_required');
+                if(!$login) {
+                    $launchpadurl = false;
+                }
                 return View::make(Config::get('confide::login_form'))->with('launchpadurl', $launchpadurl);
             }
         }
@@ -162,6 +167,38 @@ class UsersController extends BaseController {
             return View::make('users.lunchpadtoken')
                             ->with('response', $response)
                             ->with('status', "0");
+        }
+    }
+
+
+    /**
+     * Auto login to admin using API-KEY
+     *
+     * @return  Illuminate\Http\Response
+     */
+    public function autoLogin(){
+        $api_key = Config::get('domainapikey.api_key');
+
+        //$user = AdminUser::find(2);
+        $user = AdminUser::where('api_key', $api_key)->first();
+        //asd($api_key, false); asd($user);
+        if (!empty($user)) {
+            // wirte in access_token
+            Session::put('isProxyExist', 1);
+            Session::put('access_key', $api_key);
+            Session::put('access_token', $api_key);
+            Session::put('user_id', $user['id']);
+            Session::put('tenant_id', $user['tenant_id']);
+            Session::put('api_key', $user['api_key']);
+            Session::put(Session::getId(), $api_key);
+            if (1) {
+                return Redirect::intended(route('applications'));
+            } else {
+                return Redirect::intended(route('proxysettings'));
+            }
+        } else {
+            $err_msg = Lang::get('messages.login.invalid_access');
+            return Redirect::action('UsersController@login')->with('error', $err_msg);
         }
     }
 
