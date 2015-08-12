@@ -30,6 +30,9 @@ Route::get('logout/{gwstoken}', array('as'=>'logoutToken', 'uses'=>'UsersControl
 
 Route::any('users/checkdomain', array('as'=>'checkDomain', 'uses'=>'UsersController@checkDomain'));
 
+Route::get('v2/LTI/schools/{param1?}/{param2?}/{param3?}/{param4?}', array('as' => 'ApiSchoolsController', 'uses' => 'ApiSchoolsController@index'));
+Route::any('api/v1/proxy', array('as' => 'ApiDevelopersController', 'uses' => 'ProxyClientController@index'));
+
 // Confide routes
 //Route::group(array('before' => 'auth'), function()
 Route::group(array('before' => 'admin-auth'), function()

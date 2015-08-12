@@ -382,7 +382,7 @@ class UsersController extends BaseController {
     }
 
     /**
-     * Intermediate state to update school domain & login
+     * Intermediate state to validate proxy domain & login
      *
      * @return  Illuminate\Http\Response
      */

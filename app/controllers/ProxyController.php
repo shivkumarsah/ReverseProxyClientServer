@@ -38,6 +38,11 @@ class ProxyController extends BaseController
         return Response::json($result);
     }
 
+    /**
+     * Validate Proxy domain and api-key using cURL
+     *
+     * @return  Illuminate\Http\Response
+     */
     public function verifyProxyDomain($input) {
         $user_id = Session::get('user_id');
         $user = AdminUser::find($user_id);
@@ -86,10 +91,6 @@ class ProxyController extends BaseController
         }
         return $response;
     }
-
-
-
-
     
     /**
      * Displays the application list page
@@ -100,95 +101,7 @@ class ProxyController extends BaseController
         return View::make('proxy.application');
     }
     
-    public function proxySetup($input=array()) {
-        try{
-            $tenant_id = Session::get('tenant_id');
-            if(isset($input['id']) && !empty($input['id'])) {
-                $id = $input['id'];
-                
-                DB::table('applications')->where('id', $id)->update([
-                    'name'          => $input['application_name'],
-                    'internal_url'  => $input['internal_url'],
-                    'request_uri'   => $input['internal_uri']
-                    //'external_url'  => $input['internal_url'],
-                ]);
-            } else {
-                //$application = DB::table('applications')->orderBy('id', 'desc')->first();
-                //$next_id = (int)$application->id + 1;
-                
-                $application = new Application();
-                
-                $application->tenant_id     = $tenant_id;
-                $application->name          = $input['application_name'];
-                $application->internal_url  = $input['internal_url'];
-                //$application->external_url  = $input['internal_url'];
-                $application->request_uri   = $input['internal_uri'];
-                
-                $application->save();
-                $id = $application->id;
-            }
-            $admin          = $this->admin->getProxy();
-            $admin_api_key  = $admin['api_key'];
-            
-            $proxy_base_url     = Config::get('proxy.base_url');
-            $proxy_listen_port  = Config::get('proxy.listen_port');
-            $proxy_config_path  = Config::get('proxy.config_path');
-            $proxy_service_path = Config::get('proxy.nginx_service_path');
-            $proxy_auth_url     = Config::get('proxy.auth_url');
-            
-            $request_uri    = $input['internal_uri']; //'gwstoken='; //$admin_api_key;
-            $request_params = 'gwstoken='; //$admin_api_key;
-            $external_ip    = $id.".".$proxy_base_url;
-            
-            $external_url   = $id.".".$proxy_base_url.':'.$proxy_listen_port.'/'.$request_uri;
-            $contact_operator = strpos($external_url, '?') ? '&':'?';
-            $external_url   = $external_url.$contact_operator.$request_params;
-            $internal_url   = $input['internal_url'];
-            
-            /*$strnginx="";
-            $strnginx.='server {listen      '.$proxy_listen_port.'; server_name  '.$external_ip.';';
-            //$strnginx.='include /etc/nginx/default.d/*.conf;';
-            $strnginx.='location / {root   /usr/share/nginx/html;index index.php  index.html index.htm;';
-            $strnginx.='auth_basic "closed site";';
-            $strnginx.='auth_basic_user_file '.$proxy_config_path.'/.htpasswd;';
-            $strnginx.='proxy_pass   '.$internal_url.';';
-            $strnginx.='}}';*/
-            
-            $strnginx="";
-            $strnginx.='server {listen '.$proxy_listen_port.'; server_name '.$external_ip.';';
-            $strnginx.='location / {';
-            $strnginx.='auth_request /check;';
-            $strnginx.='auth_request_set $gws $upstream_http_gwstoken;';
-            $strnginx.='header_filter_by_lua_file /etc/nginx/nginx.lua;';
-            $strnginx.='proxy_pass   '.$internal_url.';';
-            $strnginx.='}';
-            //$strnginx.='error_page 403 = @error403;';
-            //$strnginx.='location @error403 { return 404; }';
-            $strnginx.='location = /check {';
-            $strnginx.='proxy_pass '.$proxy_auth_url.'?tenant_id='.$tenant_id.';';
-            $strnginx.='proxy_pass_request_body off;';
-            $strnginx.='proxy_set_header Content-length "";';
-            $strnginx.='proxy_set_header X-Original-URI $request_uri;';
-            $strnginx.='}}';
-            
-            $filename=$proxy_config_path.'/'.$external_ip.'.conf';
-            $fp = fopen($filename,"w");
-            fwrite($fp, $strnginx);
-            fclose($fp);
-            
-            // Update External URL in application table
-            DB::table('applications')->where('id', $id)->update([
-                'external_url'  => $external_url,
-                'request_uri'   => $request_uri
-            ]);
-            $output = array( 'status' => 1, 'id' => $id);
-            
-            exec($proxy_service_path);
-        } catch (Exception $ex) {
-            $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
-        }
-        return $output;
-    }
+
     
     
     public function applicationAdd() {
@@ -211,8 +124,66 @@ class ProxyController extends BaseController
         }
         return Response::json($output);
     }
-    
+
     public function applicationEdit() {
+        try {
+            $user_id = Session::get('user_id');
+            $user = AdminUser::find($user_id);
+            $response['status'] = 0;
+            $response['message'] = "";
+            if (!empty($user)) {
+                $input          = Input::all();
+                $user           = $user->toArray();
+                $request_data   = array_merge($user, $input);
+
+                $headers        = array();
+                $headers[]      = 'api-key: ' . $user['api_key'];
+                $request_url    = $user['proxy_url'] . "/api/v1/proxy";
+                $fields_string  = "";
+                foreach ($request_data as $key => $value) {
+                    $fields_string .= $key . '=' . $value . '&';
+                }
+                rtrim($fields_string, '&');
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+                curl_setopt($ch, CURLOPT_URL, $request_url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                curl_setopt($ch, CURLOPT_POST, count($user));
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+                $output = curl_exec($ch);
+                $info = curl_getinfo($ch);
+                $data = json_decode($output, true);
+                asd($data,0);
+                asd($info);
+                if (!empty($info) && $info['http_code'] == "200") {
+                    if (!empty($data['status']) && $data['status']) {
+                        $response['status'] = 1;
+                        $response['message'] = $data['message'];
+                    } else {
+                        if (!empty($data['message'])) {
+                            $response['message'] = $data['message'];
+                            if (!empty($data['error'])) {
+                                $response['message'] .= " \n --" . $data['error'];
+                            }
+                        }
+                    }
+                } else {
+                    $response['message'] = "Please check Proxy Domain is configured properly.";
+                }
+            } else {
+                $response['message'] = "Error in data.";
+            }
+
+
+        } catch (Exception $ex) {
+            $response = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
+        }
+        return Response::json($response);
+    }
+    
+    public function applicationEditOLD() {
          
         try {
             $input = Input::all();
