@@ -29,9 +29,67 @@ class ProxyController extends BaseController
      */
     public function settingsSave() {
         $input = Input::all();
-        $result = $this->admin->setProxy($input);
+        $validate = $this->verifyProxyDomain($input);
+        if($validate['status']) {
+            $result = $this->admin->setProxy($input);
+        } else {
+            $result = $validate;
+        }
         return Response::json($result);
     }
+
+    public function verifyProxyDomain($input) {
+        $user_id = Session::get('user_id');
+        $user = AdminUser::find($user_id);
+        $response['status'] = 0;
+        $response['message'] = "";
+        if (!empty($user)) {
+            $user = $user->toArray();
+            $user['proxy_url'] = $input['proxy_url'];
+            $user['api_key'] = $input['api_key'];
+
+            $headers = array();
+            $headers[] = 'ADMIN_API_KEY: ' . $user['api_key'];
+            $verificationurl = $user['proxy_url'] . "/users/checkdomain";
+            $fields_string = "";
+            foreach ($user as $key => $value) {
+                $fields_string .= $key . '=' . $value . '&';
+            }
+            rtrim($fields_string, '&');
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $verificationurl);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($ch, CURLOPT_POST, count($user));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+            $output = curl_exec($ch);
+            $info = curl_getinfo($ch);
+            $data = json_decode($output, true);
+            if (!empty($info) && $info['http_code'] == "200") {
+                if (!empty($data['status']) && $data['status']) {
+                    $response['status'] = 1;
+                    $response['message'] = $data['message'];
+                } else {
+                    if (!empty($data['message'])) {
+                        $response['message'] = $data['message'];
+                        if (!empty($data['error'])) {
+                            $response['message'] .= " \n --" . $data['error'];
+                        }
+                    }
+                }
+            } else {
+                $response['message'] = "Please check Proxy Domain is configured properly.";
+            }
+        } else {
+            $response['message'] = "Error in data.";
+        }
+        return $response;
+    }
+
+
+
+
     
     /**
      * Displays the application list page

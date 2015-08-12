@@ -389,36 +389,14 @@ class UsersController extends BaseController {
     public function checkDomain() {
         $rawinput = Input::all();
         $input = array_map('trim', $rawinput);
-        $adminuser = new AdminUser();
-        $response = $adminuser->updateAdminUser($input);
-        if ($response['status'] == 1) {
-            $user = $response['user']->toArray();
-            $repo = App::make('UserRepository');
-            $info['username'] = $user['username'];
-            $info['password'] = Config::get('launchpad.user_password');
-            if ($repo->login($info)) {
-                $token = Session::get('access_key');
-                Session::put('access_token', $token);
-                Session::put('tenant_id', $user['tenant_id']);
-                Session::put('school_domain', $user['school_domain']);
-                Session::put('api_key', $user['api_key']);
-                Session::put(Session::getId(), $token);
-                return Redirect::intended(route('dashboard'));
-            } else {
-                if ($repo->isThrottled($info)) {
-                    echo $err_msg = Lang::get('messages.login.too_many_attempts');
-                } elseif ($repo->existsButNotConfirmed($info)) {
-                    echo $err_msg = Lang::get('messages.login.not_confirmed');
-                } else {
-                    echo $err_msg = Lang::get('messages.login.wrong_credentials');
-                }
-                return Redirect::action('UsersController@login')->with('error', $err_msg);
-            }
+        $api_key = Config::get('domainapikey.api_key');
+        if(!empty($input['api_key']) && $input['api_key'] == $api_key) {
+            $response = array("status"=>true, "message"=>"API key is valid for this domain.");
         } else {
-            return Redirect::action('UsersController@domain')
-                            ->with('error', $response['errors'])
-                            ->withInput();
+            $response = array("status"=>false, "message"=>"Please enter valid api key.");
         }
+        echo json_encode($response);
+        exit;
     }
 
     /**

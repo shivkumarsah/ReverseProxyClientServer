@@ -28,6 +28,8 @@ Route::get('users/processOauth/{token}', array('as'=>'processOauth', 'uses'=>'Us
 Route::get('users/autologin', array('as'=>'autoLogin', 'uses'=>'UsersController@autoLogin'));
 Route::get('logout/{gwstoken}', array('as'=>'logoutToken', 'uses'=>'UsersController@logoutToken'));
 
+Route::any('users/checkdomain', array('as'=>'checkDomain', 'uses'=>'UsersController@checkDomain'));
+
 // Confide routes
 //Route::group(array('before' => 'auth'), function()
 Route::group(array('before' => 'admin-auth'), function()
