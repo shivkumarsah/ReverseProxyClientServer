@@ -143,7 +143,7 @@ class setting {
             $configItems = parse_ini_file("config.ini");
 
             $dir_path = '../../app/config/';
-            $dir_path = '../../app/config/install/';
+            //$dir_path = '../../app/config/install/';
 
             // change db settings
             $fileContent = file_get_contents($dir_path . 'database.php');
@@ -157,7 +157,7 @@ class setting {
             }
             // db setting  complete
             // proxy server api key in the config file
-            $schooldomainapikey = $configItems["schooldomainapikey"];
+            $schooldomainapikey = $configItems["domainapikey"];
             $domainapikeycontent = '<?php return array( "api_key" => ' . "'" . $schooldomainapikey . "'" . ');';
 
             $dmr = file_put_contents($dir_path . 'domainapikey.php', $domainapikeycontent);

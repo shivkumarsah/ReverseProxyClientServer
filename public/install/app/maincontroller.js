@@ -200,7 +200,7 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
             
             if( isValid ) {
                 var jsonObj = {
-                    'schooldomainapikey' : $scope.formData.domainApiKey ? $scope.formData.domainApiKey : '',
+                    'domainapikey' : $scope.formData.domainApiKey ? $scope.formData.domainApiKey : '',
                     'submitedtype': 'adminsetting'
                 };
 

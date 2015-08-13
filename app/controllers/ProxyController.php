@@ -291,7 +291,7 @@ class ProxyController extends BaseController
      */
     public function applicationList() {
         $login = Config::get('launchpad.login_required');
-        if(!$login) {
+        if($login) {
             // Show application list to proxy server
             //-------------------------//
             $user_id = Session::get('user_id');

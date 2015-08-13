@@ -66,8 +66,8 @@ switch($inputs['submitedtype']){
         break;
     case "adminsetting":
         $resArray = array();   
-        if(empty($inputs['schooldomainapikey'])){
-            $resArray[]="School Domain api key missing";
+        if(empty($inputs['domainapikey'])){
+            $resArray[]="Please enter api key.";
         }
         if(!empty($resArray)){
             $responseArray = array("error"=>true,"responseMessage"=>"Missing fields","filedlist"=>$resArray);

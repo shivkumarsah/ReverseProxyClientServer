@@ -1,1 +1,1 @@
-<?php return array( "domain_api_key" => '{{domain_api_key}}');
+<?php return array( "api_key" => '{{domain_api_key}}');
