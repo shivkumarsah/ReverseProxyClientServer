@@ -63,8 +63,6 @@ class ProxyClientController extends BaseController
                 else {
                     $input = Input::all();
                     $proxy = $this->proxyList($input);
-//                    $responseArray['input'] = $input;
-//                    $responseArray['proxy'] = $proxy;
                     $responseArray['status']    = $proxy['status'];
                     $responseArray['data']      = $proxy['data'];
                     $responseArray['message']   = $proxy['message'];

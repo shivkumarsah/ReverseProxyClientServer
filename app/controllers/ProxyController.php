@@ -293,9 +293,6 @@ class ProxyController extends BaseController
         $login = Config::get('launchpad.login_required');
         if(!$login) {
             // Show application list to proxy server
-            //$tenant_id = Session::get('tenant_id');
-            //$results = Application::where('tenant_id', '=', $tenant_id)->get();
-            //return Response::json($results);
             //-------------------------//
             $user_id = Session::get('user_id');
             $user = AdminUser::find($user_id);
@@ -335,7 +332,6 @@ class ProxyController extends BaseController
             return Response::json($response);
         } else {
             // Show application list to proxy client
-            asd("client");
             $tenant_id = Session::get('tenant_id');
             $results = Application::where('tenant_id', '=', $tenant_id)->get();
             return Response::json($results);
