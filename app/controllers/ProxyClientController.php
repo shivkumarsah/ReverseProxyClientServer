@@ -172,12 +172,12 @@ class ProxyClientController extends BaseController
             if(isset($input['id']) && !empty($input['id'])) {
                 $id = $input['id'];
                 $application = Application::find($id);
-                $status = 1; //$application->delete();
+                $status = $application->delete();
 
                 $config_file = $id . "." . Config::get('proxy.base_url') . '.conf';
                 $config_file_path = Config::get('proxy.config_path') . '/' . $config_file;
                 if (file_exists($config_file_path)) {
-                    //unlink($config_file_path);
+                    unlink($config_file_path);
                 }
                 $output = array( 'status' => $status, 'id' => $id, 'message'=> 'Application deleted successfully');
             } else {
