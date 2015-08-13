@@ -8,8 +8,13 @@
     	$("#loading").hide();
     });
     $( "#loginForm" ).submit(function( event ) {
-		var childWindow = window.open("<?php echo @$launchpadurl;?>", "Launch Paid Login","scrollbars=yes,left=500, width=600, height=600");
-        return false;
+        <?php if(!empty($launchpadurl)) { ?>
+            var childWindow = window.open("<?php echo @$launchpadurl;?>", "Launch Paid Login","scrollbars=yes,left=500, width=600, height=600");
+            return false;
+        <?php } else { ?>
+            window.location = "/users/autologin/";
+            return false;
+        <?php } ?>
     });
     function getChildValue(status, access_token)  {
         if( status == "0" ) {

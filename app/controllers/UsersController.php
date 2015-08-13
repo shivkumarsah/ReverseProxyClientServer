@@ -104,6 +104,11 @@ class UsersController extends BaseController {
                 $launchpadurl .= Config::get('launchpad.launcpad_url');
                 $query_string = http_build_query($launcpad);
                 $launchpadurl .= $query_string;
+
+                $login = Config::get('launchpad.login_required');
+                if(!$login) {
+                    $launchpadurl = false;
+                }
                 return View::make(Config::get('confide::login_form'))->with('launchpadurl', $launchpadurl);
             }
         }
@@ -162,6 +167,38 @@ class UsersController extends BaseController {
             return View::make('users.lunchpadtoken')
                             ->with('response', $response)
                             ->with('status', "0");
+        }
+    }
+
+
+    /**
+     * Auto login to admin using API-KEY
+     *
+     * @return  Illuminate\Http\Response
+     */
+    public function autoLogin(){
+        $api_key = Config::get('domainapikey.api_key');
+
+        //$user = AdminUser::find(2);
+        $user = AdminUser::where('api_key', $api_key)->first();
+        //asd($api_key, false); asd($user);
+        if (!empty($user)) {
+            // wirte in access_token
+            Session::put('isProxyExist', 1);
+            Session::put('access_key', $api_key);
+            Session::put('access_token', $api_key);
+            Session::put('user_id', $user['id']);
+            Session::put('tenant_id', $user['tenant_id']);
+            Session::put('api_key', $user['api_key']);
+            Session::put(Session::getId(), $api_key);
+            if (1) {
+                return Redirect::intended(route('applications'));
+            } else {
+                return Redirect::intended(route('proxysettings'));
+            }
+        } else {
+            $err_msg = Lang::get('messages.login.invalid_access');
+            return Redirect::action('UsersController@login')->with('error', $err_msg);
         }
     }
 
@@ -345,43 +382,21 @@ class UsersController extends BaseController {
     }
 
     /**
-     * Intermediate state to update school domain & login
+     * Intermediate state to validate proxy domain & login
      *
      * @return  Illuminate\Http\Response
      */
     public function checkDomain() {
         $rawinput = Input::all();
         $input = array_map('trim', $rawinput);
-        $adminuser = new AdminUser();
-        $response = $adminuser->updateAdminUser($input);
-        if ($response['status'] == 1) {
-            $user = $response['user']->toArray();
-            $repo = App::make('UserRepository');
-            $info['username'] = $user['username'];
-            $info['password'] = Config::get('launchpad.user_password');
-            if ($repo->login($info)) {
-                $token = Session::get('access_key');
-                Session::put('access_token', $token);
-                Session::put('tenant_id', $user['tenant_id']);
-                Session::put('school_domain', $user['school_domain']);
-                Session::put('api_key', $user['api_key']);
-                Session::put(Session::getId(), $token);
-                return Redirect::intended(route('dashboard'));
-            } else {
-                if ($repo->isThrottled($info)) {
-                    echo $err_msg = Lang::get('messages.login.too_many_attempts');
-                } elseif ($repo->existsButNotConfirmed($info)) {
-                    echo $err_msg = Lang::get('messages.login.not_confirmed');
-                } else {
-                    echo $err_msg = Lang::get('messages.login.wrong_credentials');
-                }
-                return Redirect::action('UsersController@login')->with('error', $err_msg);
-            }
+        $api_key = Config::get('domainapikey.api_key');
+        if(!empty($input['api_key']) && $input['api_key'] == $api_key) {
+            $response = array("status"=>true, "message"=>"API key is valid for this domain.");
         } else {
-            return Redirect::action('UsersController@domain')
-                            ->with('error', $response['errors'])
-                            ->withInput();
+            $response = array("status"=>false, "message"=>"Please enter valid api key.");
         }
+        echo json_encode($response);
+        exit;
     }
 
     /**

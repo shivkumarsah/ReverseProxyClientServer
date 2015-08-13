@@ -25,7 +25,13 @@ Route::get('users/lunchpadtoken', array('as'=>'lunchpadtoken', 'uses'=>'UsersCon
 Route::any('api/v1/developers', array('as' => 'ApiDevelopersController', 'uses' => 'ApiDevelopersController@index'));
 Route::any('apiaccess', array('as' => 'apiaccessController', 'uses' => 'DevelopersController@apiaccess'));
 Route::get('users/processOauth/{token}', array('as'=>'processOauth', 'uses'=>'UsersController@processOauth'));
+Route::get('users/autologin', array('as'=>'autoLogin', 'uses'=>'UsersController@autoLogin'));
 Route::get('logout/{gwstoken}', array('as'=>'logoutToken', 'uses'=>'UsersController@logoutToken'));
+
+Route::any('users/checkdomain', array('as'=>'checkDomain', 'uses'=>'UsersController@checkDomain'));
+
+Route::get('v2/LTI/schools/{param1?}/{param2?}/{param3?}/{param4?}', array('as' => 'ApiSchoolsController', 'uses' => 'ApiSchoolsController@index'));
+Route::any('api/v1/proxy', array('as' => 'ApiDevelopersController', 'uses' => 'ProxyClientController@index'));
 
 // Confide routes
 //Route::group(array('before' => 'auth'), function()
