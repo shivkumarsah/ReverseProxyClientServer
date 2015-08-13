@@ -92,6 +92,9 @@ class ProxyController extends BaseController
         return $response;
     }
     
+
+
+
     /**
      * Displays the application list page
      *
@@ -100,31 +103,68 @@ class ProxyController extends BaseController
     public function applications() {
         return View::make('proxy.application');
     }
-    
 
-    
-    
+    /**
+     * Application create on proxy server
+     *
+     * @return  Illuminate\Http\Response
+     */
     public function applicationAdd() {
         try {
-            $input = Input::all();
-            $output = $this->proxySetup($input);
-            /*
-            $application = new Application();
-            
-            $application->tenant_id = Session::get('tenant_id');
-            $application->name = $input['application_name'];
-            $application->internal_url = $input['internal_url'];
-            $application->external_url = $input['internal_url'];
-            
-            $application->save();
-            $id = $application->id;
-            $output = array( 'status' => 1, 'id' => $id);*/
+            //$input = Input::all();
+            //$output = $this->proxySetup($input);
+
+            $user_id = Session::get('user_id');
+            $user = AdminUser::find($user_id);
+            $response['status'] = 0;
+            $response['message'] = "";
+            if (!empty($user)) {
+                $input          = Input::all();
+                $user           = $user->toArray();
+                $request_data   = array_merge($user, $input);
+
+                $headers        = array();
+                $headers[]      = 'api-key: ' . $user['api_key'];
+                $request_url    = $user['proxy_url'] . "/api/v1/proxy";
+                $fields_string  = "";
+                foreach ($request_data as $key => $value) {
+                    $fields_string .= $key . '=' . $value . '&';
+                }
+                rtrim($fields_string, '&');
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($ch, CURLOPT_URL, $request_url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                curl_setopt($ch, CURLOPT_POST, count($user));
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+                $output = curl_exec($ch);
+                $info = curl_getinfo($ch);
+                $data = json_decode($output, true);
+                //asd($data,0);
+                //asd($info);
+
+                if (!empty($info) && $info['http_code'] == "200") {
+                    $response = $data;
+                } else {
+                    $response['message'] = "Please check Proxy Domain is configured properly.";
+                }
+            } else {
+                $response['message'] = "Error in data.";
+            }
+
         } catch (Exception $ex) {
-            $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
+            $response = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
         }
-        return Response::json($output);
+        return Response::json($response);
     }
 
+    /**
+     * Edit application on proxy server
+     *
+     * @return  Illuminate\Http\Response
+     */
     public function applicationEdit() {
         try {
             $user_id = Session::get('user_id');
@@ -155,55 +195,77 @@ class ProxyController extends BaseController
                 $output = curl_exec($ch);
                 $info = curl_getinfo($ch);
                 $data = json_decode($output, true);
-                asd($data,0);
-                asd($info);
+
                 if (!empty($info) && $info['http_code'] == "200") {
-                    if (!empty($data['status']) && $data['status']) {
-                        $response['status'] = 1;
-                        $response['message'] = $data['message'];
-                    } else {
-                        if (!empty($data['message'])) {
-                            $response['message'] = $data['message'];
-                            if (!empty($data['error'])) {
-                                $response['message'] .= " \n --" . $data['error'];
-                            }
-                        }
-                    }
+                    $response = $data;
                 } else {
                     $response['message'] = "Please check Proxy Domain is configured properly.";
                 }
             } else {
                 $response['message'] = "Error in data.";
             }
-
-
         } catch (Exception $ex) {
             $response = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
         }
         return Response::json($response);
     }
-    
-    public function applicationEditOLD() {
-         
-        try {
-            $input = Input::all();
-            $output = $this->proxySetup($input);
-            /*
-            $id = $input['id'];
-            DB::table('applications')->where('id', $id)->update([
-                'name'          => $input['application_name'],
-                'internal_url'  => $input['internal_url'],
-                'external_url'  => $input['internal_url']
-            ]);
-            $output = array( 'status' => 1, 'id' => $id);
-            */
-        } catch (Exception $ex) {
-            $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
-        }
-        return Response::json($output);
-    }
-    
+
+    /**
+     * Displays the application from proxy server
+     *
+     * @return  Illuminate\Http\Response
+     */
     public function applicationDelete() {
+        try {
+            $user_id = Session::get('user_id');
+            $user = AdminUser::find($user_id);
+            $response['status'] = 0;
+            $response['message'] = "";
+            if (!empty($user)) {
+                $input          = Input::all();
+                $user           = $user->toArray();
+                $request_data   = array_merge($user, $input);
+
+                $headers        = array();
+                $headers[]      = 'api-key: ' . $user['api_key'];
+                $request_url    = $user['proxy_url'] . "/api/v1/proxy";
+                $fields_string  = "";
+                foreach ($request_data as $key => $value) {
+                    $fields_string .= $key . '=' . $value . '&';
+                }
+                rtrim($fields_string, '&');
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+                curl_setopt($ch, CURLOPT_URL, $request_url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                curl_setopt($ch, CURLOPT_POST, count($user));
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+                $output = curl_exec($ch);
+                $info = curl_getinfo($ch);
+                $data = json_decode($output, true);
+
+                if (!empty($info) && $info['http_code'] == "200") {
+                    $response = $data;
+                } else {
+                    $response['message'] = "Please check Proxy Domain is configured properly.";
+                }
+            } else {
+                $response['message'] = "Error in data.";
+            }
+        } catch (Exception $ex) {
+            $response = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
+        }
+        return Response::json($response);
+    }
+
+    /**
+     * Delete the application from application
+     *
+     * @return  Illuminate\Http\Response
+     */
+    public function applicationDeleteOLD() {
         $input = Input::all();
         $id = $input['id'];
         try {
@@ -221,92 +283,15 @@ class ProxyController extends BaseController
         }
         return Response::json($output);
     }
-    
+
+    /**
+     * Displays the application list page
+     *
+     * @return  Illuminate\Http\Response
+     */
     public function applicationList() {
         $tenant_id = Session::get('tenant_id');
         $results = Application::where('tenant_id', '=', $tenant_id)->get();
         return Response::json($results);
     }
-
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
-
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
-
 }

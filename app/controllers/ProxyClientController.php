@@ -23,48 +23,55 @@ class ProxyClientController extends BaseController
         $headers = getallheaders();
 
         $responseArray = array();
-        $responseArray['error'] = true;
+        $responseArray['status'] = false;
 
         if(!empty($headers['api-key'])) {
             $headers['Api-Key'] = $headers['api-key'] ;
             //$api_key = $headers['api-key'];
         }
         if (empty($headers['Api-Key'])) {
-
-            $responseArray['responseCode'] = 400;
-            $responseArray['responseMessage'] = "Invalid or blank auth token";
+            $responseArray['message'] = "Invalid or blank auth token";
             //$responseArray['responseMessage'] = "Please enter API key.";
-            return Response::json($responseArray, $responseArray['responseCode']);
+            return Response::json($responseArray, 400);
             exit;
         } else {
             $api_key = Config::get('domainapikey.api_key');
             if(!empty($headers['Api-Key']) && $headers['Api-Key'] == $api_key) {
 
                 if($this->request->isMethod('post')) {
-                    $responseArray['responseMessage'] = "post";
+                    $input = Input::all();
+                    unset($input['id']);
+                    //$responseArray = $input;
+                    $proxy = $this->proxySetup($input);
+                    $responseArray['status']    = $proxy['status'];
+                    $responseArray['id']        = $proxy['id'];
+                    $responseArray['message']   = $proxy['message'];
                 }
                 else if($this->request->isMethod('put')) {
                     $input = Input::all();
                     $proxy = $this->proxySetup($input);
-                    $responseArray['error']     = $proxy['status'];
+                    $responseArray['status']    = $proxy['status'];
                     $responseArray['id']        = $proxy['id'];
-                    $responseArray['responseMessage'] = $proxy['message'];
+                    $responseArray['message']   = $proxy['message'];
                 }
                 else if($this->request->isMethod('delete')) {
-                    $responseArray['responseMessage'] = "delete";
-                } else {
+                    $input = Input::all();
+                    $proxy = $this->proxyDelete($input);
+                    $responseArray['status']    = $proxy['status'];
+                    $responseArray['id']        = $proxy['id'];
+                    $responseArray['message']   = $proxy['message'];
+                }
+                else {
                     $method = $this->request->getMethod();
 
-                    $responseArray['responseMessage'] = $method;
+                    $responseArray['message'] = $method;
                 }
-                $responseArray['responseCode'] = 200;
 
-                return Response::json($responseArray, $responseArray['responseCode']);
+                return Response::json($responseArray, 200);
                 exit;
             } else {
-                $responseArray['responseCode'] = 200;
-                $responseArray['responseMessage'] = "Please enter valid api key.";
-                return Response::json($responseArray, $responseArray['responseCode']);
+                $responseArray['message'] = "Please enter valid api key.";
+                return Response::json($responseArray, 200);
                 exit;
             }
         }
@@ -154,6 +161,28 @@ class ProxyClientController extends BaseController
             $output = array( 'status' => 1, 'id' => $id, 'message'=> 'Application updated successfully');
 
             exec($proxy_service_path);
+        } catch (Exception $ex) {
+            $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
+        }
+        return $output;
+    }
+
+    public function proxyDelete($input=array()) {
+        try {
+            if(isset($input['id']) && !empty($input['id'])) {
+                $id = $input['id'];
+                $application = Application::find($id);
+                $status = 1; //$application->delete();
+
+                $config_file = $id . "." . Config::get('proxy.base_url') . '.conf';
+                $config_file_path = Config::get('proxy.config_path') . '/' . $config_file;
+                if (file_exists($config_file_path)) {
+                    //unlink($config_file_path);
+                }
+                $output = array( 'status' => $status, 'id' => $id, 'message'=> 'Application deleted successfully');
+            } else {
+                $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Application id is missing');
+            }
         } catch (Exception $ex) {
             $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
         }
