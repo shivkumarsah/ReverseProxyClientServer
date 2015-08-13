@@ -290,8 +290,55 @@ class ProxyController extends BaseController
      * @return  Illuminate\Http\Response
      */
     public function applicationList() {
-        $tenant_id = Session::get('tenant_id');
-        $results = Application::where('tenant_id', '=', $tenant_id)->get();
-        return Response::json($results);
+        $login = Config::get('launchpad.login_required');
+        if(!$login) {
+            // Show application list to proxy server
+            //$tenant_id = Session::get('tenant_id');
+            //$results = Application::where('tenant_id', '=', $tenant_id)->get();
+            //return Response::json($results);
+            //-------------------------//
+            $user_id = Session::get('user_id');
+            $user = AdminUser::find($user_id);
+            $response['status'] = 0;
+            $response['message'] = "";
+            if (!empty($user)) {
+                $input          = Input::all();
+                $user           = $user->toArray();
+                $request_data   = array_merge($user, $input);
+
+                $headers        = array();
+                $headers[]      = 'api-key: ' . $user['api_key'];
+                $request_url    = $user['proxy_url'] . "/api/v1/proxy";
+                $fields_string  = "";
+                foreach ($request_data as $key => $value) {
+                    $fields_string .= $key . '=' . $value . '&';
+                }
+                rtrim($fields_string, '&');
+                $request_url = $request_url.'?tenant_id='.$user['tenant_id'];
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $request_url);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                $output = curl_exec($ch);
+                $info = curl_getinfo($ch);
+                $data = json_decode($output, true);
+
+                if (!empty($info) && $info['http_code'] == "200") {
+                    $response = $data['data'];
+                } else {
+                    $response['message'] = "Please check Proxy Domain is configured properly.";
+                }
+            } else {
+                $response['message'] = "Error in data.";
+            }
+            return Response::json($response);
+        } else {
+            // Show application list to proxy client
+            asd("client");
+            $tenant_id = Session::get('tenant_id');
+            $results = Application::where('tenant_id', '=', $tenant_id)->get();
+            return Response::json($results);
+        }
     }
 }

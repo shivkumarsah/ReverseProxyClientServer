@@ -41,7 +41,6 @@ class ProxyClientController extends BaseController
                 if($this->request->isMethod('post')) {
                     $input = Input::all();
                     unset($input['id']);
-                    //$responseArray = $input;
                     $proxy = $this->proxySetup($input);
                     $responseArray['status']    = $proxy['status'];
                     $responseArray['id']        = $proxy['id'];
@@ -62,11 +61,14 @@ class ProxyClientController extends BaseController
                     $responseArray['message']   = $proxy['message'];
                 }
                 else {
-                    $method = $this->request->getMethod();
-
-                    $responseArray['message'] = $method;
+                    $input = Input::all();
+                    $proxy = $this->proxyList($input);
+//                    $responseArray['input'] = $input;
+//                    $responseArray['proxy'] = $proxy;
+                    $responseArray['status']    = $proxy['status'];
+                    $responseArray['data']      = $proxy['data'];
+                    $responseArray['message']   = $proxy['message'];
                 }
-
                 return Response::json($responseArray, 200);
                 exit;
             } else {
@@ -185,6 +187,21 @@ class ProxyClientController extends BaseController
             }
         } catch (Exception $ex) {
             $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
+        }
+        return $output;
+    }
+
+    public function proxyList($input=array()) {
+        try {
+            if(isset($input['tenant_id']) && !empty($input['tenant_id'])) {
+                $tenant_id = $input['tenant_id'];
+                $results = Application::where('tenant_id', '=', $tenant_id)->get();
+                $output = array( 'data' => $results, 'status' => 0, 'message'=> 'Exception occured');
+            } else {
+                $output = array( 'status' => 0, 'data' => array(), 'message'=> 'Tenant id is missing');
+            }
+        } catch (Exception $ex) {
+            $output = array( 'status' => 0, 'data' => array(), 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
         }
         return $output;
     }
