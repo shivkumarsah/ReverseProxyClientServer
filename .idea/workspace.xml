@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a2d8a899-5939-487d-bdf1-a6fc7ff6c166" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/ProxyController.php" afterPath="$PROJECT_DIR$/app/controllers/ProxyController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/install/dbtables.ini" afterPath="$PROJECT_DIR$/public/install/dbtables.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/domainapikey.php" afterPath="$PROJECT_DIR$/app/config/domainapikey.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/launchpad.php" afterPath="$PROJECT_DIR$/app/config/launchpad.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/install/setting.php" afterPath="$PROJECT_DIR$/public/install/setting.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/install.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/install/installationStatus.json" afterPath="$PROJECT_DIR$/public/install/installationStatus.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="proxyadmin.iws" />
@@ -29,11 +26,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ProxyController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProxyController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/ProxyController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38942826">
-              <caret line="42" column="68" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
+            <state vertical-scroll-proportion="-24.428572">
+              <caret line="59" column="47" selection-start-line="59" selection-start-column="47" selection-end-line="59" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="installationStatus.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/install/installationStatus.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="53" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="install.sh" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/install.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.082073435">
+              <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -73,32 +90,6 @@
               <caret line="182" column="10" selection-start-line="182" selection-start-column="10" selection-end-line="182" selection-end-column="10" />
               <folding>
                 <element signature="n#updateDomain#0;n#UsersController#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/proxy/application.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.5">
-              <caret line="20" column="47" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
-              <folding>
-                <marker date="1439813157476" expanded="true" signature="189:284" placeholder="..." />
-                <marker date="1439813157476" expanded="true" signature="255:283" placeholder="..." />
-                <marker date="1439813157476" expanded="true" signature="548:658" placeholder="..." />
-                <marker date="1439813157476" expanded="true" signature="626:657" placeholder="..." />
-                <marker date="1439813157476" expanded="true" signature="2734:2828" placeholder="..." />
-                <marker date="1439813157476" expanded="true" signature="2796:2827" placeholder="..." />
-                <marker date="1439813157476" expanded="true" signature="2880:2995" placeholder="..." />
-                <marker date="1439813157476" expanded="true" signature="2963:2994" placeholder="..." />
-                <marker date="1439813157476" expanded="true" signature="3047:3162" placeholder="..." />
-                <marker date="1439813157476" expanded="true" signature="3130:3161" placeholder="..." />
-                <marker date="1439813157476" expanded="true" signature="3251:3350" placeholder="..." />
-                <marker date="1439813157476" expanded="true" signature="3318:3349" placeholder="..." />
-                <marker date="1439813157476" expanded="true" signature="4385:4468" placeholder="..." />
-                <marker date="1439813157476" expanded="true" signature="4598:4692" placeholder="..." />
-                <marker date="1439813157476" expanded="true" signature="4658:4691" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -144,19 +135,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/proxy/settings.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.642858">
-              <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
-              <folding>
-                <marker date="1439892412746" expanded="true" signature="186:277" placeholder="..." />
-                <marker date="1439892412746" expanded="true" signature="248:276" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -181,7 +159,6 @@
         <option value="$PROJECT_DIR$/app/config/install/mail.php" />
         <option value="$PROJECT_DIR$/app/config/install/proxy.php" />
         <option value="$PROJECT_DIR$/app/filters.php" />
-        <option value="$PROJECT_DIR$/public/install/installationStatus.json" />
         <option value="$PROJECT_DIR$/public/install/form-proxy.html" />
         <option value="$PROJECT_DIR$/public/install/state.txt" />
         <option value="$PROJECT_DIR$/public/install/form-success.html" />
@@ -209,6 +186,8 @@
         <option value="$PROJECT_DIR$/public/install/setting.php" />
         <option value="$PROJECT_DIR$/app/config/launchpad.php" />
         <option value="$PROJECT_DIR$/app/controllers/ProxyController.php" />
+        <option value="$PROJECT_DIR$/public/install/installationStatus.json" />
+        <option value="$PROJECT_DIR$/install.sh" />
       </list>
     </option>
   </component>
@@ -655,7 +634,13 @@
       <option name="project" value="LOCAL" />
       <updated>1439900270156</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="installer : installation improvement">
+      <created>1439913392937</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1439913392937</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -708,27 +693,14 @@
     <MESSAGE value="New changelist" />
     <MESSAGE value="installer : proxydomain api-key change" />
     <MESSAGE value="installer : conf path, proxy server add/edit permission removed." />
-    <option name="LAST_COMMIT_MESSAGE" value="installer : conf path, proxy server add/edit permission removed." />
+    <MESSAGE value="installer : installation improvement" />
+    <option name="LAST_COMMIT_MESSAGE" value="installer : installation improvement" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/install/installationStatus.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="73" selection-start-line="0" selection-start-column="73" selection-end-line="0" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="66" column="34" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/install/form-welcome.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31502423">
@@ -1030,21 +1002,21 @@
         <state vertical-scroll-proportion="-9.5">
           <caret line="20" column="47" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
           <folding>
-            <marker date="1439813157476" expanded="true" signature="189:284" placeholder="..." />
-            <marker date="1439813157476" expanded="true" signature="255:283" placeholder="..." />
-            <marker date="1439813157476" expanded="true" signature="548:658" placeholder="..." />
-            <marker date="1439813157476" expanded="true" signature="626:657" placeholder="..." />
-            <marker date="1439813157476" expanded="true" signature="2734:2828" placeholder="..." />
-            <marker date="1439813157476" expanded="true" signature="2796:2827" placeholder="..." />
-            <marker date="1439813157476" expanded="true" signature="2880:2995" placeholder="..." />
-            <marker date="1439813157476" expanded="true" signature="2963:2994" placeholder="..." />
-            <marker date="1439813157476" expanded="true" signature="3047:3162" placeholder="..." />
-            <marker date="1439813157476" expanded="true" signature="3130:3161" placeholder="..." />
-            <marker date="1439813157476" expanded="true" signature="3251:3350" placeholder="..." />
-            <marker date="1439813157476" expanded="true" signature="3318:3349" placeholder="..." />
-            <marker date="1439813157476" expanded="true" signature="4385:4468" placeholder="..." />
-            <marker date="1439813157476" expanded="true" signature="4598:4692" placeholder="..." />
-            <marker date="1439813157476" expanded="true" signature="4658:4691" placeholder="..." />
+            <marker date="1439813157476" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1439813157476" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1439813157476" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1439813157476" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1439813157476" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1439813157476" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1439813157476" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1439813157476" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1439813157476" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1439813157476" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1439813157476" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1439813157476" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1439813157476" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1439813157476" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1439813157476" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1054,8 +1026,8 @@
         <state vertical-scroll-proportion="-14.642858">
           <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
           <folding>
-            <marker date="1439892412746" expanded="true" signature="186:277" placeholder="..." />
-            <marker date="1439892412746" expanded="true" signature="248:276" placeholder="..." />
+            <marker date="1439892412746" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1439892412746" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1151,8 +1123,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/ProxyController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38942826">
-          <caret line="42" column="68" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
+        <state vertical-scroll-proportion="-24.428572">
+          <caret line="59" column="47" selection-start-line="59" selection-start-column="47" selection-end-line="59" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/install/installationStatus.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="53" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.082073435">
+          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
           <folding />
         </state>
       </provider>
