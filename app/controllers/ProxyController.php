@@ -40,7 +40,7 @@ class ProxyController extends BaseController
                 $result = $validate;
             }
         } else {
-            $dir_path = $_SERVER['DOCUMENT_ROOT'].'../app/config/';
+            $dir_path = $_SERVER['DOCUMENT_ROOT'].'/../app/config/';
             $apikeycontent = '<?php return array( "api_key" => ' . "'" . $input["api_key"] . "'" . ');';
 
             $dmr = file_put_contents($dir_path . 'domainapikey.php', $apikeycontent);

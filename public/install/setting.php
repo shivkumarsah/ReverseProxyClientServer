@@ -57,14 +57,14 @@ class setting {
                 if (empty($params['dbname'])) {
                     throw new Exception("DB name missing");
                 } else {
-                    if (!$mysqli->select_db($params['dbname'])) {
+                    if ($mysqli->select_db($params['dbname'])) {
                         $sql = "INSERT INTO `admin_users` (`email`, `name`, `tenant_id`, `proxy_status`, `proxy_url`, `api_key`) VALUES ('', '', '0', '0', '".$params['proxy_url']."', '".$params['domainapikey']."');";
                         if ($mysqli->query($sql) === FALSE) {
                             throw new Exception("Error creating user: " . $mysqli->error);
                         }
+                        $response['error'] = false;
+                        $response['responseMessage'] = "User has been created successfully.";
                     }
-                    $response['error'] = false;
-                    $response['responseMessage'] = "User has been created successfully.";
                     return $response;
                 }
             } else {
@@ -191,7 +191,7 @@ class setting {
             if ($dmr == "" || $dmr == false) {
                 throw new Exception("Permissions required to '/app/config/domainapikey.php'");
             }
-            $configItems['proxy_url'] = 'http://'.$_SERVER['SERVER_NAME'];
+            $configItems['proxy_url'] = (((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']!=='off') || $_SERVER['SERVER_PORT']==443) ? 'https://':'http://' ).$_SERVER['HTTP_HOST'];
             $this->userSetup($configItems);
             // proxy domain api key complete
             
