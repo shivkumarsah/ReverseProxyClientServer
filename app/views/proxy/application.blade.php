@@ -7,7 +7,7 @@
 	<div flash-message="5000"></div>
 	<div class="row">
 		<div class="col-md-4 col-sm-6" style="margin-bottom: 10px;">
-			<div>
+			<div ng-show="<?php echo $showAction; ?>">
 				<button type="button" class="btn btn-success"
 					ng-click="addNewData()">{{Form::label('add_application',
 					trans('messages.applications.add_application'), array('class' =>
@@ -65,7 +65,7 @@
 					<th style="width: 30%;">{{Form::label('head_external_url',
 						trans('messages.applications.head_external_url'), array('class' =>
 						'table-header'))}}</th>
-					<th style="width: 15%;">{{Form::label('head_task',
+					<th style="width: 15%;" ng-show="<?php echo $showAction; ?>">{{Form::label('head_task',
 						trans('messages.applications.head_task'), array('class' =>
 						'table-header'))}}</th>
 				</tr>
@@ -86,7 +86,7 @@
 							style="width: 80%; float: left; overflow-wrap: white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word;">
 							[[item.external_url]]</div>
 					</td>
-					<td>
+					<td ng-show="<?php echo $showAction; ?>">
 						<button type="button" class="btn btn-default btn-sm"
 							ng-click="editMode = true; editItem( item, $index )">
 							{{Form::label('edit', trans('messages.developers.edit'),

@@ -178,7 +178,6 @@ class UsersController extends BaseController {
      */
     public function autoLogin(){
         $api_key = Config::get('domainapikey.api_key');
-
         //$user = AdminUser::find(2);
         $user = AdminUser::where('api_key', $api_key)->first();
         //asd($api_key, false); asd($user);

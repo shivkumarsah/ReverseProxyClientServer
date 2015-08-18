@@ -19,7 +19,9 @@ class ProxyController extends BaseController
      */
     public function settings() {
         $proxy = $this->admin->getProxy();
-        return View::make('proxy.settings')->with('result', $proxy);
+        $login = Config::get('launchpad.login_required');
+        $showAction = ($login)? false : true;
+        return View::make('proxy.settings')->with('result', $proxy)->with('showAction', $showAction);
     }
     
     /**
@@ -29,11 +31,23 @@ class ProxyController extends BaseController
      */
     public function settingsSave() {
         $input = Input::all();
-        $validate = $this->verifyProxyDomain($input);
-        if($validate['status']) {
-            $result = $this->admin->setProxy($input);
+        $login = Config::get('launchpad.login_required');
+        if($login) {
+            $validate = $this->verifyProxyDomain($input);
+            if ($validate['status']) {
+                $result = $this->admin->setProxy($input);
+            } else {
+                $result = $validate;
+            }
         } else {
-            $result = $validate;
+            $dir_path = $_SERVER['DOCUMENT_ROOT'].'../app/config/';
+            $apikeycontent = '<?php return array( "api_key" => ' . "'" . $input["api_key"] . "'" . ');';
+
+            $dmr = file_put_contents($dir_path . 'domainapikey.php', $apikeycontent);
+            if ($dmr == "" || $dmr == false) {
+                throw new Exception("Permissions required to '/app/config/domainapikey.php'");
+            }
+            $result = $this->admin->setProxy($input);
         }
         return Response::json($result);
     }
@@ -53,17 +67,17 @@ class ProxyController extends BaseController
             $user['proxy_url'] = $input['proxy_url'];
             $user['api_key'] = $input['api_key'];
 
-            $headers = array();
-            $headers[] = 'ADMIN_API_KEY: ' . $user['api_key'];
-            $verificationurl = $user['proxy_url'] . "/users/checkdomain";
-            $fields_string = "";
+            $headers        = array();
+            $headers[]      = 'ADMIN_API_KEY: ' . $user['api_key'];
+            $request_url    = $user['proxy_url'] . "/users/checkdomain";
+            $fields_string  = "";
             foreach ($user as $key => $value) {
                 $fields_string .= $key . '=' . $value . '&';
             }
             rtrim($fields_string, '&');
 
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $verificationurl);
+            curl_setopt($ch, CURLOPT_URL, $request_url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_POST, count($user));
@@ -91,9 +105,6 @@ class ProxyController extends BaseController
         }
         return $response;
     }
-    
-
-
 
     /**
      * Displays the application list page
@@ -101,7 +112,8 @@ class ProxyController extends BaseController
      * @return  Illuminate\Http\Response
      */
     public function applications() {
-        return View::make('proxy.application');
+        $login = Config::get('launchpad.login_required');
+        return View::make('proxy.application')->with('showAction', $login);
     }
 
     /**
@@ -320,7 +332,6 @@ class ProxyController extends BaseController
                 $output = curl_exec($ch);
                 $info = curl_getinfo($ch);
                 $data = json_decode($output, true);
-
                 if (!empty($info) && $info['http_code'] == "200") {
                     $response = $data['data'];
                 } else {

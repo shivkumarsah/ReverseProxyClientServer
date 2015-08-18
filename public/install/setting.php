@@ -49,6 +49,33 @@ class setting {
         }
     }
 
+    public function userSetup($params) {
+        try {
+            $response['error'] = true;
+            $mysqli = new mysqli($params['dbhost'], $params['dbusername'], $params['dbpassword']);
+            if (!$mysqli->connect_errno) {
+                if (empty($params['dbname'])) {
+                    throw new Exception("DB name missing");
+                } else {
+                    if (!$mysqli->select_db($params['dbname'])) {
+                        $sql = "INSERT INTO `admin_users` (`email`, `name`, `tenant_id`, `proxy_status`, `proxy_url`, `api_key`) VALUES ('', '', '0', '0', '".$params['proxy_url']."', '".$params['domainapikey']."');";
+                        if ($mysqli->query($sql) === FALSE) {
+                            throw new Exception("Error creating user: " . $mysqli->error);
+                        }
+                    }
+                    $response['error'] = false;
+                    $response['responseMessage'] = "User has been created successfully.";
+                    return $response;
+                }
+            } else {
+                throw new Exception("Connect failed: " . $mysqli->connect_error);
+            }
+        } catch (Exception $e) {
+            $response['responseMessage'] = $e->getMessage();
+            return $response;
+        }
+    }
+
     public function checkConfig($inputs) {
         try {
             switch ($inputs['submitedtype']) {
@@ -164,7 +191,9 @@ class setting {
             if ($dmr == "" || $dmr == false) {
                 throw new Exception("Permissions required to '/app/config/domainapikey.php'");
             }
-            // school domain api key complete 
+            $configItems['proxy_url'] = 'http://'.$_SERVER['SERVER_NAME'];
+            $this->userSetup($configItems);
+            // proxy domain api key complete
             
             // create email settings and upload settings
             if ($configItems['smtpskipped'] == 'no') {
