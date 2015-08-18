@@ -118,9 +118,10 @@ class ProxyClientController extends BaseController
             $external_ip    = $id.".".$proxy_base_url;
 
             $external_url   = $id.".".$proxy_base_url.':'.$proxy_listen_port.'/'.$request_uri;
-            $contact_operator = strpos($external_url, '?') ? '&':'?';
-            $external_url   = $external_url.$contact_operator.$request_params;
+            $concat_operator = strpos($external_url, '?') ? '&':'?';
+            $external_url   = $external_url.$concat_operator.$request_params;
             $internal_url   = $input['internal_url'];
+            $lua_file_path  = '/etc/nginx/nginx.lua'; //$_SERVER['DOCUMENT_ROOT']
 
             /*$strnginx="";
             $strnginx.='server {listen      '.$proxy_listen_port.'; server_name  '.$external_ip.';';
@@ -136,7 +137,7 @@ class ProxyClientController extends BaseController
             $strnginx.='location / {';
             $strnginx.='auth_request /check;';
             $strnginx.='auth_request_set $gws $upstream_http_gwstoken;';
-            $strnginx.='header_filter_by_lua_file /etc/nginx/nginx.lua;';
+            $strnginx.='header_filter_by_lua_file '.$lua_file_path.';';
             $strnginx.='proxy_pass   '.$internal_url.';';
             $strnginx.='}';
             //$strnginx.='error_page 403 = @error403;';

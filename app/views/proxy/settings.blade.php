@@ -16,7 +16,7 @@
 				<tbody>
 					<tr>
 						<td>Reverse Proxy Address</td>
-						<td><input size="60%" name="proxy_url" id="proxy_url"
+						<td><input size="60%" name="proxy_url" id="proxy_url" ng-disabled="<?php echo $showAction; ?>"
 							class="input-xxlarge input-box" type="text" data-ng-model="settingData.proxy_url"
 							ng-init="settingData.proxy_url='<?php echo @$result['proxy_url'];?>'" placeholder="Please enter reverse proxy address" ng-required="1" />
 							<div ng-show="settingForm.proxy_url.$error.required && showErrorMsg" style="font-size: 12px; ! important; float: left; color: red;">Please enter reverse proxy address.</div>
