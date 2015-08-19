@@ -159,6 +159,8 @@ class ProxyController extends BaseController
 
                 if (!empty($info) && $info['http_code'] == "200") {
                     $response = $data;
+                } else if (!empty($info) && (int)$info['http_code'] >= 500) {
+                    $response['message'] = "Please check proxy server configuration";
                 } else {
                     $response['message'] = "Please check Proxy Domain is configured properly.";
                 }
@@ -207,9 +209,10 @@ class ProxyController extends BaseController
                 $output = curl_exec($ch);
                 $info = curl_getinfo($ch);
                 $data = json_decode($output, true);
-
                 if (!empty($info) && $info['http_code'] == "200") {
                     $response = $data;
+                } else if (!empty($info) && (int)$info['http_code'] >= 500) {
+                    $response['message'] = "Please check proxy server configuration";
                 } else {
                     $response['message'] = "Please check Proxy Domain is configured properly.";
                 }
@@ -260,6 +263,8 @@ class ProxyController extends BaseController
 
                 if (!empty($info) && $info['http_code'] == "200") {
                     $response = $data;
+                } else if (!empty($info) && (int)$info['http_code'] >= 500) {
+                    $response['message'] = "Please check proxy server configuration";
                 } else {
                     $response['message'] = "Please check Proxy Domain is configured properly.";
                 }
@@ -333,7 +338,13 @@ class ProxyController extends BaseController
                 $info = curl_getinfo($ch);
                 $data = json_decode($output, true);
                 if (!empty($info) && $info['http_code'] == "200") {
-                    $response = $data['data'];
+                    if(isset($data['data']) && !empty($data['data'])) {
+                        $response = $data['data'];
+                    } else {
+                        $response['message'] = ($data['message']) ? $data['message'] : "Please check proxy server configuration";
+                    }
+                } else if (!empty($info) && (int)$info['http_code'] >= 500) {
+                    $response['message'] = "Please check proxy server configuration";
                 } else {
                     $response['message'] = "Please check Proxy Domain is configured properly.";
                 }
@@ -344,7 +355,8 @@ class ProxyController extends BaseController
         } else {
             // Show application list to proxy client
             $tenant_id = Session::get('tenant_id');
-            $results = Application::where('tenant_id', '=', $tenant_id)->get();
+            //$results = Application::where('tenant_id', '=', $tenant_id)->get();
+            $results = Application::all();
             return Response::json($results);
         }
     }

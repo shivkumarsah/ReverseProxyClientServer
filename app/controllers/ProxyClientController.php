@@ -195,7 +195,11 @@ class ProxyClientController extends BaseController
             if(isset($input['tenant_id']) && !empty($input['tenant_id'])) {
                 $tenant_id = $input['tenant_id'];
                 $results = Application::where('tenant_id', '=', $tenant_id)->get();
-                $output = array( 'data' => $results, 'status' => 0, 'message'=> 'Exception occured');
+                if(count($results)) {
+                    $output = array( 'data' => $results, 'status' => 1, 'message'=> '');
+                } else {
+                    $output = array( 'data' => array(), 'status' => 1, 'message'=> 'No record found.');
+                }
             } else {
                 $output = array( 'status' => 0, 'data' => array(), 'message'=> 'Tenant id is missing');
             }

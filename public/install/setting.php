@@ -62,9 +62,9 @@ class setting {
                         if ($mysqli->query($sql) === FALSE) {
                             throw new Exception("Error creating user: " . $mysqli->error);
                         }
-                        $response['error'] = false;
-                        $response['responseMessage'] = "User has been created successfully.";
                     }
+                    $response['error'] = false;
+                    $response['responseMessage'] = "User has been created successfully.";
                     return $response;
                 }
             } else {
@@ -173,14 +173,14 @@ class setting {
             //$dir_path = '../../app/config/install/';
 
             // change db settings
-            $fileContent = file_get_contents($dir_path . 'database.php');
+            $fileContent = file_get_contents($dir_path . 'install/database.sample.php');
             $fileContent = str_replace("{{mysql-host}}",        $configItems['dbhost'], $fileContent);
             $fileContent = str_replace("{{mysql-database}}",    $configItems['dbname'], $fileContent);
             $fileContent = str_replace("{{mysql-username}}",    $configItems['dbusername'], $fileContent);
             $fileContent = str_replace("{{mysql-password}}",    $configItems['dbpassword'], $fileContent);
             $dbr = file_put_contents($dir_path . 'database.php', $fileContent);
             if ($dbr == "" || $dbr == false) {
-                throw new Exception("Permissions required to  '/app/config/database.php'");
+                throw new Exception("Permissions required to  '".$dir_path . 'database.php');
             }
             // db setting  complete
             // proxy server api key in the config file
@@ -197,7 +197,7 @@ class setting {
             
             // create email settings and upload settings
             if ($configItems['smtpskipped'] == 'no') {
-                $emailfileContentSetting = file_get_contents($dir_path . 'mail.php');
+                $emailfileContentSetting = file_get_contents($dir_path . 'install/mail.sample.php');
 
                 $emailfileContentSetting = str_replace("{{emailhost}}",         $configItems['emailhost'], $emailfileContentSetting);
                 $emailfileContentSetting = str_replace("'{{emailport}}'",       $configItems['emailport'], $emailfileContentSetting);
@@ -208,12 +208,12 @@ class setting {
 
                 $emr = file_put_contents($dir_path . 'mail.php', $emailfileContentSetting);
                 if ($emr == "" || $emr == false) {
-                    throw new Exception("Permissions required to '/app/config/mail.php'");
+                    throw new Exception("Permissions required to ". $dir_path .'mail.php');
                 }
             }
 
             // create csv import storage folder
-            $proxyContentSetting = file_get_contents($dir_path . 'proxy.php');
+            $proxyContentSetting = file_get_contents($dir_path . 'install/proxy.sample.php');
 
             $proxyContentSetting = str_replace("{{baseUrl}}",       $configItems['baseUrl'], $proxyContentSetting);
             $proxyContentSetting = str_replace("{{baseUrlPort}}",   $configItems['baseUrlPort'], $proxyContentSetting);
@@ -223,7 +223,7 @@ class setting {
 
             $amr = file_put_contents($dir_path . 'proxy.php', $proxyContentSetting);
             if ($amr == "" || $amr == false) {
-                throw new Exception("Permissions required to '/app/config/proxy.php'");
+                throw new Exception("Permissions required to ". $dir_path .'proxy.php');
             }
             // create proxy server configuration directory
             mkdir($configItems["confPath"], 0777, true);
