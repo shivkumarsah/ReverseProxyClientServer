@@ -355,7 +355,8 @@ class ProxyController extends BaseController
         } else {
             // Show application list to proxy client
             $tenant_id = Session::get('tenant_id');
-            $results = Application::where('tenant_id', '=', $tenant_id)->get();
+            //$results = Application::where('tenant_id', '=', $tenant_id)->get();
+            $results = Application::all();
             return Response::json($results);
         }
     }

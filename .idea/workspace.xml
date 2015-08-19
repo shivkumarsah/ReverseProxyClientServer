@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a2d8a899-5939-487d-bdf1-a6fc7ff6c166" name="Default" comment="">
+    <list default="true" id="a2d8a899-5939-487d-bdf1-a6fc7ff6c166" name="Default" comment="installer : application list -&gt; check for valid key">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/ProxyClientController.php" afterPath="$PROJECT_DIR$/app/controllers/ProxyClientController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/ProxyController.php" afterPath="$PROJECT_DIR$/app/controllers/ProxyController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/UsersController.php" afterPath="$PROJECT_DIR$/app/controllers/UsersController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app-inner.js" afterPath="$PROJECT_DIR$/public/js/app-inner.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/blade.xml" afterPath="$PROJECT_DIR$/.idea/blade.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/install/installationStatus.json" afterPath="$PROJECT_DIR$/public/install/installationStatus.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/local/launchpad.php" afterPath="$PROJECT_DIR$/app/config/local/launchpad.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/install/setting.php" afterPath="$PROJECT_DIR$/public/install/setting.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="proxyadmin.iws" />
@@ -33,8 +32,8 @@
       <file leaf-file-name="ProxyController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/ProxyController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.142857">
-              <caret line="340" column="32" selection-start-line="340" selection-start-column="32" selection-end-line="340" selection-end-column="32" />
+            <state vertical-scroll-proportion="-26.321428">
+              <caret line="358" column="42" selection-start-line="358" selection-start-column="42" selection-end-line="358" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -50,13 +49,40 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app-inner.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app-inner.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/app-inner.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57382196">
+            <state vertical-scroll-proportion="0.0">
               <caret line="2226" column="30" selection-start-line="2226" selection-start-column="30" selection-end-line="2226" selection-end-column="30" />
               <folding>
                 <element signature="e#64024#65552#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProxyClientController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/ProxyClientController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-23.607143">
+              <caret line="200" column="25" selection-start-line="200" selection-start-column="25" selection-end-line="200" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setting.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/install/setting.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-23.75">
+              <caret line="208" column="76" selection-start-line="208" selection-start-column="76" selection-end-line="208" selection-end-column="76" />
+              <folding>
+                <element signature="n#checkConfig#0;n#setting#0;n#!!top" expanded="false" />
+                <element signature="n#updateConfig#0;n#setting#0;n#!!top" expanded="false" />
+                <element signature="n#updateState#0;n#setting#0;n#!!top" expanded="false" />
+                <element signature="n#getState#0;n#setting#0;n#!!top" expanded="false" />
+                <element signature="n#installationComplete#0;n#setting#0;n#!!top" expanded="false" />
+                <marker date="1439988170010" expanded="true" signature="2423:2604" placeholder="INSERT INTO ..." />
               </folding>
             </state>
           </provider>
@@ -75,11 +101,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="launchpad.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="launchpad.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/config/local/launchpad.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.464286">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.1639698">
+              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -102,26 +128,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-6.107143">
               <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="165" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proxy.sample.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/install/proxy.sample.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proxy.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/install/proxy.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -179,9 +185,7 @@
         <option value="$PROJECT_DIR$/app/views/proxy/settings.blade.php" />
         <option value="$PROJECT_DIR$/app/models/AdminUser.php" />
         <option value="$PROJECT_DIR$/app/config/domainapikey.php" />
-        <option value="$PROJECT_DIR$/app/controllers/ProxyClientController.php" />
         <option value="$PROJECT_DIR$/public/install/dbtables.ini" />
-        <option value="$PROJECT_DIR$/public/install/setting.php" />
         <option value="$PROJECT_DIR$/install.sh" />
         <option value="$PROJECT_DIR$/app/config/install/proxy.sample.php" />
         <option value="$PROJECT_DIR$/app/config/install/proxy.php" />
@@ -189,9 +193,11 @@
         <option value="$PROJECT_DIR$/public/install/installationStatus.json" />
         <option value="$PROJECT_DIR$/app/config/launchpad.php" />
         <option value="$PROJECT_DIR$/app/controllers/UsersController.php" />
-        <option value="$PROJECT_DIR$/app/config/local/launchpad.php" />
-        <option value="$PROJECT_DIR$/app/controllers/ProxyController.php" />
         <option value="$PROJECT_DIR$/public/js/app-inner.js" />
+        <option value="$PROJECT_DIR$/app/controllers/ProxyController.php" />
+        <option value="$PROJECT_DIR$/app/controllers/ProxyClientController.php" />
+        <option value="$PROJECT_DIR$/public/install/setting.php" />
+        <option value="$PROJECT_DIR$/app/config/local/launchpad.php" />
       </list>
     </option>
   </component>
@@ -281,7 +287,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="install" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -611,20 +617,27 @@
       <option name="project" value="LOCAL" />
       <updated>1439916003006</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="installer : application list -&gt; check for valid key">
+      <created>1439987439472</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1439987439472</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988167" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2498618" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22222222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22222222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328934" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.852071" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -633,7 +646,6 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2741117" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988167" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -665,7 +677,8 @@
     <MESSAGE value="installer : proxydomain api-key change" />
     <MESSAGE value="installer : conf path, proxy server add/edit permission removed." />
     <MESSAGE value="installer : installation improvement" />
-    <option name="LAST_COMMIT_MESSAGE" value="installer : installation improvement" />
+    <MESSAGE value="installer : application list -&gt; check for valid key" />
+    <option name="LAST_COMMIT_MESSAGE" value="installer : application list -&gt; check for valid key" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -948,29 +961,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/install/setting.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="193" column="40" selection-start-line="193" selection-start-column="40" selection-end-line="193" selection-end-column="178" />
-          <folding>
-            <element signature="n#checkConfig#0;n#setting#0;n#!!top" expanded="false" />
-            <element signature="n#updateConfig#0;n#setting#0;n#!!top" expanded="false" />
-            <element signature="n#updateState#0;n#setting#0;n#!!top" expanded="false" />
-            <element signature="n#getState#0;n#setting#0;n#!!top" expanded="false" />
-            <element signature="n#installationComplete#0;n#setting#0;n#!!top" expanded="false" />
-            <marker date="1439911718699" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/ProxyClientController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="123" column="81" selection-start-line="123" selection-start-column="81" selection-end-line="123" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/install.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1029,14 +1019,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/local/launchpad.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.464286">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/storage/logs/laravel-2015-08-19.log">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-26.129032">
@@ -1046,14 +1028,6 @@
       </provider>
       <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/ProxyController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.142857">
-          <caret line="340" column="32" selection-start-line="340" selection-start-column="32" selection-end-line="340" selection-end-column="32" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/proxy/application.blade.php">
@@ -1066,11 +1040,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/app-inner.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57382196">
+        <state vertical-scroll-proportion="0.0">
           <caret line="2226" column="30" selection-start-line="2226" selection-start-column="30" selection-end-line="2226" selection-end-column="30" />
           <folding>
             <element signature="e#64024#65552#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/ProxyClientController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-23.607143">
+          <caret line="200" column="25" selection-start-line="200" selection-start-column="25" selection-end-line="200" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/ProxyController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-26.321428">
+          <caret line="358" column="42" selection-start-line="358" selection-start-column="42" selection-end-line="358" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/install/setting.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-23.75">
+          <caret line="208" column="76" selection-start-line="208" selection-start-column="76" selection-end-line="208" selection-end-column="76" />
+          <folding>
+            <element signature="n#checkConfig#0;n#setting#0;n#!!top" expanded="false" />
+            <element signature="n#updateConfig#0;n#setting#0;n#!!top" expanded="false" />
+            <element signature="n#updateState#0;n#setting#0;n#!!top" expanded="false" />
+            <element signature="n#getState#0;n#setting#0;n#!!top" expanded="false" />
+            <element signature="n#installationComplete#0;n#setting#0;n#!!top" expanded="false" />
+            <marker date="1439988170010" expanded="true" signature="2423:2604" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/local/launchpad.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1639698">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
