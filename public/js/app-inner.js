@@ -2214,14 +2214,19 @@ proxyApp.controller("applicationCtrl", function($scope, $http, Flash, $serverReq
 
         console.log("$serverRequest.application.applicationList.LocalStorage");
         console.log($serverRequest.application.applicationList.LocalStorage);
-
-        $scope.items            = $serverRequest.application.applicationList.LocalStorage;
-        $scope.developersCount  = 100;
-        $scope.totalPages       = 10;
-        if( $scope.developersCount.toString() > '1' ){
-            $scope.showRecord = 'records';
+        if(Array.isArray($serverRequest.application.applicationList.LocalStorage)) {
+            $scope.items            = $serverRequest.application.applicationList.LocalStorage;
+            $scope.developersCount  = 100;
+            $scope.totalPages       = 10;
+            if( $scope.developersCount.toString() > '1' ){
+                $scope.showRecord = 'records';
+            } else {
+                $scope.showRecord = 'record';
+            }
         } else {
-            $scope.showRecord = 'record';
+            $scope.items = [];
+            Flash.create('danger', $serverRequest.application.applicationList.LocalStorage.message, 'custom-class');
+            $scope.showHeaderErrorMsg = true;
         }
     });
 
