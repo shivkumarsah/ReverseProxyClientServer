@@ -196,7 +196,7 @@ class ProxyClientController extends BaseController
                 $tenant_id = $input['tenant_id'];
                 $results = Application::where('tenant_id', '=', $tenant_id)->get();
                 if(count($results)) {
-                    $output = array( 'data' => $results, 'status' => 1);
+                    $output = array( 'data' => $results, 'status' => 1, 'message'=> '');
                 } else {
                     $output = array( 'data' => array(), 'status' => 1, 'message'=> 'No record found.');
                 }
