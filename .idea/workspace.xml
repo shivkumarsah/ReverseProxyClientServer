@@ -104,11 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProxyClientController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProxyClientController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/ProxyClientController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-6.785714">
+              <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
               <folding>
                 <element signature="e#6#34#0#PHP" expanded="true" />
               </folding>
@@ -171,6 +171,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="installationStatus.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/install/installationStatus.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="launchpad.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/local/launchpad.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -227,7 +237,6 @@
         <option value="$PROJECT_DIR$/app/config/install/proxy.sample.php" />
         <option value="$PROJECT_DIR$/app/config/install/proxy.php" />
         <option value="$PROJECT_DIR$/app/config/proxy.php" />
-        <option value="$PROJECT_DIR$/public/install/installationStatus.json" />
         <option value="$PROJECT_DIR$/app/config/launchpad.php" />
         <option value="$PROJECT_DIR$/public/install/setting.php" />
         <option value="$PROJECT_DIR$/app/controllers/UsersController.php" />
@@ -238,6 +247,7 @@
         <option value="$PROJECT_DIR$/public/js/app-inner.js" />
         <option value="$PROJECT_DIR$/app/config/local/launchpad.php" />
         <option value="$PROJECT_DIR$/app/controllers/ProxyClientController.php" />
+        <option value="$PROJECT_DIR$/public/install/installationStatus.json" />
       </list>
     </option>
   </component>
@@ -328,6 +338,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proxyadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proxyadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="install" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -703,7 +731,13 @@
       <option name="project" value="LOCAL" />
       <updated>1440068178026</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="installer : application list -&gt; check for valid key">
+      <created>1440069711503</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1440069711503</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1007,14 +1041,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/install/installationStatus.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/launchpad.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1106,17 +1132,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/storage/logs/laravel-2015-08-20.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.129032">
-          <caret line="34" column="134" selection-start-line="34" selection-start-column="134" selection-end-line="34" selection-end-column="134" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/libraries/Openroster/Storage/Application/EloquentApplicationRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.627119">
@@ -1149,46 +1164,6 @@
             <element signature="n#applicationDeleteOLD#0;n#ProxyController#0;n#!!top" expanded="false" />
             <element signature="e#11885#11986#0#PHP" expanded="false" />
             <element signature="e#12384#14180#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/proxy/application.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.3333335">
-          <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
-          <folding>
-            <element signature="e#900#946#0#HTML" expanded="true" />
-            <element signature="e#961#1029#0#HTML" expanded="true" />
-            <element signature="e#1149#1217#0#HTML" expanded="true" />
-            <element signature="e#1532#1600#0#HTML" expanded="true" />
-            <element signature="e#1690#1741#0#HTML" expanded="true" />
-            <element signature="e#1921#1960#0#HTML" expanded="true" />
-            <element signature="e#2205#2264#0#HTML" expanded="true" />
-            <element signature="e#2417#2456#0#HTML" expanded="true" />
-            <element signature="e#2626#2657#0#HTML" expanded="true" />
-            <element signature="e#2726#2745#0#HTML" expanded="true" />
-            <element signature="e#2872#2891#0#HTML" expanded="true" />
-            <element signature="e#3039#3058#0#HTML" expanded="true" />
-            <element signature="e#3206#3225#0#HTML" expanded="true" />
-            <element signature="e#3510#3562#0#HTML" expanded="true" />
-            <element signature="e#3740#3911#0#HTML" expanded="true" />
-            <element signature="e#4004#4175#0#HTML" expanded="true" />
-            <marker date="1440054644658" expanded="true" signature="189:284" placeholder="..." />
-            <marker date="1440054644658" expanded="true" signature="255:283" placeholder="..." />
-            <marker date="1440054644658" expanded="true" signature="548:658" placeholder="..." />
-            <marker date="1440054644658" expanded="true" signature="626:657" placeholder="..." />
-            <marker date="1440054644658" expanded="true" signature="2760:2854" placeholder="..." />
-            <marker date="1440054644658" expanded="true" signature="2822:2853" placeholder="..." />
-            <marker date="1440054644658" expanded="true" signature="2906:3021" placeholder="..." />
-            <marker date="1440054644658" expanded="true" signature="2989:3020" placeholder="..." />
-            <marker date="1440054644658" expanded="true" signature="3073:3188" placeholder="..." />
-            <marker date="1440054644658" expanded="true" signature="3156:3187" placeholder="..." />
-            <marker date="1440054644658" expanded="true" signature="3277:3376" placeholder="..." />
-            <marker date="1440054644658" expanded="true" signature="3344:3375" placeholder="..." />
-            <marker date="1440054644658" expanded="true" signature="4411:4494" placeholder="..." />
-            <marker date="1440054644658" expanded="true" signature="4624:4718" placeholder="..." />
-            <marker date="1440054644658" expanded="true" signature="4684:4717" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1239,11 +1214,70 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/ProxyClientController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-6.785714">
+          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
           <folding>
             <element signature="e#6#34#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/storage/logs/laravel-2015-08-20.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.129032">
+          <caret line="34" column="134" selection-start-line="34" selection-start-column="134" selection-end-line="34" selection-end-column="134" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/proxy/application.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.3333335">
+          <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+          <folding>
+            <element signature="e#900#946#0#HTML" expanded="true" />
+            <element signature="e#961#1029#0#HTML" expanded="true" />
+            <element signature="e#1149#1217#0#HTML" expanded="true" />
+            <element signature="e#1532#1600#0#HTML" expanded="true" />
+            <element signature="e#1690#1741#0#HTML" expanded="true" />
+            <element signature="e#1921#1960#0#HTML" expanded="true" />
+            <element signature="e#2205#2264#0#HTML" expanded="true" />
+            <element signature="e#2417#2456#0#HTML" expanded="true" />
+            <element signature="e#2626#2657#0#HTML" expanded="true" />
+            <element signature="e#2726#2745#0#HTML" expanded="true" />
+            <element signature="e#2872#2891#0#HTML" expanded="true" />
+            <element signature="e#3039#3058#0#HTML" expanded="true" />
+            <element signature="e#3206#3225#0#HTML" expanded="true" />
+            <element signature="e#3510#3562#0#HTML" expanded="true" />
+            <element signature="e#3740#3911#0#HTML" expanded="true" />
+            <element signature="e#4004#4175#0#HTML" expanded="true" />
+            <marker date="1440054644658" expanded="true" signature="189:284" placeholder="..." />
+            <marker date="1440054644658" expanded="true" signature="255:283" placeholder="..." />
+            <marker date="1440054644658" expanded="true" signature="548:658" placeholder="..." />
+            <marker date="1440054644658" expanded="true" signature="626:657" placeholder="..." />
+            <marker date="1440054644658" expanded="true" signature="2760:2854" placeholder="..." />
+            <marker date="1440054644658" expanded="true" signature="2822:2853" placeholder="..." />
+            <marker date="1440054644658" expanded="true" signature="2906:3021" placeholder="..." />
+            <marker date="1440054644658" expanded="true" signature="2989:3020" placeholder="..." />
+            <marker date="1440054644658" expanded="true" signature="3073:3188" placeholder="..." />
+            <marker date="1440054644658" expanded="true" signature="3156:3187" placeholder="..." />
+            <marker date="1440054644658" expanded="true" signature="3277:3376" placeholder="..." />
+            <marker date="1440054644658" expanded="true" signature="3344:3375" placeholder="..." />
+            <marker date="1440054644658" expanded="true" signature="4411:4494" placeholder="..." />
+            <marker date="1440054644658" expanded="true" signature="4624:4718" placeholder="..." />
+            <marker date="1440054644658" expanded="true" signature="4684:4717" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/install/installationStatus.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>

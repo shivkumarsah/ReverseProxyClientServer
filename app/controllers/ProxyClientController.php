@@ -1,11 +1,11 @@
 <?php
 use Illuminate\Http\Request;
-use Openroster\Storage\Application\ApplicationRepository as Application;
+use Openroster\Storage\Application\ApplicationRepository as ApplicationRepo;
 
 class ProxyClientController extends BaseController
 {
 
-    public function __construct(AdminUser $admin, Request $request, Application $application)
+    public function __construct(AdminUser $admin, Request $request, ApplicationRepo $application)
     {
         //$request = new Request();
         $this->request = $request;
