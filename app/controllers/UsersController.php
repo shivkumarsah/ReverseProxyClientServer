@@ -358,7 +358,7 @@ class UsersController extends BaseController {
                         Session::put('school_domain', $user['school_domain']);
                         Session::put('api_key', $user['api_key']);
                         Session::put(Session::getId(), $token);
-                        return array('status' => 1, 'redirect' => "/users/dashboard");
+                        return array('status' => 1, 'redirect' => "/proxy/applications");
                     } else {
                         if ($repo->isThrottled($info)) {
                             $err_msg = Lang::get('messages.login.too_many_attempts');
