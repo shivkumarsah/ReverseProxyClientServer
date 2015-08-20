@@ -1,14 +1,16 @@
 <?php
 use Illuminate\Http\Request;
+use Openroster\Storage\Application\ApplicationRepository as Application;
 
 class ProxyController extends BaseController
 {
     
-    public function __construct(AdminUser $admin)
+    public function __construct(AdminUser $admin, Application $application)
     {
         //$request = new Request();
         //$this->request = $request; 
         $this->admin = $admin;
+        $this->application = $application;
     
     }
     
@@ -354,10 +356,11 @@ class ProxyController extends BaseController
             return Response::json($response);
         } else {
             // Show application list to proxy client
-            $tenant_id = Session::get('tenant_id');
+            /*$tenant_id = Session::get('tenant_id');
             //$results = Application::where('tenant_id', '=', $tenant_id)->get();
             $results = Application::all();
-            return Response::json($results);
+            return Response::json($results);*/
+            return (array) $this->application->getApplicationList(Input::all());
         }
     }
 }

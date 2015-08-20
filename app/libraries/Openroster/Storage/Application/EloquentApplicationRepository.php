@@ -31,7 +31,7 @@ class EloquentApplicationRepository extends AbstractEloquentRepository implement
         if (!empty($inputData['sortedBy'])) {
             $params['sort_by'] = $inputData['sortedBy'];
         }else{
-            $params['sort_by'] = 'developers.developer_id';
+            $params['sort_by'] = 'applications.id';
         }
 
         if (!empty($inputData['sortDir'])) {
@@ -39,16 +39,13 @@ class EloquentApplicationRepository extends AbstractEloquentRepository implement
         }else{
             $params['sort_order'] = 'DESC';
         }
+        $params['groupby'] = 'applications.id';
+
+        $params['table'] = 'applications';
         
-        
-        $params['groupby'] = 'developers.developer_id';
-        
-        
-        $params['table'] = 'developers';
-        
-        $params['fields'] = array('developers.developer_id','developers.developer_name','developers.email','developers.api_key','developers.api_secret','developers.created_at','developers.updated_at', \DB::raw('COUNT(developer_school.developer_id) as total'));
+        $params['fields'] = array('applications.id','applications.tenant_id','applications.name','applications.internal_url','applications.external_url','applications.request_uri','applications.created_at','applications.updated_at');
         // join array
-        $params['join'][] = array('developer_school','developer_school.developer_id','=','developers.developer_id','leftJoin');
+        //$params['join'][] = array('developer_school','developer_school.developer_id','=','developers.developer_id','leftJoin');
         return $this->getByPage($params);
     }
     

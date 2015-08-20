@@ -514,6 +514,7 @@ proxyApp.directive('onEnterBlur', function() {
         });
     };
 });
+
 //------------ Factories --------------------//
 proxyApp.factory( 'api', function ( Restangular ) {
 
@@ -2028,7 +2029,7 @@ proxyApp.controller( "deleteApplicationCtrl", function( $scope ) {
     $scope.applicationName = $scope.$parent.ngDialogData.name;
 });
 
-proxyApp.controller( "assignSchoolCtrl", function( $scope, ngDialog, $serverRequest ) {
+proxyApp.controller("assignSchoolCtrl", function( $scope, ngDialog, $serverRequest ) {
 
     $scope.developerName = $scope.$parent.ngDialogData.developer_name;
     //console.log( $scope, $scope.$parent, $scope.$parent.ngDialogData.developer_id );
@@ -2139,6 +2140,7 @@ proxyApp.controller( "assignSchoolCtrl", function( $scope, ngDialog, $serverRequ
 
 });
 
+// Proxy Controllers
 proxyApp.controller("settingsCtrl", function( $scope, $http, Flash) {
     $scope.showErrorMsg = false;
 
@@ -2199,7 +2201,6 @@ proxyApp.controller("applicationCtrl", function($scope, $http, Flash, $serverReq
     $scope.showRecord = 'records';
     $scope.disabledNavigation = false;
 
-
     //Pull request to server for getting the developer data.
     $scope.getDeveloperData = function(){
         $serverRequest.application.pullApplicatinData( 'applications/list?itemsPerPage='+$scope.itemsPerPage+'&pageNumber='+$scope.changePageIndex );
@@ -2214,8 +2215,8 @@ proxyApp.controller("applicationCtrl", function($scope, $http, Flash, $serverReq
 
         console.log("$serverRequest.application.applicationList.LocalStorage");
         console.log($serverRequest.application.applicationList.LocalStorage);
-        if(Array.isArray($serverRequest.application.applicationList.LocalStorage)) {
-            $scope.items            = $serverRequest.application.applicationList.LocalStorage;
+        if(Array.isArray($serverRequest.application.applicationList.LocalStorage.items)) {
+            $scope.items            = $serverRequest.application.applicationList.LocalStorage.items;
             $scope.developersCount  = 100;
             $scope.totalPages       = 10;
             if( $scope.developersCount.toString() > '1' ){
@@ -2360,7 +2361,7 @@ proxyApp.controller("applicationCtrl", function($scope, $http, Flash, $serverReq
     });
 });
 
-proxyApp.controller( "addEditApplicationCtrl", function( $scope, ngDialog, $serverRequest, Flash) {
+proxyApp.controller("addEditApplicationCtrl", function( $scope, ngDialog, $serverRequest, Flash) {
 
     $scope.element = $scope.$parent.ngDialogData;
     $scope.eventMode = '';

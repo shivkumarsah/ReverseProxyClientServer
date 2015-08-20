@@ -17,7 +17,8 @@
 				style="font-size: 12px; ! important; float: left; color: red; margin-top: 2px;"
 				ng-show="inValidPage">Please enter valid page number.</div>
 		</div>
-		<!-- div class="col-md-8 col-sm-18"
+		<!-- START -->
+		<div class="col-md-8 col-sm-18"
 			style="text-align: left; margin-bottom: 10px;">
 			<span
 				style="font-size: 12px; ! important; float: right; margin-top: 7px;"
@@ -50,7 +51,8 @@
 				ng-click=nextPage()> <i class="fa fa-angle-right"></i>
 			</a>
 			</span>
-		</div-->
+		</div>
+		<!-- END -->
 	</div>
 	<div id="viewPanel" class="table-responsive" style="height:auto !important;">
 		<table class="table table-striped">
