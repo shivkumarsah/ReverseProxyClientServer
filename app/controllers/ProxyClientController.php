@@ -1,16 +1,16 @@
 <?php
 use Illuminate\Http\Request;
-
+use Openroster\Storage\Application\ApplicationRepository as Application;
 
 class ProxyClientController extends BaseController
 {
-    
-    public function __construct(AdminUser $admin, Request $request)
+
+    public function __construct(AdminUser $admin, Request $request, Application $application)
     {
         //$request = new Request();
         $this->request = $request;
         $this->admin = $admin;
-    
+        $this->application = $application;
     }
 
 	/**
@@ -194,7 +194,8 @@ class ProxyClientController extends BaseController
         try {
             if(isset($input['tenant_id']) && !empty($input['tenant_id'])) {
                 $tenant_id = $input['tenant_id'];
-                $results = Application::where('tenant_id', '=', $tenant_id)->get();
+                //$results = Application::where('tenant_id', '=', $tenant_id)->get();
+                $results = (array) $this->application->getApplicationList(Input::all());
                 if(count($results)) {
                     $output = array( 'data' => $results, 'status' => 1, 'message'=> '');
                 } else {
