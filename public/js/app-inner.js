@@ -2210,15 +2210,13 @@ proxyApp.controller("applicationCtrl", function($scope, $http, Flash, $serverReq
 
     $scope.$on ( 'DEVELOPER_DATA', function () {
         // $scope.items            = $serverRequest.application.applicationList.LocalStorage.items;
-        // $scope.developersCount  = $serverRequest.application.applicationList.LocalStorage.totalItems;
-        // $scope.totalPages       = $serverRequest.application.applicationList.LocalStorage.totalPages;
+        $scope.developersCount  = $serverRequest.application.applicationList.LocalStorage.totalItems;
+        $scope.totalPages       = $serverRequest.application.applicationList.LocalStorage.totalPages;
 
         console.log("$serverRequest.application.applicationList.LocalStorage");
         console.log($serverRequest.application.applicationList.LocalStorage);
         if(Array.isArray($serverRequest.application.applicationList.LocalStorage.items)) {
             $scope.items            = $serverRequest.application.applicationList.LocalStorage.items;
-            $scope.developersCount  = 100;
-            $scope.totalPages       = 10;
             if( $scope.developersCount.toString() > '1' ){
                 $scope.showRecord = 'records';
             } else {
