@@ -7,5 +7,5 @@ return array(
     'launcpad_url'      => 'https://launchpad.classlink.com/oauth2/auth/?',
     'scopes'            => 'profile',
     //'redirecturl'       => 'http://classlinkproxy.icreondemoserver.com:443/users/lunchpadtoken'
-    'redirecturl'       => (((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']!=='off') || $_SERVER['SERVER_PORT']==443) ? 'https://':'http://' ).$_SERVER['HTTP_HOST']
+    'redirecturl'       => (((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']!=='off') || $_SERVER['SERVER_PORT']==443) ? 'https://':'http://' ).$_SERVER['HTTP_HOST'].'/users/lunchpadtoken'
 );

@@ -78,11 +78,7 @@ class AdminUser extends Eloquent implements ConfideUserInterface
                     $response['proxy_status']   = $user->proxy_status;
                     $response['proxy_url']      = $user->proxy_url;
                     $response['api_key']        = $user->api_key;
-                    if(empty($user->api_key)) {
-                        $response['api_key']    = md5(uniqid(mt_rand(), true));
-                        //$response['api_key']    = Hash::make("secret");
-                    }
-                    
+                    //$response['api_key']    = md5(uniqid(mt_rand(), true)); //Hash::make("secret");
                 }
             } catch (Exception $ex) {
                 $response['message'] = Lang::get('messages.login.invalid_access');

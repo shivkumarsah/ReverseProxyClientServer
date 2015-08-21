@@ -11,39 +11,16 @@
     </div>
 </div>
 <div class="form-group">
+    <label for="domainApiKey">Reverse Proxy Address:</label>
+    <div for="domainApiKey">{{formData.domainAddress}}</div>
+</div>
+<div class="form-group">
     <label for="domainApiKey">Api Key:</label>
     <input type="text" class="form-control input-border" name="domainApiKey" ng-model="formData.domainApiKey" ng-change="keydown('domainapikey')" id="domainApiKey" />
     <div style="color:red;font-size: 12px;" ng-show="errorDomainApiKey">
         School Domain Api key should contain at least 8 characters.
     </div>
 </div>
-<!--<div class="form-group">
-    <label for="name">Admin Name:</label>
-    <input type="text" class="form-control input-border" name="adminName" ng-model="formData.adminName" ng-change="keydown('username')">
-    <div style="color:red;font-size: 12px;" ng-show="errorUserName">
-        Admin Name should contain at least 6 characters.
-    </div>
-</div>
-
-<div class="form-group">
-    <label for="password">Password:</label>
-    <input type="{{inputType}}" class="form-control input-border" name="adminPassword" ng-model="formData.adminPassword" ng-change="keydown('password')">
-    <div style="color:red;font-size: 12px;" ng-show="errorPassword">
-        Password should contain at least 6 characters.
-    </div>
-    <input type="checkbox" id="checkbox" ng-model="passwordCheckbox" ng-click="hideShowPassword()" />
-    <label for="checkbox" ng-if="passwordCheckbox">Hide password</label>
-    <label for="checkbox" ng-if="!passwordCheckbox">Show password</label>
-</div>
-
-<div class="form-group">
-    <label for="email">Email:</label>
-    <input type="text" class="form-control input-border" name="adminEmail" ng-model="formData.adminEmail" ng-change="keydown('email')">
-    <div style="color:red;font-size: 12px;" ng-show="errorEmail">
-        Please enter valid email.
-    </div>
-</div>-->
-
 <div class="form-group row">
 	<div class="col-xs-6 col-xs-offset-3">
 	    <a ng-click="goToNextSection(false)" class="btn btn-block btn-info btn-padding-css">
