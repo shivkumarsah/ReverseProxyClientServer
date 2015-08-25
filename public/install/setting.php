@@ -216,6 +216,7 @@ class setting {
 
             // create csv import storage folder
             $proxyContentSetting = file_get_contents($sample_path . 'install/proxy.sample.php');
+            $authPath = realpath($_SERVER['DOCUMENT_ROOT'].'/../auth/nginx-auth.lua');
 
             $proxyContentSetting = str_replace("{{baseUrl}}",       $configItems['baseUrl'], $proxyContentSetting);
             $proxyContentSetting = str_replace("{{baseUrlPort}}",   $configItems['baseUrlPort'], $proxyContentSetting);
@@ -223,6 +224,7 @@ class setting {
             $proxyContentSetting = str_replace("{{confPath}}",      $configItems['confPath'], $proxyContentSetting);
             $proxyContentSetting = str_replace("{{nginxPath}}",     $configItems['nginxPath'], $proxyContentSetting);
             $proxyContentSetting = str_replace("{{baseProtocol}}",  $configItems['baseProtocol'], $proxyContentSetting);
+            $proxyContentSetting = str_replace("{{authPath}}",      $authPath, $proxyContentSetting);
 
             $amr = file_put_contents($dir_path . 'proxy.php', $proxyContentSetting);
             if ($amr == "" || $amr == false) {

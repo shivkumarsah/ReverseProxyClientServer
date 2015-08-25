@@ -111,6 +111,7 @@ class ProxyClientController extends BaseController
             $proxy_config_path  = Config::get('proxy.config_path');
             $proxy_service_path = Config::get('proxy.nginx_service_path');
             $proxy_auth_url     = Config::get('proxy.auth_url');
+            $proxy_auth_path    = Config::get('proxy.auth_path');
 
             $tenant_id      = $input['tenant_id'];;
             $request_uri    = $input['internal_uri']; //'gwstoken='; //$admin_api_key;
@@ -121,7 +122,8 @@ class ProxyClientController extends BaseController
             $concat_operator = strpos($external_url, '?') ? '&':'?';
             $external_url   = $external_url.$concat_operator.$request_params;
             $internal_url   = $input['internal_url'];
-            $lua_file_path  = '/etc/nginx/nginx.lua'; //$_SERVER['DOCUMENT_ROOT']
+            //$lua_file_path  = '/etc/nginx/nginx.lua';
+            $lua_file_path  = $proxy_auth_path;
 
             /*$strnginx="";
             $strnginx.='server {listen      '.$proxy_listen_port.'; server_name  '.$external_ip.';';
@@ -132,22 +134,26 @@ class ProxyClientController extends BaseController
             $strnginx.='proxy_pass   '.$internal_url.';';
             $strnginx.='}}';*/
 
+            $tab= " \t ";
             $strnginx="";
-            $strnginx.='server {listen '.$proxy_listen_port.'; server_name '.$external_ip.';';
-            $strnginx.='location / {';
-            $strnginx.='auth_request /check;';
-            $strnginx.='auth_request_set $gws $upstream_http_gwstoken;';
-            $strnginx.='header_filter_by_lua_file '.$lua_file_path.';';
-            $strnginx.='proxy_pass   '.$internal_url.';';
-            $strnginx.='}';
+            $strnginx.='server {'.PHP_EOL;
+            $strnginx.=$tab.'listen '.$proxy_listen_port.';'.PHP_EOL;
+            $strnginx.=$tab.'server_name '.$external_ip.';'.PHP_EOL;
+            $strnginx.=$tab.'location / {'.PHP_EOL;
+            $strnginx.=$tab.$tab.'auth_request /check;'.PHP_EOL;
+            $strnginx.=$tab.$tab.'auth_request_set $gws $upstream_http_gwstoken;'.PHP_EOL;
+            $strnginx.=$tab.$tab.'header_filter_by_lua_file '.$lua_file_path.';'.PHP_EOL;
+            $strnginx.=$tab.$tab.'proxy_pass   '.$internal_url.';'.PHP_EOL;
+            $strnginx.=$tab.'}'.PHP_EOL;
             //$strnginx.='error_page 403 = @error403;';
             //$strnginx.='location @error403 { return 404; }';
-            $strnginx.='location = /check {';
-            $strnginx.='proxy_pass '.$proxy_auth_url.'?tenant_id='.$tenant_id.';';
-            $strnginx.='proxy_pass_request_body off;';
-            $strnginx.='proxy_set_header Content-length "";';
-            $strnginx.='proxy_set_header X-Original-URI $request_uri;';
-            $strnginx.='}}';
+            $strnginx.=$tab.'location = /check {'.PHP_EOL;
+            $strnginx.=$tab.$tab.'proxy_pass '.$proxy_auth_url.'?tenant_id='.$tenant_id.';'.PHP_EOL;
+            $strnginx.=$tab.$tab.'proxy_pass_request_body off;'.PHP_EOL;
+            $strnginx.=$tab.$tab.'proxy_set_header Content-length "";'.PHP_EOL;
+            $strnginx.=$tab.$tab.'proxy_set_header X-Original-URI $request_uri;'.PHP_EOL;
+            $strnginx.=$tab.'}'.PHP_EOL;
+            $strnginx.='}'.PHP_EOL;
 
             $filename=$proxy_config_path.'/'.$external_ip.'.conf';
             $fp = fopen($filename,"w");
