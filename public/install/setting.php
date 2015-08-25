@@ -216,7 +216,7 @@ class setting {
 
             // create csv import storage folder
             $proxyContentSetting = file_get_contents($sample_path . 'install/proxy.sample.php');
-            $authPath = realpath($_SERVER['DOCUMENT_ROOT'].'/../auth/nginx-auth.lua');
+            $authPath = realpath($_SERVER['DOCUMENT_ROOT'].'/auth/nginx-auth.lua');
 
             $proxyContentSetting = str_replace("{{baseUrl}}",       $configItems['baseUrl'], $proxyContentSetting);
             $proxyContentSetting = str_replace("{{baseUrlPort}}",   $configItems['baseUrlPort'], $proxyContentSetting);
