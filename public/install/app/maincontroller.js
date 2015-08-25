@@ -21,11 +21,6 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
     $scope.errorCSVpath = false;
     $scope.errorInstallation = '';
     $scope.adminurl = 'http://openrosters2.icreondemoserver.com/';
-
-    $scope.formData.baseUrl = "";
-    $scope.formData.baseUrlPort = '80';
-    $scope.formData.confPath = '/var/www/html/classlinkproxy/configs';
-    $scope.formData.nginxPath = '/var/www/html/php_root';
     $scope.dbProcessing = false;
 
     $scope.keydown = function( type ){
@@ -175,6 +170,7 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
             document.getElementById('loading').style.display = 'block';
             if( isValid ){
                 var jsonObj = {
+                    'baseProtocol' : $scope.formData.baseProtocol,
                     'baseUrl' : $scope.formData.baseUrl ? $scope.formData.baseUrl : '',
                     'baseUrlPort' : $scope.formData.baseUrlPort ? $scope.formData.baseUrlPort : '',
                     'confPath' : $scope.formData.confPath ? $scope.formData.confPath : '',
@@ -193,7 +189,8 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
             
             var isValid = true;
             var json = {
-                'domainapikey' : $scope.formData.domainApiKey ? $scope.formData.domainApiKey : ''
+                'domainapikey' : $scope.formData.domainApiKey ? $scope.formData.domainApiKey : '',
+                'domainAddress' : $scope.formData.domainAddress ? $scope.formData.domainAddress : ''
             };
 
             isValid = $scope.checkFieldValidation( json );
@@ -201,6 +198,7 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
             if( isValid ) {
                 var jsonObj = {
                     'domainapikey' : $scope.formData.domainApiKey ? $scope.formData.domainApiKey : '',
+                    'domainAddress' : $scope.formData.domainAddress ? $scope.formData.domainAddress : '',
                     'submitedtype': 'adminsetting'
                 };
 
@@ -310,6 +308,17 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
         };
         $serverRequest.install.checkCredential( 'installation.php', jsonObj );
         $scope.$on ( 'CHECK_INSTALLATION_STATE', function () {
+            var data = $serverRequest.install.responseData;
+            console.log("$serverRequest.install.responseData = ", data);
+
+            $scope.formData.domainAddress   = data.url;
+            $scope.formData.domainApiKey    = data.domainApiKey
+            $scope.formData.baseUrl         = data.serverName;
+            $scope.formData.baseUrlPort     = data.urlPort;
+            $scope.formData.baseProtocol    = data.baseProtocol;
+            $scope.formData.confPath        = data.confPath;
+            $scope.formData.nginxPath       = ''; //'/var/www/html/php_root';
+
             if( $serverRequest.install.installationState != $state.current.name ) {
                 $state.current.name = $serverRequest.install.installationState;
                 updateValidityOfCurrentStep(true);

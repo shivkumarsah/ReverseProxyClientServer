@@ -169,11 +169,12 @@ class setting {
         try {
             $configItems = parse_ini_file("config.ini");
 
+            $sample_path = '../../app/config/';
             $dir_path = '../../app/config/';
             //$dir_path = '../../app/config/install/';
 
             // change db settings
-            $fileContent = file_get_contents($dir_path . 'install/database.sample.php');
+            $fileContent = file_get_contents($sample_path . 'install/database.sample.php');
             $fileContent = str_replace("{{mysql-host}}",        $configItems['dbhost'], $fileContent);
             $fileContent = str_replace("{{mysql-database}}",    $configItems['dbname'], $fileContent);
             $fileContent = str_replace("{{mysql-username}}",    $configItems['dbusername'], $fileContent);
@@ -184,8 +185,9 @@ class setting {
             }
             // db setting  complete
             // proxy server api key in the config file
-            $schooldomainapikey = $configItems["domainapikey"];
-            $domainapikeycontent = '<?php return array( "api_key" => ' . "'" . $schooldomainapikey . "'" . ');';
+            $domainapikey = $configItems["domainapikey"];
+            $domainAddress = $configItems["domainAddress"];
+            $domainapikeycontent = '<?php return array( "api_key" => ' . "'" . $domainapikey . "'" . ', "domain-address" => ' . "'" . $domainAddress . "'" . ');';
 
             $dmr = file_put_contents($dir_path . 'domainapikey.php', $domainapikeycontent);
             if ($dmr == "" || $dmr == false) {
@@ -197,7 +199,7 @@ class setting {
             
             // create email settings and upload settings
             if ($configItems['smtpskipped'] == 'no') {
-                $emailfileContentSetting = file_get_contents($dir_path . 'install/mail.sample.php');
+                $emailfileContentSetting = file_get_contents($sample_path . 'install/mail.sample.php');
 
                 $emailfileContentSetting = str_replace("{{emailhost}}",         $configItems['emailhost'], $emailfileContentSetting);
                 $emailfileContentSetting = str_replace("'{{emailport}}'",       $configItems['emailport'], $emailfileContentSetting);
@@ -213,13 +215,14 @@ class setting {
             }
 
             // create csv import storage folder
-            $proxyContentSetting = file_get_contents($dir_path . 'install/proxy.sample.php');
+            $proxyContentSetting = file_get_contents($sample_path . 'install/proxy.sample.php');
 
             $proxyContentSetting = str_replace("{{baseUrl}}",       $configItems['baseUrl'], $proxyContentSetting);
             $proxyContentSetting = str_replace("{{baseUrlPort}}",   $configItems['baseUrlPort'], $proxyContentSetting);
             $proxyContentSetting = str_replace("{{listenPort}}",    $configItems['baseUrlPort'], $proxyContentSetting);
             $proxyContentSetting = str_replace("{{confPath}}",      $configItems['confPath'], $proxyContentSetting);
             $proxyContentSetting = str_replace("{{nginxPath}}",     $configItems['nginxPath'], $proxyContentSetting);
+            $proxyContentSetting = str_replace("{{baseProtocol}}",  $configItems['baseProtocol'], $proxyContentSetting);
 
             $amr = file_put_contents($dir_path . 'proxy.php', $proxyContentSetting);
             if ($amr == "" || $amr == false) {
@@ -236,6 +239,25 @@ class setting {
             $response['responseMessage'] = $e->getMessage();
             return $response;
         }
+    }
+
+    public function getUrl($use_forwarded_host=false) {
+        $s = $_SERVER;
+        $ssl = (!empty($s['HTTPS']) && $s['HTTPS'] == 'on') ? true:false;
+        $sp = strtolower($s['SERVER_PROTOCOL']);
+        $protocol = substr($sp, 0, strpos($sp, '/')) . (($ssl) ? 's' : '');
+        $port = $s['SERVER_PORT'];
+        $port = ((!$ssl && $port=='80') || ($ssl && $port=='443')) ? '' : ':'.$port;
+        $host = ($use_forwarded_host && isset($s['HTTP_X_FORWARDED_HOST'])) ? $s['HTTP_X_FORWARDED_HOST'] : (isset($s['HTTP_HOST']) ? $s['HTTP_HOST'] : null);
+        $host = isset($host) ? $host : $s['HTTP_HOST'] . $port;
+        return $protocol . '://' . $host;
+    }
+    public function getProtocol() {
+        $s = $_SERVER;
+        $ssl = (!empty($s['HTTPS']) && $s['HTTPS'] == 'on') ? true:false;
+        $sp = strtolower($s['SERVER_PROTOCOL']);
+        $protocol = substr($sp, 0, strpos($sp, '/')) . (($ssl) ? 's' : '');
+        return $protocol;
     }
 }
 

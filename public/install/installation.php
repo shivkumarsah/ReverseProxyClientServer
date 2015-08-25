@@ -143,6 +143,15 @@ switch($inputs['submitedtype']){
     case "checkstate":
         $settingObj = new setting();
         $responseArray = $settingObj->getState();
+        $responseArray['url']           = $settingObj->getUrl();
+        $responseArray['serverName']    = $_SERVER['HTTP_HOST'];
+        $responseArray['urlPort']       = $_SERVER['SERVER_PORT'];
+        $responseArray['baseProtocol']  = $settingObj->getProtocol();
+        $responseArray['domainApiKey']  = md5(uniqid(mt_rand(), true));
+        $responseArray['path'] = $_SERVER['DOCUMENT_ROOT'].'/../configs/';
+        $responseArray['confPath'] = realpath($_SERVER['DOCUMENT_ROOT'].'/../configs/');
+
+        //echo "<pre>"; print_r($responseArray); print_r($_SERVER); exit;
         echo  json_encode($responseArray);exit;
         break;
     default :

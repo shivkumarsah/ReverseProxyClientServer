@@ -125,6 +125,7 @@ app.service ( '$serverRequest', function ( $rootScope, $http ) {
         installStatus: false,
         installingStatus: false,
         installationState: false,
+        responseData: {},
 
         checkCredential: function ( url, json ) {
             $http ({
@@ -135,6 +136,7 @@ app.service ( '$serverRequest', function ( $rootScope, $http ) {
                     'Content-Type': 'application/json'
                 }
             }).success ( function ( data, status, headers, config ) {
+                $serverRequest.install.responseData = data;
                 if( json.submitedtype === 'dbsetting' ) {
                     $serverRequest.install.dbStatus = data.error;
                     $serverRequest.install.dbresponse = data.responseMessage;
