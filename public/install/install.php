@@ -93,7 +93,7 @@ if (!is_dir($querylogs_folder_path)) {
                             <div class="col-xs-12">
                                 <div class="isa_error">
                                     <i class="fa fa-times-circle"></i>
-                                    <?php echo "Please execute <i>install.sh</i> before starting installation.<br/>Please give permissions to all files and directories described in a manual before starting installation." ?>
+                                    <?php echo "Please execute <em>install.sh</em> before starting installation.<br/>Please give permissions to all files and directories described in a manual before starting installation." ?>
 
                                     <?php foreach($errors as $error ) : ?>
                                         <p><i class="fa fa-times-circle"></i><?php echo $error; ?></p>
