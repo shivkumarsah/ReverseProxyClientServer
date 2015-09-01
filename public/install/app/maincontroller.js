@@ -317,7 +317,7 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
             $scope.formData.baseUrlPort     = data.urlPort;
             $scope.formData.baseProtocol    = data.baseProtocol;
             $scope.formData.confPath        = data.confPath;
-            $scope.formData.nginxPath       = ''; //'/var/www/html/php_root';
+            $scope.formData.nginxPath       = data.nginxPath; //'/var/www/html/php_root';
 
             if( $serverRequest.install.installationState != $state.current.name ) {
                 $state.current.name = $serverRequest.install.installationState;
