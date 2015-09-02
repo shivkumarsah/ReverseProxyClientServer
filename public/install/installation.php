@@ -150,7 +150,7 @@ switch($inputs['submitedtype']){
         $responseArray['domainApiKey']  = md5(uniqid(mt_rand(), true));
         $responseArray['path'] = $_SERVER['DOCUMENT_ROOT'].'/../configs/';
         $responseArray['confPath'] = realpath($_SERVER['DOCUMENT_ROOT'].'/../configs/');
-        $responseArray['nginxPath'] = realpath($_SERVER['DOCUMENT_ROOT'].'/../nginx/');
+        $responseArray['nginxPath'] = realpath($_SERVER['DOCUMENT_ROOT'].'/../nginx/nginx_root');
 
         //echo "<pre>"; print_r($responseArray); print_r($_SERVER); exit;
         echo  json_encode($responseArray);exit;

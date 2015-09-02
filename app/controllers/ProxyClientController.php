@@ -85,8 +85,8 @@ class ProxyClientController extends BaseController
                 DB::table('applications')->where('id', $id)->update([
                     'name'          => $input['application_name'],
                     'internal_url'  => $input['internal_url'],
-                    'request_uri'   => $input['internal_uri']
-                    //'external_url'  => $input['internal_url'],
+                    'request_uri'   => $input['internal_uri'],
+                    'external_url'  => $input['internal_url']
                 ]);
             } else {
                 //$application = DB::table('applications')->orderBy('id', 'desc')->first();
@@ -97,7 +97,7 @@ class ProxyClientController extends BaseController
                 $application->tenant_id     = $input['tenant_id']; //$tenant_id;
                 $application->name          = $input['application_name'];
                 $application->internal_url  = $input['internal_url'];
-                //$application->external_url  = $input['internal_url'];
+                $application->external_url  = $input['internal_url'];
                 $application->request_uri   = $input['internal_uri'];
 
                 $application->save();
