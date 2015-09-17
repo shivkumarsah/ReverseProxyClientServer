@@ -34,6 +34,7 @@ if [ $(id -u) = "0" ]; then
     cp nginx/nginx.conf /etc/nginx/nginx.conf
     cp nginx/fastcgi-php.conf /etc/nginx/snippets/fastcgi-php.conf
     cp nginx/auth.conf /etc/nginx/conf.d/auth.conf
+    cp nginx/server.conf configs/server.conf
     sudo ln -sf "$(pwd)/configs" /etc/nginx/conf.d/configs
     echo "\nSuccess - Nginx server configuration updated"
 
