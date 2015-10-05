@@ -16,6 +16,14 @@ if [ $(id -u) = "0" ]; then
         echo "\nSuccess - Nginx service already created."
     fi
 
+    if [ ! -f /etc/systemd/system/nginx.service ]; then
+        cp nginx/nginx.service /etc/systemd/system/nginx.service
+        chmod 0777 /etc/systemd/system/nginx.service
+        echo "\nSuccess - Nginx Unit service created successfully!"
+    else
+        echo "\nSuccess - Nginx Unit service already created."
+    fi
+
     chown root nginx/nginx_root.sh
     chmod u=rwx,go=xr nginx/nginx_root.sh
     gcc nginx/nginx_root.c -o nginx/nginx_root
