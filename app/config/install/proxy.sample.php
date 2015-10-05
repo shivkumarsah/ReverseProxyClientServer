@@ -7,6 +7,6 @@ return array(
     'nginx_service_path'=> '{{nginxPath}}', //'/var/www/html/php_root',
     'nginx_protocol'    => '{{baseProtocol}}',
     'auth_path'         => '{{authPath}}', //realpath($_SERVER['DOCUMENT_ROOT'].'/auth/nginx-auth.lua'),
-    'auth_url'          => (((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']!=='off') || $_SERVER['SERVER_PORT']==443) ? 'https://':'http://' ).$_SERVER['HTTP_HOST'].'/auth/'
-//  'auth_url'          => 'http://localhost:9001/'
+//    'auth_url'          => (((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']!=='off') || $_SERVER['SERVER_PORT']==443) ? 'https://':'http://' ).$_SERVER['HTTP_HOST'].'/auth/'
+  'auth_url'          => 'http://localhost:9001/'
 );
