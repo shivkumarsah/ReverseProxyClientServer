@@ -73,26 +73,17 @@ class ProxyController extends BaseController
      */
     public function sslSettingsSave() {
         $input = Input::all();
-        $login = Config::get('launchpad.login_required');
-        if($login) {
-            $validate = $this->verifyProxyDomain($input);
-            if ($validate['status']) {
-                $result = $this->admin->setProxy($input);
-            } else {
-                $result = $validate;
-            }
-        } else {
-            $dir_path = $_SERVER['DOCUMENT_ROOT'].'/../app/config/';
 
-            Config::set('proxy.certificatePem', 'file fill path');
-            Config::set('proxy.certificateKey', 'file fill path');
+        $dir_path = $_SERVER['DOCUMENT_ROOT'].'/../app/config/local/';
 
-            $dmr = file_put_contents($dir_path . 'proxy.php', print_r(Config::get('proxy'), true));
-            if ($dmr == "" || $dmr == false) {
-                throw new Exception("Permissions required to ". $dir_path .'proxy.php');
-            }
-            $result = $this->admin->setProxy($input);
+        Config::set('proxy.certificatePem', 'file fill path');
+        Config::set('proxy.certificateKey', 'file fill path');
+
+        $dmr = file_put_contents($dir_path . 'proxy.php', print_r(Config::get('proxy'), true));
+        if ($dmr == "" || $dmr == false) {
+            throw new Exception("Permissions required to ". $dir_path .'proxy.php');
         }
+        $result = $this->admin->setProxy($input);
         return Response::json($result);
     }
 

@@ -2188,9 +2188,9 @@ proxyApp.controller("sslCtrl", function( $scope, $http, Flash) {
 
     $scope.saveSettings = function (formObj) {
         console.log("formObj = ", formObj);
-        if (formObj.$valid=="shiv") {
+        if (formObj.$valid) {
             var responseObj = $http({
-                url: '/proxy/settings/save',
+                url: '/proxy/sslsettings/save',
                 method: 'post',
                 data: {
                     proxy_url: $scope.settingData.proxy_url,
