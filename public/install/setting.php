@@ -224,6 +224,10 @@ class setting {
             $proxyContentSetting = str_replace("{{confPath}}",      $configItems['confPath'], $proxyContentSetting);
             $proxyContentSetting = str_replace("{{nginxPath}}",     $configItems['nginxPath'], $proxyContentSetting);
             $proxyContentSetting = str_replace("{{baseProtocol}}",  $configItems['baseProtocol'], $proxyContentSetting);
+
+            $proxyContentSetting = str_replace("{{certificatePem}}",  $configItems['certificatePem'], $proxyContentSetting);
+            $proxyContentSetting = str_replace("{{certificateKey}}",  $configItems['certificateKey'], $proxyContentSetting);
+
             $proxyContentSetting = str_replace("{{authPath}}",      $authPath, $proxyContentSetting);
 
             $amr = file_put_contents($dir_path . 'proxy.php', $proxyContentSetting);

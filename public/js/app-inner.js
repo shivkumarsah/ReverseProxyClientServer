@@ -2179,6 +2179,45 @@ proxyApp.controller("settingsCtrl", function( $scope, $http, Flash) {
 
 });
 
+// SSL Controllers
+proxyApp.controller("sslCtrl", function( $scope, $http, Flash) {
+    $scope.showErrorMsg = false;
+
+    console.log("sslCtrl called");
+    $scope.settingData = {};
+
+    $scope.saveSettings = function (formObj) {
+        console.log("formObj = ", formObj);
+        if (formObj.$valid=="shiv") {
+            var responseObj = $http({
+                url: '/proxy/settings/save',
+                method: 'post',
+                data: {
+                    proxy_url: $scope.settingData.proxy_url,
+                    api_key: $scope.settingData.api_key
+                },
+            });
+            responseObj.success(function (data, status, headers, config) {
+                console.log(data);
+                if (data.status) {
+                    var message = 'Reverse proxy details saved successfully.';
+                    Flash.create('success', message, 'custom-class');
+                }
+                else {
+                    Flash.create('danger', data.message, 'custom-class');
+                    $scope.showHeaderErrorMsg = true;
+                }
+            });
+            responseObj.error(function (data, status, headers, config) {
+                alert(data.error);
+            });
+        } else {
+            $scope.showErrorMsg = true;
+        }
+    };
+
+});
+
 proxyApp.controller("applicationCtrl", function($scope, $http, Flash, $serverRequest, $element, ngDialog) {
     $('#viewPanel').height( $( window ).height() - ( $('#navbar').height() + 125 ) );
     $("#viewPanel").niceScroll({

@@ -7,10 +7,13 @@
             <div ng-include="'logo.html'"></div>
         </div>
     </div>
-    <div ng-show='databaseError' style="text-align: left;">
+    <div ng-show='proxyError' style="text-align: left;">
         <span class="help-inline" style="color: #ff0000 !important;">
             Please enter valid information!<br />
-            <small>{{proxyErrorElement}}</small>
+            <!--small>{{proxyErrorElement}}</small-->
+            <ul>
+                <li ng-repeat="error in responseData.filedlist"><small>{{error}}</small></li>
+            </ul>
         </span>
     </div>
 </div>
@@ -24,8 +27,8 @@
 <div class="form-group">
     <label for="baseUrl">Protocol:</label>
     <div>
-        <label class="radio-inline"><input type="radio" name="baseProtocol" ng-model="formData.baseProtocol" id="baseProtocol_http" value="http" /> Http</label>
-        <label class="radio-inline"><input type="radio" name="baseProtocol" ng-model="formData.baseProtocol" id="baseProtocol_https" value="https" />Https</label>
+        <label class="radio-inline"><input type="radio" name="baseProtocol" ng-model="formData.baseProtocol" id="baseProtocol_http" value="http" ng-click="formData.baseUrlPort=80" /> Http</label>
+        <label class="radio-inline"><input type="radio" name="baseProtocol" ng-model="formData.baseProtocol" id="baseProtocol_https" value="https" ng-click="formData.baseUrlPort=443" />Https</label>
     </div>
 </div>
 <div class="form-group">
@@ -38,6 +41,14 @@
 <div class="form-group">
     <label for="baseUrlPort">Port:</label>
     <input type="text" class="form-control input-border" name="baseUrlPort" ng-model="formData.baseUrlPort" id="baseUrlPort" />
+</div>
+<div class="form-group" ng-show="formData.baseProtocol=='https'">
+    <label for="baseUrlPort">SSL Certificate:</label>
+    <input type="text" class="form-control input-border" name="certificatePem" ng-model="formData.certificatePem" id="certificatePem" />
+</div>
+<div class="form-group" ng-show="formData.baseProtocol=='https'">
+    <label for="baseUrlPort">SSL Certificate Key:</label>
+    <input type="text" class="form-control input-border" name="certificateKey" ng-model="formData.certificateKey" id="certificateKey" />
 </div>
 
 <div class="form-group">

@@ -55,6 +55,48 @@ class ProxyController extends BaseController
     }
 
     /**
+     * Displays the reverse https ssl certificate setting page
+     *
+     * @return  Illuminate\Http\Response
+     */
+    public function sslSettings() {
+        $proxy = $this->admin->getProxy();
+        $login = Config::get('launchpad.login_required');
+        $showAction = ($login)? false : true;
+        return View::make('proxy.sslsettings')->with('result', $proxy)->with('showAction', $showAction);
+    }
+
+    /**
+     * Save https ssl certificate setting
+     *
+     * @return  Illuminate\Http\Response
+     */
+    public function sslSettingsSave() {
+        $input = Input::all();
+        $login = Config::get('launchpad.login_required');
+        if($login) {
+            $validate = $this->verifyProxyDomain($input);
+            if ($validate['status']) {
+                $result = $this->admin->setProxy($input);
+            } else {
+                $result = $validate;
+            }
+        } else {
+            $dir_path = $_SERVER['DOCUMENT_ROOT'].'/../app/config/';
+
+            Config::set('proxy.certificatePem', 'file fill path');
+            Config::set('proxy.certificateKey', 'file fill path');
+
+            $dmr = file_put_contents($dir_path . 'proxy.php', print_r(Config::get('proxy'), true));
+            if ($dmr == "" || $dmr == false) {
+                throw new Exception("Permissions required to ". $dir_path .'proxy.php');
+            }
+            $result = $this->admin->setProxy($input);
+        }
+        return Response::json($result);
+    }
+
+    /**
      * Validate Proxy domain and api-key using cURL
      *
      * @return  Illuminate\Http\Response

@@ -10,7 +10,10 @@
     <div ng-show='databaseError' style="text-align: left;">
         <span class="help-inline" style="color: #ff0000 !important;">
             Please enter valid information!<br />
-            <small>{{databaseErrorElement}}</small>
+            <!--small>{{proxyErrorElement}}</small-->
+            <ul>
+                <li ng-repeat="error in responseData.filedlist"><small>{{error}}</small></li>
+            </ul>
         </span>
     </div>
 </div>

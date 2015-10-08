@@ -49,6 +49,15 @@ switch($inputs['submitedtype']){
         if(empty($inputs['nginxPath'])){
             $resArray[]="Nginx service path missing";
         }
+        if(!empty($inputs['baseProtocol']) && $inputs['baseProtocol']=='https'){
+            if(empty($inputs['certificatePem'])){
+                $resArray[]="SSL certificate file is missing";
+            }
+            if(empty($inputs['certificateKey'])){
+                $resArray[]="SSL certificate key file is missing";
+            }
+        }
+
         if(!empty($resArray)){
             $responseArray = array("error"=>true,"responseMessage"=>"Missing fields","filedlist"=>$resArray);
             echo  json_encode($responseArray);exit;
