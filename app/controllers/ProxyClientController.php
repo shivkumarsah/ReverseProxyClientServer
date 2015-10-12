@@ -112,11 +112,15 @@ class ProxyClientController extends BaseController
             $proxy_service_path = Config::get('proxy.nginx_service_path');
             $proxy_auth_url     = Config::get('proxy.auth_url');
             $proxy_auth_path    = Config::get('proxy.auth_path');
+            $nginx_protocol     = Config::get('proxy.nginx_protocol');
+            $ssl_certificate_pem    = Config::get('proxy.certificate_pem');
+            $ssl_certificate_key    = Config::get('proxy.certificate_key');
 
             $tenant_id      = $input['tenant_id'];;
             $request_uri    = $input['internal_uri']; //'gwstoken='; //$admin_api_key;
             $request_params = 'gwstoken='; //$admin_api_key;
-            $external_ip    = $id.".".$proxy_base_url;
+            $proxy_base_url = parse_url($proxy_base_url);
+            $external_ip    = $id.".".$proxy_base_url['host'];
 
             $external_url   = $id.".".$proxy_base_url.':'.$proxy_listen_port.'/'.$request_uri;
             $concat_operator = strpos($external_url, '?') ? '&':'?';
@@ -124,21 +128,27 @@ class ProxyClientController extends BaseController
             $internal_url   = $input['internal_url'];
             //$lua_file_path  = '/etc/nginx/nginx.lua';
             $lua_file_path  = $proxy_auth_path;
-
-            /*$strnginx="";
-            $strnginx.='server {listen      '.$proxy_listen_port.'; server_name  '.$external_ip.';';
-            //$strnginx.='include /etc/nginx/default.d/*.conf;';
-            $strnginx.='location / {root   /usr/share/nginx/html;index index.php  index.html index.htm;';
-            $strnginx.='auth_basic "closed site";';
-            $strnginx.='auth_basic_user_file '.$proxy_config_path.'/.htpasswd;';
-            $strnginx.='proxy_pass   '.$internal_url.';';
-            $strnginx.='}}';*/
+            $ssl_file_path  = $proxy_config_path.'/ssl.conf';
 
             $tab= " \t ";
             $strnginx="";
             $strnginx.='server {'.PHP_EOL;
-            $strnginx.=$tab.'listen '.$proxy_listen_port.';'.PHP_EOL;
-            $strnginx.=$tab.'server_name '.$external_ip.';'.PHP_EOL;
+            if($nginx_protocol=='https') {
+                $strnginx.=$tab.'listen '.$proxy_listen_port.' ssl;'.PHP_EOL;
+                $strnginx.=$tab.'server_name '.$external_ip.';'.PHP_EOL;
+                $strnginx.=$tab.'include '.$ssl_file_path.';'.PHP_EOL;
+
+                // Update SSL Certificate Configuration
+                $sfp = fopen($ssl_file_path,"w");
+                $strngssl='ssl_certificate '.$ssl_certificate_pem.';'.PHP_EOL;
+                $strngssl.='ssl_certificate_key '.$ssl_certificate_key.';'.PHP_EOL;
+                $strngssl.="ssl_session_cache shared:SSL:10m;".PHP_EOL;
+                fwrite($sfp, $strngssl);
+                fclose($sfp);
+            } else {
+                $strnginx.=$tab.'listen '.$proxy_listen_port.';'.PHP_EOL;
+                $strnginx.=$tab.'server_name '.$external_ip.';'.PHP_EOL;
+            }
             $strnginx.=$tab.'location / {'.PHP_EOL;
             $strnginx.=$tab.$tab.'auth_request /check;'.PHP_EOL;
             $strnginx.=$tab.$tab.'auth_request_set $gws $upstream_http_gwstoken;'.PHP_EOL;
