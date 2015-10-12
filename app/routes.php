@@ -44,6 +44,9 @@ Route::group(array('before' => 'admin-auth'), function()
     
     Route::get('proxy/settings', array('as'=>'proxysettings', 'uses'=>'ProxyController@settings'));
     Route::post('proxy/settings/save', array('as'=>'proxysettingssave', 'uses'=>'ProxyController@settingsSave'));
+
+    Route::get('proxy/sslsettings', array('as'=>'sslsettings', 'uses'=>'ProxyController@sslSettings'));
+    Route::post('proxy/sslsettings/save', array('as'=>'sslsettingssave', 'uses'=>'ProxyController@sslSettingsSave'));
     
     Route::get('proxy/applications', array('as'=>'applications', 'uses'=>'ProxyController@applications'));
     Route::any('proxy/applications/list', array('as'=>'developerslist', 'uses'=>'ProxyController@applicationList'));

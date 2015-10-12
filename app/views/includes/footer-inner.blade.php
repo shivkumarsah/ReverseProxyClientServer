@@ -2,10 +2,11 @@
 {{ HTML::script('js/jquery.min-1.11.1.js') }}
 {{ HTML::script('js/jquery.nicescroll.min.js') }}
 {{ HTML::script('js/bootstrap.min-3.3.0.js') }}
-{{ HTML::script('http://code.angularjs.org/1.2.6/angular.min.js') }}
-{{ HTML::script('http://code.angularjs.org/1.2.4/angular-route.min.js') }}
+
+{{ HTML::script('js/angular.min.js') }}
+{{ HTML::script('js/angular-route.min.js') }}
 {{ HTML::script('js/ui-bootstrap-tpls-0.12.0.js') }}
-{{ HTML::script('http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js') }}
+{{ HTML::script('js/underscore-min.js') }}
 {{ HTML::script('js/restangular.js') }}
 {{ HTML::script('js/app-inner.js') }}
 {{ HTML::script('js/angular-file-upload.min.js')}}

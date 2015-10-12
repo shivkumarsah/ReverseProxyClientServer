@@ -53,7 +53,8 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
                 return 'form.admin';
                 break;
             case 'form.admin':
-                return 'form.smpt';
+                return 'form.install';
+                //return 'form.smpt';
                 break;
             case 'form.smpt':
                 return 'form.install';
@@ -162,6 +163,7 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
                     document.getElementById('loading').style.display = 'none';
                     $scope.databaseError = $serverRequest.install.dbStatus;
                     $scope.databaseErrorElement = $serverRequest.install.dbresponse;
+                    $scope.responseData = $serverRequest.install.responseData;
                     $scope.callAfterSuccess( !$serverRequest.install.dbStatus );
                 });
             }
@@ -173,6 +175,8 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
                     'baseProtocol' : $scope.formData.baseProtocol,
                     'baseUrl' : $scope.formData.baseUrl ? $scope.formData.baseUrl : '',
                     'baseUrlPort' : $scope.formData.baseUrlPort ? $scope.formData.baseUrlPort : '',
+                    'certificatePem' : $scope.formData.certificatePem ? $scope.formData.certificatePem : '',
+                    'certificateKey' : $scope.formData.certificateKey ? $scope.formData.certificateKey : '',
                     'confPath' : $scope.formData.confPath ? $scope.formData.confPath : '',
                     'nginxPath' : $scope.formData.nginxPath ? $scope.formData.nginxPath : '',
                     'submitedtype' : 'proxysetting'
@@ -182,6 +186,7 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
                     document.getElementById('loading').style.display = 'none';
                     $scope.proxyError = $serverRequest.install.proxyStatus;
                     $scope.proxyErrorElement = $serverRequest.install.proxyresponse;
+                    $scope.responseData = $serverRequest.install.responseData;
                     $scope.callAfterSuccess( !$serverRequest.install.proxyStatus );
                 });
             }

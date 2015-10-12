@@ -71,7 +71,7 @@ app.value('formSteps', [
     {uiSref: 'form.database', valid: false},
     {uiSref: 'form.proxy', valid: false},
     {uiSref: 'form.admin', valid: false},
-    {uiSref: 'form.smpt', valid: false},
+    {uiSref: 'form.smpt', valid: true},
     {uiSref: 'form.install', valid: false},
     {uiSref: 'form.success', valid: false}
 ]);

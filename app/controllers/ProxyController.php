@@ -55,6 +55,57 @@ class ProxyController extends BaseController
     }
 
     /**
+     * Displays the reverse https ssl certificate setting page
+     *
+     * @return  Illuminate\Http\Response
+     */
+    public function sslSettings() {
+        $proxy = Config::get('proxy');
+        return View::make('proxy.sslsettings')->with('result', $proxy);
+    }
+
+    /**
+     * Save https ssl certificate setting
+     *
+     * @return  Illuminate\Http\Response
+     */
+    public function sslSettingsSave() {
+        $response = array();
+        $response['status'] = 0;
+        $input = Input::all();
+        Config::set('proxy.certificate_pem', $input['certificate_pem']);
+        Config::set('proxy.certificate_key', $input['certificate_key']);
+        if(!file_exists($input['certificate_pem'])) {
+            $response['message'] = "Certificate file not exists at ".$input['certificate_pem'];
+        }
+        else if(!file_exists($input['certificate_key'])) {
+            $response['message'] = "Certificate key not exists at ".$input['certificate_key'];
+        } else {
+            $proxy = Config::get('proxy');
+
+            $tab= " \t ";
+            $content="<?php".PHP_EOL;
+            $content.="return array(".PHP_EOL;
+            foreach($proxy as $key => $val) {
+                $content.=$tab."'".$key."' ".$tab."=> '".$val."',".PHP_EOL;
+            }
+            $content.=");".PHP_EOL;
+            $content.="?>".PHP_EOL;
+
+            $dir_path = $_SERVER['DOCUMENT_ROOT'].'/../app/config/';
+            $dmr = file_put_contents($dir_path . 'proxy.php', $content);
+
+            if ($dmr == "" || $dmr == false) {
+                $response['message'] = "Permissions required to ". $dir_path .'proxy.php';
+            } else {
+                $response['status'] = 1;
+                $response['message'] = "SSL details updated successfully.";
+            }
+        }
+        return Response::json($response);
+    }
+
+    /**
      * Validate Proxy domain and api-key using cURL
      *
      * @return  Illuminate\Http\Response

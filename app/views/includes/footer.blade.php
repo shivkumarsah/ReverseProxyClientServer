@@ -1,7 +1,7 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-{{ HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}
-{{ HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js') }}
-{{ HTML::script('http://code.angularjs.org/1.2.6/angular.js') }}
+{{ HTML::script('js/jquery.min.js') }}
+{{ HTML::script('js/bootstrap.min.js') }}
+{{ HTML::script('js/angular.min.js') }}
 {{ HTML::script('js/app.js') }}
 <script>
     $(function () {

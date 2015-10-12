@@ -23,10 +23,13 @@ return array(
         'overview' => "Overview",
         'manage_application' => "Manage Applications",
         'proxy_setting' => "Reverse Proxy Settings",
+        'ssl_setting' => "SSL Settings",
     ),
     "settings" => array(
         'page_title' => "Settings",
-
+    ),
+    "sslsettings" => array(
+        'page_title' => "SSL Certificate Settings",
     ),
     "applications" => array(
         'page_title' => "Applications",
