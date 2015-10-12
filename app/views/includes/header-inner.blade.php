@@ -1,8 +1,7 @@
 {{ HTML::style('css/bootstrap.min.css') }}
-<!-- {{ HTML::style('http://angular-ui.github.com/ng-grid/css/ng-grid.css') }} -->
 {{ HTML::style('css/awesome-bootstrap-checkbox.css') }}
 {{ HTML::style('css/font-awesome.min.css') }}
-{{ HTML::style('css/family-raleway-100-200-300-400-500-600-700-800-900.css') }}
+<!-- {{ HTML::style('css/family-raleway-100-200-300-400-500-600-700-800-900.css') }} -->
 {{ HTML::style('css/dashboard.css') }}
 {{ HTML::style('css/ngDialog.css') }}
 {{ HTML::style('css/ngDialog-theme-default.css') }}
