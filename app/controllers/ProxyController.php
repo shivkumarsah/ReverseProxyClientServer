@@ -60,10 +60,8 @@ class ProxyController extends BaseController
      * @return  Illuminate\Http\Response
      */
     public function sslSettings() {
-        $proxy = $this->admin->getProxy();
-        $login = Config::get('launchpad.login_required');
-        $showAction = ($login)? false : true;
-        return View::make('proxy.sslsettings')->with('result', $proxy)->with('showAction', $showAction);
+        $proxy = Config::get('proxy');
+        return View::make('proxy.sslsettings')->with('result', $proxy);
     }
 
     /**
@@ -72,19 +70,39 @@ class ProxyController extends BaseController
      * @return  Illuminate\Http\Response
      */
     public function sslSettingsSave() {
+        $response = array();
+        $response['status'] = 0;
         $input = Input::all();
-
-        $dir_path = $_SERVER['DOCUMENT_ROOT'].'/../app/config/local/';
-
-        Config::set('proxy.certificatePem', 'file fill path');
-        Config::set('proxy.certificateKey', 'file fill path');
-
-        $dmr = file_put_contents($dir_path . 'proxy.php', print_r(Config::get('proxy'), true));
-        if ($dmr == "" || $dmr == false) {
-            throw new Exception("Permissions required to ". $dir_path .'proxy.php');
+        Config::set('proxy.certificate_pem', $input['certificate_pem']);
+        Config::set('proxy.certificate_key', $input['certificate_key']);
+        if(!file_exists($input['certificate_pem'])) {
+            $response['message'] = "Certificate file not exists at ".$input['certificate_pem'];
         }
-        $result = $this->admin->setProxy($input);
-        return Response::json($result);
+        else if(!file_exists($input['certificate_key'])) {
+            $response['message'] = "Certificate key not exists at ".$input['certificate_key'];
+        } else {
+            $proxy = Config::get('proxy');
+
+            $tab= " \t ";
+            $content="<?php".PHP_EOL;
+            $content.="return array(".PHP_EOL;
+            foreach($proxy as $key => $val) {
+                $content.=$tab."'".$key."' ".$tab."=> '".$val."',".PHP_EOL;
+            }
+            $content.=");".PHP_EOL;
+            $content.="?>".PHP_EOL;
+
+            $dir_path = $_SERVER['DOCUMENT_ROOT'].'/../app/config/';
+            $dmr = file_put_contents($dir_path . 'proxy.php', $content);
+
+            if ($dmr == "" || $dmr == false) {
+                $response['message'] = "Permissions required to ". $dir_path .'proxy.php';
+            } else {
+                $response['status'] = 1;
+                $response['message'] = "SSL details updated successfully.";
+            }
+        }
+        return Response::json($response);
     }
 
     /**

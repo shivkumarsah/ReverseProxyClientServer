@@ -2193,14 +2193,14 @@ proxyApp.controller("sslCtrl", function( $scope, $http, Flash) {
                 url: '/proxy/sslsettings/save',
                 method: 'post',
                 data: {
-                    proxy_url: $scope.settingData.proxy_url,
-                    api_key: $scope.settingData.api_key
+                    certificate_pem: $scope.settingData.certificate_pem,
+                    certificate_key: $scope.settingData.certificate_key
                 },
             });
             responseObj.success(function (data, status, headers, config) {
                 console.log(data);
                 if (data.status) {
-                    var message = 'Reverse proxy details saved successfully.';
+                    var message = 'SSL details updated successfully.';
                     Flash.create('success', message, 'custom-class');
                 }
                 else {
