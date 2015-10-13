@@ -135,6 +135,7 @@ class ProxyController extends BaseController
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_POST, count($user));
             curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
             $output = curl_exec($ch);
             $info = curl_getinfo($ch);
             $data = json_decode($output, true);
@@ -204,6 +205,7 @@ class ProxyController extends BaseController
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
                 curl_setopt($ch, CURLOPT_POST, count($user));
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
                 $output = curl_exec($ch);
                 $info = curl_getinfo($ch);
                 $data = json_decode($output, true);
@@ -259,6 +261,7 @@ class ProxyController extends BaseController
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
                 curl_setopt($ch, CURLOPT_POST, count($user));
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
                 $output = curl_exec($ch);
                 $info = curl_getinfo($ch);
                 $data = json_decode($output, true);
@@ -310,6 +313,7 @@ class ProxyController extends BaseController
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
                 curl_setopt($ch, CURLOPT_POST, count($user));
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
                 $output = curl_exec($ch);
                 $info = curl_getinfo($ch);
                 $data = json_decode($output, true);
@@ -387,6 +391,7 @@ class ProxyController extends BaseController
                 curl_setopt($ch, CURLOPT_URL, $request_url);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
                 $output = curl_exec($ch);
                 $info = curl_getinfo($ch);
                 $data = json_decode($output, true);
