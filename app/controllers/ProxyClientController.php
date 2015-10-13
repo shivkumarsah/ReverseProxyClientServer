@@ -89,9 +89,6 @@ class ProxyClientController extends BaseController
                     'external_url'  => $input['internal_url']
                 ]);
             } else {
-                //$application = DB::table('applications')->orderBy('id', 'desc')->first();
-                //$next_id = (int)$application->id + 1;
-
                 $application = new Application();
 
                 $application->tenant_id     = $input['tenant_id']; //$tenant_id;
@@ -103,9 +100,6 @@ class ProxyClientController extends BaseController
                 $application->save();
                 $id = $application->id;
             }
-            //$admin          = $this->admin->getProxy();
-            //$admin_api_key  = $admin['api_key'];
-
             $proxy_base_url     = Config::get('proxy.base_url');
             $proxy_listen_port  = Config::get('proxy.listen_port');
             $proxy_config_path  = Config::get('proxy.config_path');
@@ -117,16 +111,14 @@ class ProxyClientController extends BaseController
             $ssl_certificate_key    = Config::get('proxy.certificate_key');
 
             $tenant_id      = $input['tenant_id'];;
-            $request_uri    = $input['internal_uri']; //'gwstoken='; //$admin_api_key;
-            $request_params = 'gwstoken='; //$admin_api_key;
-            $proxy_base_url = parse_url($proxy_base_url);
-            $external_ip    = $id.".".$proxy_base_url['host'];
+            $request_uri    = $input['internal_uri'];
+            $request_params = 'gwstoken=';
+            $external_ip    = $id.".".$proxy_base_url;
 
             $external_url   = $id.".".$proxy_base_url.':'.$proxy_listen_port.'/'.$request_uri;
             $concat_operator = strpos($external_url, '?') ? '&':'?';
             $external_url   = $external_url.$concat_operator.$request_params;
             $internal_url   = $input['internal_url'];
-            //$lua_file_path  = '/etc/nginx/nginx.lua';
             $lua_file_path  = $proxy_auth_path;
             $ssl_file_path  = $proxy_config_path.'/ssl.conf';
 
@@ -179,7 +171,7 @@ class ProxyClientController extends BaseController
 
             exec($proxy_service_path);
         } catch (Exception $ex) {
-            $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured', 'debug'=> $ex->getMessage());
+            $output = array( 'status' => 0, 'id' => 0, 'message'=> 'Exception occured : '.$ex->getMessage());
         }
         return $output;
     }
