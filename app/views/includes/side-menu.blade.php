@@ -10,7 +10,7 @@
         <li @if($currentRoute == 'proxysettings') class="active" @endif >
             {{link_to_route('proxysettings', trans('messages.links.proxy_setting'))}}
         </li>
-        <li @if($currentRoute == 'sslsettings') class="active" @endif ng-hide="<?php echo Config::get('launchpad.login_required'); ?>">
+        <li @if($currentRoute == 'sslsettings') class="active" @endif ng-show="<?php echo (Config::get('launchpad.login_required')==false && Config::get('proxy.nginx_protocol')=='https')?1:0; ?>">
             {{link_to_route('sslsettings', trans('messages.links.ssl_setting'))}}
         </li>
            
