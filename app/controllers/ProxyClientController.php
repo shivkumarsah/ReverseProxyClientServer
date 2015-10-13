@@ -115,9 +115,20 @@ class ProxyClientController extends BaseController
             $request_params = 'gwstoken=';
             $external_ip    = $id.".".$proxy_base_url;
 
-            $external_url   = $id.".".$proxy_base_url.':'.$proxy_listen_port.'/'.$request_uri;
-            $concat_operator = strpos($external_url, '?') ? '&':'?';
-            $external_url   = $external_url.$concat_operator.$request_params;
+            if($nginx_protocol=='https') {
+                if($proxy_listen_port==443) {
+                    $external_url   = $id.".".$proxy_base_url.'/'.$request_uri;
+                } else {
+                    $external_url   = $id.".".$proxy_base_url.':'.$proxy_listen_port.'/'.$request_uri;
+                }
+                $concat_operator = strpos($external_url, '?') ? '&':'?';
+                $external_url   = 'https://'.$external_url.$concat_operator.$request_params;
+
+            } else {
+                $external_url   = $id.".".$proxy_base_url.':'.$proxy_listen_port.'/'.$request_uri;
+                $concat_operator = strpos($external_url, '?') ? '&':'?';
+                $external_url   = 'http://'.$external_url.$concat_operator.$request_params;
+            }
             $internal_url   = $input['internal_url'];
             $lua_file_path  = $proxy_auth_path;
             $ssl_file_path  = $proxy_config_path.'/ssl.conf';
