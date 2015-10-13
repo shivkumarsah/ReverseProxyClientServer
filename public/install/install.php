@@ -55,7 +55,8 @@ if (!is_dir($querylogs_folder_path)) {
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/darkly/bootstrap.min.css">
     <link rel="stylesheet" href='/css/font-awesome.min.css'>
     <link rel="stylesheet" href="css/style-install.css">
     <script src="app/angular.min.js"></script>
