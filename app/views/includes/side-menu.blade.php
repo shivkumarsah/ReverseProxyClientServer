@@ -10,19 +10,9 @@
         <li @if($currentRoute == 'proxysettings') class="active" @endif >
             {{link_to_route('proxysettings', trans('messages.links.proxy_setting'))}}
         </li>
-        <li @if($currentRoute == 'sslsettings') class="active" @endif ng-show="<?php echo (Config::get('launchpad.login_required')==false && Config::get('proxy.nginx_protocol')=='https')?1:0; ?>">
+        <!--li @if($currentRoute == 'sslsettings') class="active" @endif ng-show="<?php echo (Config::get('launchpad.login_required')==false && Config::get('proxy.nginx_protocol')=='https')?1:0; ?>"-->
+        <li @if($currentRoute == 'sslsettings') class="active" @endif ng-hide="<?php echo Config::get('launchpad.login_required'); ?>">
             {{link_to_route('sslsettings', trans('messages.links.ssl_setting'))}}
         </li>
-           
-        <!--li ng-click="isCollapsed=!isCollapsed" style="padding-left: 21px;margin-top: 10px;cursor: pointer;">
-            <input type="hidden" id="currentRoute" value="<?php echo $currentRoute ?>">
-            <span><a href="#">Main menu</a></span>
-            &nbsp;<span class="glyphicon" ng-class="isCollapsed ? 'glyphicon-chevron-down' : 'glyphicon-chevron-up'" style="float:right;color:#6498c8;margin-right:10px; font-size: 18px;"></span>
-        </li-->
     </ul>
-
-    <!-- ul collapse="isCollapsed" style="list-style-type: none;" class="sub-nav nav-sidebar" style="padding-left: 10px !important;">
-        <li style="margin-bottom:5px;" @if($currentRoute == 'login') class="active" @endif >{{link_to_route('login', "Sub menu 1")}}</li>
-        <li style="margin-bottom:5px;" @if($currentRoute == 'login') class="active" @endif >{{link_to_route('login', "Sub menu 2")}}</li>
-    </ul-->
 </div>

@@ -73,13 +73,15 @@ class ProxyController extends BaseController
         $response = array();
         $response['status'] = 0;
         $input = Input::all();
-        Config::set('proxy.certificate_pem', $input['certificate_pem']);
-        Config::set('proxy.certificate_key', $input['certificate_key']);
+        $ssl_certificate_pem = $input['certificate_pem'];
+        $ssl_certificate_key = $input['certificate_key'];
+        Config::set('proxy.certificate_pem', $ssl_certificate_pem);
+        Config::set('proxy.certificate_key', $ssl_certificate_key);
         if(!file_exists($input['certificate_pem'])) {
-            $response['message'] = "Certificate file not exists at ".$input['certificate_pem'];
+            $response['message'] = "Certificate file not exists at ".$ssl_certificate_pem;
         }
         else if(!file_exists($input['certificate_key'])) {
-            $response['message'] = "Certificate key not exists at ".$input['certificate_key'];
+            $response['message'] = "Certificate key not exists at ".$ssl_certificate_key;
         } else {
             $proxy = Config::get('proxy');
 
@@ -98,6 +100,17 @@ class ProxyController extends BaseController
             if ($dmr == "" || $dmr == false) {
                 $response['message'] = "Permissions required to ". $dir_path .'proxy.php';
             } else {
+                $proxy_config_path  = Config::get('proxy.config_path');
+                $ssl_file_path  = $proxy_config_path.'/ssl.conf';
+
+                // Update SSL Certificate Configuration
+                $sfp = fopen($ssl_file_path,"w");
+                $strngssl='ssl_certificate '.$ssl_certificate_pem.';'.PHP_EOL;
+                $strngssl.='ssl_certificate_key '.$ssl_certificate_key.';'.PHP_EOL;
+                $strngssl.="ssl_session_cache shared:SSL:10m;".PHP_EOL;
+                fwrite($sfp, $strngssl);
+                fclose($sfp);
+
                 $response['status'] = 1;
                 $response['message'] = "SSL details updated successfully.";
             }
