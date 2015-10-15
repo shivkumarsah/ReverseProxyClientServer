@@ -10,6 +10,6 @@ main (int argc, char *argv[])
     *  a malicious user might fool the binary and execute
     *  arbitary commands if not.
     */
-    system ("/bin/sh nginx_root.sh");
+    system ("/bin/sh /var/www/html/classlinkproxy/nginx/nginx_root.sh");
     return 0;
 }
