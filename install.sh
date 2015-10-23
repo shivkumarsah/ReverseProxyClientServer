@@ -14,11 +14,11 @@ YELLOW='\033[1;33m' # Yellow Color
 NC='\033[0m' # No Color
 
 die () {
-    echo "${RED}ERROR${NC}: $1. Aborting!"
+    printf "${RED}ERROR${NC}: $1. Aborting!\n"
     exit 1
 }
 success () {
-    echo "${GREEN}SUCCESS${NC}: $1."
+    printf "${GREEN}SUCCESS${NC}: $1.\n"
 }
 
 #check for root user
@@ -48,7 +48,7 @@ fi
 #Read the ssl options
 read -p "Use HTTPS (SSL): [no/yes] " SSL_ENABLE
 if [ $SSL_ENABLE = yes ] ; then
-    echo "\nYou must have valid certificate and certificate key to configure HTTPS.\n"
+    printf "\nYou must have valid certificate and certificate key to configure HTTPS.\n"
     #Read SSL certificates
     read -p "Please enter the SSL Certificate file: " SSL_CERT
     if [ -z "$SSL_CERT" ] ; then
@@ -77,6 +77,8 @@ else
         PROXY_HOST="http://localhost:$NGINX_PORT"
     fi
 fi
+
+printf "\n\n"
 
 #Update filesystem permission 
 chmod -Rf 0777 configs
@@ -177,31 +179,36 @@ fi
 #######################################################################
 
 
-echo "\nConfiguration summary: \n"
+printf "\n\nConfiguration summary: \n"
 echo "Host                         : $PROXY_HOST"
 echo "Port no.                     : $NGINX_PORT"
 echo "HTTPS enable                 : $SSL_ENABLE"
 echo "SSL certificate              : $SSL_CERT"
 echo "SSL certificate key file     : $SSL_KEY"
 echo "Application root path        : $ROOT_PATH"
-echo "\n"
+printf "\n"
+
+#if ! command -V firewall-cmd >/dev/null 2>&1; then
+if service firewalld status >/dev/null 2>&1; then
+    firewall-cmd --zone=public --add-port=$NGINX_PORT/tcp --permanent ||  printf "${RED}ERROR${NC}: Failed to save firewall setings... Aborting!\n"
+    firewall-cmd --reload || printf "${RED}ERROR${NC}: Failed to save firewall setings... Aborting!\n"
+else
+    printf "${YELLOW}Firewall not enabled or installed, You must install and configure zone=public and add-port $NGINX_PORT.${NC}\n"
+fi
+#firewall-cmd --zone=public --add-port=$NGINX_PORT/tcp --permanent ||  printf "${RED}ERROR${NC}: Failed to save firewall setings... Aborting!\n"
+#firewall-cmd --reload || printf "${RED}ERROR${NC}: Failed to save firewall setings... Aborting!\n"
+
+
+#if command status iptables >/dev/null 2>&1; then
+#    printf "${YELLOW}Iptables not enable, please install and configure if required${NC}\n"
+#else
+#    iptables -I INPUT -p tcp --dport $NGINX_PORT -j ACCEPT
+#    service iptables save || die "Failed to save iptables setings..."
+#    service iptables restart || die "Failed to start iptables service..."
+#fi
+
 service nginx restart || die "Failed to restart nginx service..."
 
-if command -v firewall-cmd >/dev/null 2>&1; then
-    echo "${YELLOW}Firewall not installed, please install and configure zone=public if required.${NC}"
-else
-    firewall-cmd --zone=public --add-port=$NGINX_PORT/tcp --permanent  || die "Failed to save firewall setings..."
-    filewall-cmd --reload || die "Failed to save firewall setings..."
-fi
-
-if command status iptables >/dev/null 2>&1; then
-    echo "${YELLOW}Iptables not enable, please install and configure if required${NC}"
-else
-    iptables -I INPUT -p tcp --dport $NGINX_PORT -j ACCEPT
-    service iptables save || die "Failed to save iptables setings..."
-    service iptables restart || die "Failed to start iptables service..."
-fi
-
 #tada
-echo "${GREEN}Installation completed!!${NC}"
+printf "\n\n${GREEN}Installation completed!!${NC}\n\n\n"
 exit 0
