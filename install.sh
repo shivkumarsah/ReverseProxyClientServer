@@ -70,8 +70,14 @@ if [ $SSL_ENABLE = yes ] ; then
     else
         PROXY_HOST="https://localhost:$NGINX_PORT"
     fi
-    SETTING_TEXT="baseProtocol = '$PROTOCOL';\ncertificatePem = '$SSL_CERT';\ncertificateKey = '$SSL_KEY';"
-    echo $SETTING_TEXT > public/install/ssl.ini
+    #SETTING_TEXT="baseProtocol = '$PROTOCOL';\ncertificatePem = '$SSL_CERT';\ncertificateKey = '$SSL_KEY';"
+    #echo $SETTING_TEXT > public/install/ssl.ini
+    SETTING_FILE="public/install/ssl.ini"
+    cat <<EOM >$SETTING_FILE
+baseProtocol = '$PROTOCOL';
+certificatePem = '$SSL_CERT';
+certificateKey = '$SSL_KEY';
+EOM
 else
     echo "Selecting default: $_SSL_ENABLE"
     SSL_ENABLE=$_SSL_ENABLE
@@ -133,7 +139,8 @@ cp nginx/fastcgi-php.conf /etc/nginx/snippets/fastcgi-php.conf
 cp nginx/nginx.conf /etc/nginx/nginx.conf
 cp nginx/auth.conf /etc/nginx/conf.d/auth.conf
 #cp nginx/server.conf configs/server.conf
-sudo ln -sf "$(pwd)/configs" /etc/nginx/conf.d/configs
+rm /etc/nginx/conf.d/configs
+ln -sf "$(pwd)/configs" /etc/nginx/conf.d/configs
 success "Nginx server configuration updated"
 
 
