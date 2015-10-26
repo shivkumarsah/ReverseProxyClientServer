@@ -31,6 +31,7 @@ ROOT_PATH=$(pwd)
 _NGINX_PORT=8080
 _SSL_ENABLE='no'
 SSL_ENABLE=no
+PROTOCOL='http'
 _SSL_CERT=''
 _SSL_KEY=''
 uri='$uri'
@@ -48,6 +49,7 @@ fi
 #Read the ssl options
 read -p "Use HTTPS (SSL): [no/yes] " SSL_ENABLE
 if [ $SSL_ENABLE = yes ] ; then
+    PROTOCOL='https'
     printf "\nYou must have valid certificate and certificate key to configure HTTPS.\n"
     #Read SSL certificates
     read -p "Please enter the SSL Certificate file: " SSL_CERT
@@ -68,6 +70,8 @@ if [ $SSL_ENABLE = yes ] ; then
     else
         PROXY_HOST="https://localhost:$NGINX_PORT"
     fi
+    SETTING_TEXT="baseProtocol = '$PROTOCOL';\ncertificatePem = '$SSL_CERT';\ncertificateKey = '$SSL_KEY';"
+    echo $SETTING_TEXT > public/install/ssl.ini
 else
     echo "Selecting default: $_SSL_ENABLE"
     SSL_ENABLE=$_SSL_ENABLE

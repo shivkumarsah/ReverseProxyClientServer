@@ -157,10 +157,18 @@ switch($inputs['submitedtype']){
         $responseArray['urlPort']       = $_SERVER['SERVER_PORT'];
         $responseArray['baseProtocol']  = $settingObj->getProtocol();
         $responseArray['domainApiKey']  = md5(uniqid(mt_rand(), true));
-        $responseArray['path'] = $_SERVER['DOCUMENT_ROOT'].'/../configs/';
-        $responseArray['confPath'] = realpath($_SERVER['DOCUMENT_ROOT'].'/../configs/');
-        $responseArray['nginxPath'] = realpath($_SERVER['DOCUMENT_ROOT'].'/../nginx/nginx_root');
+        $responseArray['path']          = $_SERVER['DOCUMENT_ROOT'].'/../configs/';
+        $responseArray['confPath']      = realpath($_SERVER['DOCUMENT_ROOT'].'/../configs/');
+        $responseArray['nginxPath']     = realpath($_SERVER['DOCUMENT_ROOT'].'/../nginx/nginx_root');
+        $responseArray['certificatePem'] = '';
+        $responseArray['certificateKey'] = '';
 
+        $sslConfig = parse_ini_file("ssl.ini");
+        foreach ($sslConfig as $inputkey => $inputval) {
+            if ($inputval != 'checkstate') {
+                $responseArray[$inputkey] = $inputval;
+            }
+        }
         //echo "<pre>"; print_r($responseArray); print_r($_SERVER); exit;
         echo  json_encode($responseArray);exit;
         break;

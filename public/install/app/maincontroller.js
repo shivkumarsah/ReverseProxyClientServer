@@ -324,6 +324,9 @@ app.controller('formController', function( $scope, $serverRequest, $state, formS
             $scope.formData.confPath        = data.confPath;
             $scope.formData.nginxPath       = data.nginxPath; //'/var/www/html/php_root';
 
+            $scope.formData.certificatePem = data.certificatePem;
+            $scope.formData.certificateKey = data.certificateKey;
+
             if( $serverRequest.install.installationState != $state.current.name ) {
                 $state.current.name = $serverRequest.install.installationState;
                 updateValidityOfCurrentStep(true);
