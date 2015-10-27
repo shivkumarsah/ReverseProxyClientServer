@@ -28,6 +28,7 @@ fi
 
 #Initial defaults
 ROOT_PATH=$(pwd)
+_NGINX_DOMAIN='localhost'
 _NGINX_PORT=8080
 _SSL_ENABLE='no'
 SSL_ENABLE=no
@@ -38,6 +39,13 @@ uri='$uri'
 args='$args'
 SERVER_FILE="configs/server.conf"
 PROXY_HOST="http://localhost:8080"
+
+#Read the domain name
+read -p "Please enter domain/server name for this instance (Example: domain.com): [$_NGINX_DOMAIN] " NGINX_DOMAIN
+if [ ! $NGINX_DOMAIN ] ; then
+    echo "Selecting default domain: $_NGINX_DOMAIN"
+    NGINX_DOMAIN=$_NGINX_DOMAIN
+fi
 
 #Read the nginx port
 read -p "Please select the installer port no. for this instance: [$_NGINX_PORT] " NGINX_PORT
@@ -148,7 +156,7 @@ if [ $SSL_ENABLE = yes ]; then
     cat > ${SERVER_FILE} <<EOT
     server {
         listen $NGINX_PORT ssl;
-        server_name localhost;
+        server_name $NGINX_DOMAIN;
 
         ssl_certificate $SSL_CERT;
         ssl_certificate_key $SSL_KEY;
@@ -171,7 +179,7 @@ else
     cat > ${SERVER_FILE} <<EOT
     server {
         listen $NGINX_PORT;
-        server_name localhost;
+        server_name $NGINX_DOMAIN;
 
         root $ROOT_PATH/public;
         index index.php index.html index.htm;
