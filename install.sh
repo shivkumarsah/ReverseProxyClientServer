@@ -74,9 +74,9 @@ if [ $SSL_ENABLE = yes ] ; then
     fi
 
     if [ $NGINX_PORT = 443 ] ; then
-        PROXY_HOST="https://localhost/"
+        PROXY_HOST="https://$NGINX_DOMAIN/"
     else
-        PROXY_HOST="https://localhost:$NGINX_PORT"
+        PROXY_HOST="https://$NGINX_DOMAIN:$NGINX_PORT"
     fi
     #SETTING_TEXT="baseProtocol = '$PROTOCOL';\ncertificatePem = '$SSL_CERT';\ncertificateKey = '$SSL_KEY';"
     #echo $SETTING_TEXT > public/install/ssl.ini
@@ -90,9 +90,9 @@ else
     echo "Selecting default: $_SSL_ENABLE"
     SSL_ENABLE=$_SSL_ENABLE
     if [ $NGINX_PORT = 80 ] ; then
-        PROXY_HOST="http://localhost/"
+        PROXY_HOST="http://$NGINX_DOMAIN/"
     else
-        PROXY_HOST="http://localhost:$NGINX_PORT"
+        PROXY_HOST="http://$NGINX_DOMAIN:$NGINX_PORT"
     fi
 fi
 
