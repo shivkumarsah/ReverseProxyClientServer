@@ -1,5 +1,5 @@
 
-# ClassLink : Reverse Proxy Administration
+# Reverse Proxy Client - Server Administration
 
 ## Technology and Tools used :-
 
